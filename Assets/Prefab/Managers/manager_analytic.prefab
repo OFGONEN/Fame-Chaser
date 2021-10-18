@@ -45,3 +45,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elephantEventListener:
     gameEvent: {fileID: 11400000, guid: 33ccf5f609258ea46b63b78483df10f5, type: 2}
+  elephantRemoteConfigListener:
+    gameEvent: {fileID: 11400000, guid: fce0517684d57439aad15342a420da2f, type: 2}

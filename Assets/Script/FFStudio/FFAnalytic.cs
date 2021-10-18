@@ -12,27 +12,46 @@ namespace FFStudio
 #region Fields
 		[Header( "Event Listeners" )]
 		public EventListenerDelegateResponse elephantEventListener;
+		public EventListenerDelegateResponse elephantRemoteConfigListener;
 #endregion
 
 #region UnityAPI
 		private void OnEnable()
 		{
 			elephantEventListener.OnEnable();
+			elephantRemoteConfigListener.OnEnable();
 		}
 
 		private void OnDisable()
 		{
 			elephantEventListener.OnDisable();
+			elephantRemoteConfigListener.OnDisable();
 		}
 
 		private void Awake()
 		{
-			elephantEventListener.response = ElephantEventResponse;
+			elephantEventListener.response        = ElephantEventResponse;
+			elephantRemoteConfigListener.response = ElephantRemoteConfigResponse;
+		}
+
+		private void Start()
+		{
+			LoadRemoteConfigs();
 		}
 
 #endregion
 
 #region Implementation
+		void ElephantRemoteConfigResponse()
+		{
+			var configEvent = elephantRemoteConfigListener.gameEvent as ElephantConfigEvent;
+
+			var value = RemoteConfig.GetInstance().Get( configEvent.configKeyName );
+
+			if( value != null )
+				configEvent.source.SetFieldValue( configEvent.fieldName, value );
+		}
+
 		void ElephantEventResponse()
 		{
 			var gameEvent = elephantEventListener.gameEvent as ElephantLevelEvent;
@@ -51,6 +70,34 @@ namespace FFStudio
 					Elephant.LevelFailed( gameEvent.level );
 					FFLogger.Log( "FFAnalytic Elephant LevelFailed: " + gameEvent.level );
 					break;
+			}
+		}
+
+		void LoadRemoteConfigs()
+		{
+			var gameSettings = GameSettings.Instance;
+
+			if( !gameSettings )
+				return;
+
+			var remote = RemoteConfig.GetInstance();
+			var settings = remote.Get( "game_settings", "null" );
+
+			if( settings == null )
+			{
+				Debug.Log( "Remote GameSettings could not configured" );
+				return;
+			}
+
+			FFLogger.Log( "game_settings\n" + settings );
+			var setting_keys = settings.Split( ',' );
+
+			foreach( var settingName in setting_keys )
+			{
+				var value = remote.Get( settingName );
+
+				if( value != null )
+					gameSettings.SetFieldValue( settingName, value );
 			}
 		}
 #endregion
