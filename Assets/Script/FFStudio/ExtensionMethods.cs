@@ -251,15 +251,17 @@ namespace FFStudio
 		public static void UpdateSkinnedMeshRenderer( this GameObject gameObject, SkinnedMeshRenderer currentRender, SkinnedMeshRenderer newRenderer )
 		{
 			currentRender.sharedMesh = newRenderer.sharedMesh;
+            currentRender.sharedMaterials = newRenderer.sharedMaterials;
+            currentRender.localBounds = newRenderer.localBounds;
 
-			baseModelBones.Clear();
+            baseModelBones.Clear();
 			targetModelBones.Clear();
 
 			gameObject.GetComponentsInChildren<Transform>( true, baseModelBones );
 
 			for( int boneOrder = 0; boneOrder < newRenderer.bones.Length; boneOrder++ )
 			{
-				targetModelBones.Add( targetModelBones.Find( c => c.name == newRenderer.bones[ boneOrder ].name ) );
+				targetModelBones.Add( baseModelBones.Find( c => c.name == newRenderer.bones[ boneOrder ].name ) );
 			}
 
 			currentRender.bones = targetModelBones.ToArray();
