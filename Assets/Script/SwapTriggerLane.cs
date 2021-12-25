@@ -34,7 +34,12 @@ public abstract class SwapTriggerLane : MonoBehaviour
 
 #region Implementation
 	protected abstract void SwapPlayerIn( Collider player );
-    protected abstract Vector3 SwapPlayerOut();
+
+    protected virtual float SwapPlayerOut()
+    {
+		var randomness = GameSettings.Instance.swap_point_out_randomness;
+		return swap_point_out.position.x + Random.Range( -randomness, randomness );
+	}
 #endregion
 
 #region Editor Only
