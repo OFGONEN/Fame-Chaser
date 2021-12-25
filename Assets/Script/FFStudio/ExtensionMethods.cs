@@ -248,11 +248,11 @@ namespace FFStudio
 			}
 		}
 
-		public static void UpdateSkinnedMeshRenderer( this GameObject gameObject, SkinnedMeshRenderer currentRender, SkinnedMeshRenderer newRenderer )
+		public static void UpdateSkinnedMeshRenderer( this GameObject gameObject, SkinnedMeshRenderer currentRenderer, SkinnedMeshRenderer newRenderer )
 		{
-			currentRender.sharedMesh = newRenderer.sharedMesh;
-            currentRender.sharedMaterials = newRenderer.sharedMaterials;
-            currentRender.localBounds = newRenderer.localBounds;
+			currentRenderer.sharedMesh      = newRenderer.sharedMesh;
+			currentRenderer.sharedMaterials = newRenderer.sharedMaterials;
+			currentRenderer.localBounds     = newRenderer.localBounds;
 
             baseModelBones.Clear();
 			targetModelBones.Clear();
@@ -264,7 +264,7 @@ namespace FFStudio
 				targetModelBones.Add( baseModelBones.Find( c => c.name == newRenderer.bones[ boneOrder ].name ) );
 			}
 
-			currentRender.bones = targetModelBones.ToArray();
+			currentRenderer.bones = targetModelBones.ToArray();
 		}
 
 		public static void SetFieldValue( this object source, string fieldName, string value )
