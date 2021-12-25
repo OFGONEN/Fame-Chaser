@@ -3,8 +3,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FFStudio;
 
-public class Player : MonoBehaviour
+public class SwapTriggerLane_Money : SwapTriggerLane
 {
 #region Fields
 #endregion
@@ -16,13 +17,14 @@ public class Player : MonoBehaviour
 #endregion
 
 #region API
-    public void SwapLane_Money( Vector3 position )
-    {
-
-    }
 #endregion
 
 #region Implementation
+	protected override void SwapPlayerIn( Collider collider )
+    {
+        var player = collider.GetComponent< TriggerListener >().AttachedComponent as Player;
+		player.SwapLane_Money( swap_point_in.position );
+	}
 #endregion
 
 #region Editor Only

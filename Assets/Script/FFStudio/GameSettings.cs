@@ -28,7 +28,7 @@ namespace FFStudio
 		[ Foldout( "UI Settings" ), Tooltip( "Joy Stick"                                        )] public float ui_Entity_JoyStick_Gap;
         [ Foldout( "UI Settings" ), Tooltip( "Percentage of the screen to register a swipe"     ) ] public int swipeThreshold;
 
-        [ BoxGroup( "SwapTriggerLane" ) ] public float swap_point_out_randomness;
+        [ BoxGroup( "SwapTriggerLane" ) ] public float swap_point_out_randomness = 1f;
 #endregion
 
 #region Implementation
