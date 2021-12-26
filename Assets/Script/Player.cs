@@ -10,6 +10,8 @@ using NaughtyAttributes;
 public class Player : MonoBehaviour
 {
 #region Fields
+	[ BoxGroup( "Event Listeners" ) ] public EventListenerDelegateResponse swipe_left_listener;
+	[ BoxGroup( "Event Listeners" ) ] public EventListenerDelegateResponse swipe_right_listener;
 
     // Private \\
     private TriggerListener triggerListener;
@@ -23,9 +25,24 @@ public class Player : MonoBehaviour
 #endregion
 
 #region Unity API
+	private void OnEnable()
+	{
+		swipe_left_listener.OnEnable();
+		swipe_right_listener.OnEnable();
+	}
+
+	private void OnDisable()
+	{
+		swipe_left_listener.OnDisable();
+		swipe_right_listener.OnDisable();
+	}
+
     private void Awake()
     {
-		swapLane_Out = ExtensionMethods.EmptyMethod;
+		swipe_left_listener.response  = ExtensionMethods.EmptyMethod;
+		swipe_right_listener.response = ExtensionMethods.EmptyMethod;
+
+		swapLane_Out    = ExtensionMethods.EmptyMethod;
 		triggerListener = GetComponentInChildren< TriggerListener >();
     }
 #endregion

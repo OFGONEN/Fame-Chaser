@@ -63,7 +63,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TapThreshold: 0.2
-  SwipeThreshold: 100
+  SwipeThreshold: 25
   ReferenceDpi: 200
   GuiLayers:
     serializedVersion: 2
@@ -140,7 +140,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   Modify: 0
-  Coordinate: 0
+  Coordinate: 2
   Multiplier: 1
   onDelta:
     m_PersistentCalls:
