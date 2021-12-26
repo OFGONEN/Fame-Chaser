@@ -6,7 +6,7 @@ using UnityEngine;
 using FFStudio;
 using NaughtyAttributes;
 
-public class CollectableMoney : MonoBehaviour
+public class Collectable_Money : MonoBehaviour
 {
 #region Fields
     [ BoxGroup( "Setup" ), SerializeField ] private int money_count;
