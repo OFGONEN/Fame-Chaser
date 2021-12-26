@@ -15,8 +15,10 @@ public class Player : MonoBehaviour
 
 	[ BoxGroup( "Shared Variables" ) ] public SharedFloat input_horizontal;
 
-    // Private \\
-    private TriggerListener triggerListener;
+	// Private \\
+	[ SerializeField, ReadOnly ] private int money_count;
+
+	private TriggerListener triggerListener;
 
     private SwapTriggerLane swapTriggerLane;
     private Sequence triggerLane_Sequence;
@@ -82,6 +84,11 @@ public class Player : MonoBehaviour
 		triggerLane_Sequence = DOTween.Sequence();
 		triggerLane_Sequence.Append( transform.DOMoveX( position.x, GameSettings.Instance.swap_point_in_duration ) );
 		triggerLane_Sequence.OnComplete( OnSwapTriggerLane_In_Fame_Complete );
+	}
+
+	public void GainMoney( int amount )
+	{
+		money_count += amount;
 	}
 #endregion
 
