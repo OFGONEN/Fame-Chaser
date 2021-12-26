@@ -10,24 +10,51 @@ using NaughtyAttributes;
 public class Player : MonoBehaviour
 {
 #region Fields
+	[ BoxGroup( "Event Listeners" ) ] public EventListenerDelegateResponse swipe_left_listener;
+	[ BoxGroup( "Event Listeners" ) ] public EventListenerDelegateResponse swipe_right_listener;
+
+	[ BoxGroup( "Shared Variables" ) ] public SharedFloat input_horizontal;
 
     // Private \\
     private TriggerListener triggerListener;
 
     private SwapTriggerLane swapTriggerLane;
     private Sequence triggerLane_Sequence;
+
     private UnityMessage swapLane_Out;
+	private UnityMessage updateMethod;
 #endregion
 
 #region Properties
 #endregion
 
 #region Unity API
+	private void OnEnable()
+	{
+		swipe_left_listener.OnEnable();
+		swipe_right_listener.OnEnable();
+	}
+
+	private void OnDisable()
+	{
+		swipe_left_listener.OnDisable();
+		swipe_right_listener.OnDisable();
+	}
+
     private void Awake()
     {
-		swapLane_Out = ExtensionMethods.EmptyMethod;
+		swipe_left_listener.response  = ExtensionMethods.EmptyMethod;
+		swipe_right_listener.response = ExtensionMethods.EmptyMethod;
+
+		updateMethod 	= ExtensionMethods.EmptyMethod;
+		swapLane_Out    = ExtensionMethods.EmptyMethod;
 		triggerListener = GetComponentInChildren< TriggerListener >();
     }
+
+	private void Update()
+	{
+		updateMethod();
+	}
 #endregion
 
 #region API
@@ -36,6 +63,7 @@ public class Player : MonoBehaviour
 		triggerListener.AttachedCollider.enabled = false;
 		swapTriggerLane = triggerLane;
 
+		updateMethod = ExtensionMethods.EmptyMethod;
 		swapLane_Out = SwapLane_Out_Money;
 
 		triggerLane_Sequence = DOTween.Sequence();
@@ -48,6 +76,7 @@ public class Player : MonoBehaviour
 		triggerListener.AttachedCollider.enabled = false;
 		swapTriggerLane = triggerLane;
 
+		updateMethod = ExtensionMethods.EmptyMethod;
 		swapLane_Out = SwapLane_Out_Fame;
 
 		triggerLane_Sequence = DOTween.Sequence();
@@ -65,6 +94,9 @@ public class Player : MonoBehaviour
 		triggerListener.AttachedCollider.enabled = false;
 		swapTriggerLane = null;
 
+		swipe_left_listener.response = ExtensionMethods.EmptyMethod;
+		swipe_right_listener.response = ExtensionMethods.EmptyMethod;
+
 		triggerLane_Sequence = DOTween.Sequence();
 		triggerLane_Sequence.Append( transform.DOMoveX( position_out, GameSettings.Instance.swap_point_in_duration ) );
 		triggerLane_Sequence.OnComplete( OnSwapTriggerLane_Out_Complete );
@@ -74,18 +106,24 @@ public class Player : MonoBehaviour
     {
 		triggerListener.AttachedCollider.enabled = true;
 		triggerLane_Sequence = triggerLane_Sequence.KillProper();
+
+		swipe_right_listener.response = SwapLane_Main;
 	}
 
     private void OnSwapTriggerLane_In_Fame_Complete()
     {
 		triggerListener.AttachedCollider.enabled = true;
 		triggerLane_Sequence = triggerLane_Sequence.KillProper();
+
+		swipe_left_listener.response = SwapLane_Main;
 	}
 
     private void OnSwapTriggerLane_Out_Complete()
 	{
 		triggerListener.AttachedCollider.enabled = true;
 		triggerLane_Sequence = triggerLane_Sequence.KillProper();
+
+		updateMethod = OnUpdate_Movement;
 
 		swapLane_Out();
 	}
@@ -99,6 +137,13 @@ public class Player : MonoBehaviour
     {
 
     }
+
+	private void OnUpdate_Movement()
+	{
+		transform.position = Vector3.MoveTowards( transform.position,
+		transform.position + Vector3.right * input_horizontal.sharedValue.Sign(),
+		Time.deltaTime * GameSettings.Instance.player_movement_speed * Mathf.Abs( input_horizontal.sharedValue ) );
+	}
 #endregion
 
 #region Editor Only

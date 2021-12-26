@@ -31,6 +31,11 @@ namespace FFStudio
         [ BoxGroup( "SwapTriggerLane" ) ] public float swap_point_out_randomness = 1f;
         [ BoxGroup( "SwapTriggerLane" ) ] public float swap_point_out_duration = 0.75f;
         [ BoxGroup( "SwapTriggerLane" ) ] public float swap_point_in_duration = 0.75f;
+
+        // Player
+        [ BoxGroup( "Player" ) ] public float player_movement_speed = 1f; 
+
+        [ BoxGroup( "Input" ) ] public float input_horizontal_deadzone = 0.01f; // 828 * 0.01 = 8 pixel
 #endregion
 
 #region Implementation
