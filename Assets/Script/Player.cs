@@ -123,6 +123,15 @@ public class Player : MonoBehaviour
 
 		cloth_particle.Raise( "cloth", renderer.bounds.center );
 	}
+
+	public void TakeClothesOff( ClothType[] clothesToRemove )
+	{
+		//TODO(ofg): should play take all of your clothes off animation
+		for( var i = 0; i < clothesToRemove.Length; i++ )
+		{
+			FFLogger.Log( "Should remove: " + clothesToRemove[ i ] );
+		}
+	}
 #endregion
 
 #region Implementation
