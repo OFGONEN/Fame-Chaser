@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
 	[ BoxGroup( "Event Listeners" ) ] public EventListenerDelegateResponse swipe_left_listener;
 	[ BoxGroup( "Event Listeners" ) ] public EventListenerDelegateResponse swipe_right_listener;
 
+	[ BoxGroup( "Shared Variables" ) ] public SharedFloat input_horizontal;
+
     // Private \\
     private TriggerListener triggerListener;
 
@@ -45,6 +47,13 @@ public class Player : MonoBehaviour
 		swapLane_Out    = ExtensionMethods.EmptyMethod;
 		triggerListener = GetComponentInChildren< TriggerListener >();
     }
+
+	private void Update()
+	{
+		transform.position = Vector3.MoveTowards( transform.position,
+		transform.position + Vector3.right * input_horizontal.sharedValue.Sign(),
+		Time.deltaTime * GameSettings.Instance.player_movement_speed * Mathf.Abs( input_horizontal.sharedValue ) );
+	}
 #endregion
 
 #region API
