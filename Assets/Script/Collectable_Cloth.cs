@@ -6,7 +6,7 @@ using UnityEngine;
 using FFStudio;
 using NaughtyAttributes;
 
-public class Collectable_Cloth : MonoBehaviour
+public class Collectable_Cloth : Interactable
 {
 #region Fields
     [ BoxGroup( "Setup" ), SerializeField ] private SkinnedMeshRenderer cloth_renderer;
@@ -19,20 +19,6 @@ public class Collectable_Cloth : MonoBehaviour
 #endregion
 
 #region Properties
-    private void OnEnable()
-    {
-		cloth_trigger.Subscribe( OnTrigger );
-	}
-
-    private void OnDisable()
-    {
-		cloth_trigger.Unsubscribe( OnTrigger );
-    }
-
-    private void Awake()
-    {
-        cloth_trigger = GetComponentInChildren< TriggerListener >();
-    }
 #endregion
 
 #region Unity API
@@ -42,7 +28,7 @@ public class Collectable_Cloth : MonoBehaviour
 #endregion
 
 #region Implementation
-    private void OnTrigger( Collider other )
+    protected override void OnTrigger( Collider other )
     {
         var player = other.GetComponent< TriggerListener >().AttachedComponent as Player;
 

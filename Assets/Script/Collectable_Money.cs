@@ -6,7 +6,7 @@ using UnityEngine;
 using FFStudio;
 using NaughtyAttributes;
 
-public class Collectable_Money : MonoBehaviour
+public class Collectable_Money : Interactable
 {
 #region Fields
     [ BoxGroup( "Setup" ), SerializeField ] private int money_count;
@@ -20,27 +20,13 @@ public class Collectable_Money : MonoBehaviour
 #endregion
 
 #region Unity API
-    private void OnEnable()
-    {
-		money_trigger.Subscribe( OnTrigger );
-	}
-
-    private void OnDisable()
-    {
-		money_trigger.Unsubscribe( OnTrigger );
-    }
-
-    private void Awake()
-    {
-        money_trigger = GetComponentInChildren< TriggerListener >();
-    }
 #endregion
 
 #region API
 #endregion
 
 #region Implementation
-    private void OnTrigger( Collider collider )
+    protected override void OnTrigger( Collider collider )
     {
         var player = collider.GetComponent< TriggerListener >().AttachedComponent as Player;
 		player.GainMoney( money_count );
