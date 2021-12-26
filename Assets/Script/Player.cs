@@ -40,7 +40,7 @@ public class Player : MonoBehaviour
 
 		triggerLane_Sequence = DOTween.Sequence();
 		triggerLane_Sequence.Append( transform.DOMoveX( position.x, GameSettings.Instance.swap_point_in_duration ) );
-		triggerLane_Sequence.OnComplete( OnSwapTriggerLane_In_Complete );
+		triggerLane_Sequence.OnComplete( OnSwapTriggerLane_In_Money_Complete );
 	}
 
     public void SwapLane_Fame( SwapTriggerLane triggerLane, Vector3 position )
@@ -52,7 +52,7 @@ public class Player : MonoBehaviour
 
 		triggerLane_Sequence = DOTween.Sequence();
 		triggerLane_Sequence.Append( transform.DOMoveX( position.x, GameSettings.Instance.swap_point_in_duration ) );
-		triggerLane_Sequence.OnComplete( OnSwapTriggerLane_In_Complete );
+		triggerLane_Sequence.OnComplete( OnSwapTriggerLane_In_Fame_Complete );
 	}
 #endregion
 
@@ -67,11 +67,23 @@ public class Player : MonoBehaviour
 
 		triggerLane_Sequence = DOTween.Sequence();
 		triggerLane_Sequence.Append( transform.DOMoveX( position_out, GameSettings.Instance.swap_point_in_duration ) );
-		triggerLane_Sequence.OnComplete( OnSwapTriggerLane_In_Complete );
+		triggerLane_Sequence.OnComplete( OnSwapTriggerLane_Out_Complete );
 	}
 
-    private void OnSwapTriggerLane_In_Complete()
+    private void OnSwapTriggerLane_In_Money_Complete()
     {
+		triggerListener.AttachedCollider.enabled = true;
+		triggerLane_Sequence = triggerLane_Sequence.KillProper();
+	}
+
+    private void OnSwapTriggerLane_In_Fame_Complete()
+    {
+		triggerListener.AttachedCollider.enabled = true;
+		triggerLane_Sequence = triggerLane_Sequence.KillProper();
+	}
+
+    private void OnSwapTriggerLane_Out_Complete()
+	{
 		triggerListener.AttachedCollider.enabled = true;
 		triggerLane_Sequence = triggerLane_Sequence.KillProper();
 
