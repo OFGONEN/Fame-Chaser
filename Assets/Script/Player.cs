@@ -121,8 +121,7 @@ public class Player : MonoBehaviour
 		renderer.rootBone        = cloth_reference_renderer.rootBone;
 		renderer.bones           = cloth_reference_renderer.bones;
 
-		//TODO(ofg): spawn particle on body position
-		// cloth_particle.Raise( "cloth", transform.position );
+		cloth_particle.Raise( "cloth", renderer.bounds.center );
 	}
 #endregion
 
