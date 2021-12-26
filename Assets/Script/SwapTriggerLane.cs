@@ -45,20 +45,27 @@ public abstract class SwapTriggerLane : MonoBehaviour
 
 #region Editor Only
 #if UNITY_EDITOR
-	private void OnDrawGizmosSelected()
+	private void OnDrawGizmos()
 	{
-		var position = swap_point_out.position;
-		var position_left = swap_point_out.position - Vector3.left * GameSettings.Instance.swap_point_out_randomness;
+		var position_in    = swap_point_in.position;
+		var position_out   = swap_point_out.position;
+		var position_left  = swap_point_out.position - Vector3.left * GameSettings.Instance.swap_point_out_randomness;
 		var position_right = swap_point_out.position - Vector3.right * GameSettings.Instance.swap_point_out_randomness;
 
 		Handles.color = Color.blue;
-		Handles.DrawDottedLine( position_left, position_right, 1f );
-		Handles.Label( position + Vector3.up, "Swap Point Out" );
-		Handles.DrawSolidDisc( position, Vector3.up, 1 );
+		Handles.DrawDottedLine( position_left, position_right, 5f );
+		Handles.DrawDottedLine( position_out, position_out + Vector3.up, 5f );
+		Handles.Label( position_out + Vector3.up, "Swap Point Out" );
+		Handles.DrawSolidDisc( position_out, Vector3.up, 0.1f );
 
 		Handles.color = Color.yellow;
-		Handles.DrawSolidDisc( position_left, Vector3.up, 1 );
-		Handles.DrawSolidDisc( position_right, Vector3.up, 1 );
+		Handles.DrawSolidDisc( position_left, Vector3.up, 0.1f );
+		Handles.DrawSolidDisc( position_right, Vector3.up, 0.1f );
+
+		Handles.color = Color.green;
+		Handles.DrawSolidDisc( position_in, Vector3.up, 0.1f );
+		Handles.DrawDottedLine( position_in, position_in + Vector3.up, 5f );
+		Handles.Label( position_in + Vector3.up, "Swap Point Out" );
 	}
 #endif
 #endregion
