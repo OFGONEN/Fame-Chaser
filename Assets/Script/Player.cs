@@ -10,12 +10,17 @@ using NaughtyAttributes;
 public class Player : MonoBehaviour
 {
 #region Fields
-	[ BoxGroup( "Event Listeners" ) ] public EventListenerDelegateResponse swipe_left_listener;
-	[ BoxGroup( "Event Listeners" ) ] public EventListenerDelegateResponse swipe_right_listener;
+	[ BoxGroup( "Event Listeners" ), SerializeField ] private EventListenerDelegateResponse swipe_left_listener;
+	[ BoxGroup( "Event Listeners" ), SerializeField ] private EventListenerDelegateResponse swipe_right_listener;
 
-	[ BoxGroup( "Shared Variables" ) ] public SharedFloat input_horizontal;
+	[ BoxGroup( "Shared Variables" ), SerializeField ] private SharedFloat input_horizontal;
+
+	[ BoxGroup( "Setup" ), SerializeField ] private ParticleSpawnEvent cloth_particle; 
+	[ BoxGroup( "Setup" ), SerializeField ] private SkinnedMeshRenderer[] cloth_renderers; // Hat, Shirt, Skirt, Shoe
+	[ BoxGroup( "Setup" ), SerializeField ] private SkinnedMeshRenderer cloth_reference_renderer; 
 
 	// Private \\
+	[ SerializeField, ReadOnly ] private ClothData[] cloth_data_array;
 	[ SerializeField, ReadOnly ] private int money_count;
 
 	private TriggerListener triggerListener;
@@ -47,6 +52,8 @@ public class Player : MonoBehaviour
     {
 		swipe_left_listener.response  = ExtensionMethods.EmptyMethod;
 		swipe_right_listener.response = ExtensionMethods.EmptyMethod;
+
+		cloth_data_array = new ClothData[ cloth_renderers.Length ];
 
 		updateMethod 	= ExtensionMethods.EmptyMethod;
 		swapLane_Out    = ExtensionMethods.EmptyMethod;
@@ -89,6 +96,33 @@ public class Player : MonoBehaviour
 	public void GainMoney( int amount )
 	{
 		money_count += amount;
+	}
+
+	public bool SpendMoney( int amount )
+	{
+		if( amount > money_count )
+			return false;
+		else
+		{
+			money_count -= amount;
+			return true;
+		}
+	}
+
+	public void DressCloth( ClothData data )
+	{
+		cloth_data_array[ ( int )data.cloth_type ] = data;
+
+		var renderer = cloth_renderers[ ( int )data.cloth_type ];
+
+		renderer.sharedMaterials = data.cloth_renderer.sharedMaterials;
+		renderer.localBounds     = data.cloth_renderer.localBounds;
+		renderer.sharedMesh      = data.cloth_renderer.sharedMesh;
+		renderer.rootBone        = cloth_reference_renderer.rootBone;
+		renderer.bones           = cloth_reference_renderer.bones;
+
+		//TODO(ofg): spawn particle on body position
+		// cloth_particle.Raise( "cloth", transform.position );
 	}
 #endregion
 
