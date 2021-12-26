@@ -29,6 +29,8 @@ namespace FFStudio
         [ Foldout( "UI Settings" ), Tooltip( "Percentage of the screen to register a swipe"     ) ] public int swipeThreshold;
 
         [ BoxGroup( "SwapTriggerLane" ) ] public float swap_point_out_randomness = 1f;
+        [ BoxGroup( "SwapTriggerLane" ) ] public float swap_point_out_duration = 0.75f;
+        [ BoxGroup( "SwapTriggerLane" ) ] public float swap_point_in_duration = 0.75f;
 #endregion
 
 #region Implementation

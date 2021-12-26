@@ -10,9 +10,11 @@ using UnityEditor;
 public abstract class SwapTriggerLane : MonoBehaviour
 {
 #region Fields
-    [ BoxGroup( "Setup" ), SerializeField ] protected TriggerListener_Enter swap_trigger;
     [ BoxGroup( "Setup" ), SerializeField ] protected Transform swap_point_in;
     [ BoxGroup( "Setup" ), SerializeField ] protected Transform swap_point_out;
+	
+	// Private \\
+    private TriggerListener swap_trigger;
 #endregion
 
 #region Properties
@@ -28,19 +30,23 @@ public abstract class SwapTriggerLane : MonoBehaviour
     {
 		swap_trigger.Unsubscribe( SwapPlayerIn );
     }
+
+	private void Awake()
+	{
+		swap_trigger = GetComponentInChildren< TriggerListener >();
+	}
 #endregion
 
 #region API
-#endregion
-
-#region Implementation
-	protected abstract void SwapPlayerIn( Collider collider );
-
-    protected virtual float SwapPlayerOut()
+    public virtual float SwapPlayerOut()
     {
 		var randomness = GameSettings.Instance.swap_point_out_randomness;
 		return swap_point_out.position.x + Random.Range( -randomness, randomness );
 	}
+#endregion
+
+#region Implementation
+	protected abstract void SwapPlayerIn( Collider collider );
 #endregion
 
 #region Editor Only
