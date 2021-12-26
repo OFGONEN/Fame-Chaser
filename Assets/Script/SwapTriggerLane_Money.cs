@@ -23,7 +23,7 @@ public class SwapTriggerLane_Money : SwapTriggerLane
 	protected override void SwapPlayerIn( Collider collider )
     {
         var player = collider.GetComponent< TriggerListener >().AttachedComponent as Player;
-		player.SwapLane_Money( swap_point_in.position );
+		player.SwapLane_Money( this, swap_point_in.position );
 	}
 #endregion
 

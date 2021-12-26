@@ -7,6 +7,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
 #region Fields
+    public SwapTriggerLane swapTriggerLane;
 #endregion
 
 #region Properties
@@ -16,10 +17,11 @@ public class Player : MonoBehaviour
 #endregion
 
 #region API
-    public void SwapLane_Money( Vector3 position )
+    public void SwapLane_Money( SwapTriggerLane triggerLane, Vector3 position )
     {
-
-    }
+		swapTriggerLane = triggerLane;
+        // Tween to position
+	}
 #endregion
 
 #region Implementation
