@@ -97,7 +97,7 @@ public class Daddy : MonoBehaviour
 		ToggleRagdoll( true );
 
 		//TODO cache this Tween ?
-		DOVirtual.DelayedCall( GameSettings.Instance.daddy_duration_ragdoll, ReturnToPool );
+		DOVirtual.DelayedCall( GameSettings.Instance.daddy_ragdoll_duration, ReturnToPool );
 	}
 
 	public void CoupleDeatch()
@@ -149,8 +149,8 @@ public class Daddy : MonoBehaviour
 		transform.SetParent( player.transform );
 
 		couple_sequence = DOTween.Sequence();
-		couple_sequence.Append( transform.DOLocalMove( couple_position.localPosition, GameSettings.Instance.daddy_duration_couple ) );
-		couple_sequence.Join( transform.DOLocalRotate( couple_position.localEulerAngles, GameSettings.Instance.daddy_duration_couple / 2f ) );
+		couple_sequence.Append( transform.DOLocalMove( couple_position.localPosition, GameSettings.Instance.daddy_couple_duration ) );
+		couple_sequence.Join( transform.DOLocalRotate( couple_position.localEulerAngles, GameSettings.Instance.daddy_couple_duration / 2f ) );
 		couple_sequence.OnComplete( OnCoupleComplete );
 	}
 

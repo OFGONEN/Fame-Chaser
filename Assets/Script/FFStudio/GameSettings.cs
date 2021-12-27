@@ -38,9 +38,11 @@ namespace FFStudio
         [ BoxGroup( "Player" ) ] public float player_duration_cloth_off = 0.75f; 
 
         // Sugar Daddy
-        [ BoxGroup( "Daddy" ) ] public float daddy_movement_speed = 1f; 
-        [ BoxGroup( "Daddy" ) ] public float daddy_duration_couple = 0.75f; 
-        [ BoxGroup( "Daddy" ) ] public float daddy_duration_ragdoll = 1f; 
+        [ BoxGroup( "Daddy" ) ] public float daddy_movement_speed   = 5f;
+        [ BoxGroup( "Daddy" ) ] public float daddy_couple_duration  = 0.75f;
+        [ BoxGroup( "Daddy" ) ] public float daddy_ragdoll_duration = 1f;
+        [ BoxGroup( "Daddy" ) ] public float daddy_money_delay      = 0.125f;
+        [ BoxGroup( "Daddy" ) ] public float daddy_money_transfer   = 0.2f;
 
         [ BoxGroup( "Input" ) ] public float input_horizontal_deadzone = 0.01f; // 828 * 0.01 = 8 pixel
 #endregion
