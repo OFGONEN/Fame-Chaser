@@ -14,8 +14,9 @@ public class Daddy : MonoBehaviour
     [ BoxGroup( "Shared Variables" ), SerializeField ] private SharedReferenceNotifier daddy_start_position;
     [ BoxGroup( "Shared Variables" ), SerializeField ] private SharedReferenceNotifier daddy_end_position;
 
-    // Private \\
-    private Transform transform_start;
+	// Private \\
+	private Rigidbody[] ragdoll_rigidbodies;
+	private Transform transform_start;
     private Transform transform_end;
 
 	// Delegates
@@ -29,6 +30,10 @@ public class Daddy : MonoBehaviour
 	private void Awake()
 	{
 		updateMethod = ExtensionMethods.EmptyMethod;
+
+		ragdoll_rigidbodies = GetComponentsInChildren< Rigidbody >();
+
+		ToggleRagdoll( false );
 	}
 
 	private void Update()
@@ -67,7 +72,16 @@ public class Daddy : MonoBehaviour
 	private void RagdollOff()
 	{
 		updateMethod = ExtensionMethods.EmptyMethod;
-		gameObject.SetActive( false );
+		ToggleRagdoll( true );
+	}
+
+	private void ToggleRagdoll( bool active )
+	{
+		foreach( var rb in ragdoll_rigidbodies )
+		{
+			rb.useGravity  = active;
+			rb.isKinematic = !active;
+		}
 	}
 #endregion
 
