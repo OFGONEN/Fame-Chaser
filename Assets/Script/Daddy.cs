@@ -17,12 +17,24 @@ public class Daddy : MonoBehaviour
     // Private \\
     private Transform transform_start;
     private Transform transform_end;
+
+	// Delegates
+	private UnityMessage updateMethod;
 #endregion
 
 #region Properties
 #endregion
 
 #region Unity API
+	private void Awake()
+	{
+		updateMethod = ExtensionMethods.EmptyMethod;
+	}
+
+	private void Update()
+	{
+		updateMethod();
+	}
 #endregion
 
 #region API
@@ -36,10 +48,27 @@ public class Daddy : MonoBehaviour
 
 		transform.position = transform_start.position;
 		transform.forward  = ( transform_end.position - transform_start.position ).normalized;
+
+		updateMethod = OnUpdate_Movement;
 	}
 #endregion
 
 #region Implementation
+	private void OnUpdate_Movement()
+	{
+		var position = Vector3.MoveTowards( transform.position, transform_end.position, Time.deltaTime * GameSettings.Instance.daddy_movement_speed );
+
+		if( Vector3.Distance( position, transform_end.position ) <= 0.1f )
+			RagdollOff();
+		else
+			transform.position = position;
+	}
+
+	private void RagdollOff()
+	{
+		updateMethod = ExtensionMethods.EmptyMethod;
+		gameObject.SetActive( false );
+	}
 #endregion
 
 #region Editor Only
