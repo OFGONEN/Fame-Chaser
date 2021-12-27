@@ -10,6 +10,7 @@ using NaughtyAttributes;
 public class Player : MonoBehaviour
 {
 #region Fields
+	[ BoxGroup( "Event Listeners" ), SerializeField ] private EventListenerDelegateResponse level_start_listener;
 	[ BoxGroup( "Event Listeners" ), SerializeField ] private EventListenerDelegateResponse swipe_left_listener;
 	[ BoxGroup( "Event Listeners" ), SerializeField ] private EventListenerDelegateResponse swipe_right_listener;
 
@@ -24,12 +25,14 @@ public class Player : MonoBehaviour
 	[ SerializeField, ReadOnly ] private int money_count;
 	[ SerializeField, ReadOnly ] private int fame_count;
 
+	private Animator animator;
 	private TriggerListener triggerListener;
 
     private SwapTriggerLane swapTriggerLane;
     private Sequence triggerLane_Sequence;
+	private Tween takeClothOff_Tween;
 
-    private UnityMessage swapLane_Out;
+	private UnityMessage swapLane_Out;
 	private UnityMessage updateMethod;
 #endregion
 
@@ -39,18 +42,21 @@ public class Player : MonoBehaviour
 #region Unity API
 	private void OnEnable()
 	{
+		level_start_listener.OnEnable();
 		swipe_left_listener.OnEnable();
 		swipe_right_listener.OnEnable();
 	}
 
 	private void OnDisable()
 	{
+		level_start_listener.OnDisable();
 		swipe_left_listener.OnDisable();
 		swipe_right_listener.OnDisable();
 	}
 
     private void Awake()
     {
+		level_start_listener.response = LevelStartResponse;
 		swipe_left_listener.response  = ExtensionMethods.EmptyMethod;
 		swipe_right_listener.response = ExtensionMethods.EmptyMethod;
 
@@ -58,7 +64,9 @@ public class Player : MonoBehaviour
 
 		updateMethod 	= ExtensionMethods.EmptyMethod;
 		swapLane_Out    = ExtensionMethods.EmptyMethod;
+
 		triggerListener = GetComponentInChildren< TriggerListener >();
+		animator        = GetComponentInChildren< Animator >();
     }
 
 	private void Update()
@@ -140,10 +148,19 @@ public class Player : MonoBehaviour
 #endregion
 
 #region Implementation
+	private void LevelStartResponse()
+	{
+		updateMethod = OnUpdate_Movement;
+		animator.SetTrigger( "walk" );
+	}
+
     [ Button() ]
     private void SwapLane_Main()
     {
+		takeClothOff_Tween = takeClothOff_Tween.KillProper();
 		swapLane_Out();
+
+		animator.SetTrigger( "walk" );
 
 		var position_out = swapTriggerLane.SwapPlayerOut();
 
@@ -172,6 +189,10 @@ public class Player : MonoBehaviour
 		triggerLane_Sequence = triggerLane_Sequence.KillProper();
 
 		swipe_left_listener.response = SwapLane_Main;
+
+		animator.SetTrigger( "cloth_off" );
+
+		takeClothOff_Tween = DOVirtual.DelayedCall( GameSettings.Instance.player_duration_cloth_off, () => Delayed_TakeClothOff( 0 ) );
 	}
 
     private void OnSwapTriggerLane_Out_Complete()
@@ -184,8 +205,7 @@ public class Player : MonoBehaviour
 
     private void SwapLane_Out_Fame()
     {
-
-    }
+	}
 
     private void SwapLane_Out_Money()
     {
@@ -211,6 +231,27 @@ public class Player : MonoBehaviour
 		cloth_data_array[ index ].Clear();
 
 		cloth_particle.Raise( "fame", renderer.bounds.center );
+	}
+
+	private void Delayed_TakeClothOff( int index )
+	{
+		if( index >= cloth_data_array.Length )
+		{
+			SwapLane_Main();
+			return;
+		}
+
+		for( var i = index; i < cloth_data_array.Length; i++ )
+		{
+			if( cloth_data_array[ i ].cloth_type != null )
+			{
+				index = i;
+				break;
+			}
+		}
+
+		TakeClothOff( index );
+		takeClothOff_Tween = DOVirtual.DelayedCall( GameSettings.Instance.player_duration_cloth_off, () => Delayed_TakeClothOff( index + 1 ) );
 	}
 #endregion
 

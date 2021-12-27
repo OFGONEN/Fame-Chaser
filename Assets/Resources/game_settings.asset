@@ -25,4 +25,5 @@ MonoBehaviour:
   swap_point_out_duration: 0.75
   swap_point_in_duration: 0.75
   player_movement_speed: 1000
+  player_duration_cloth_off: 0.75
   input_horizontal_deadzone: 0.001
