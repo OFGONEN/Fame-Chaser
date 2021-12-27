@@ -9,7 +9,7 @@ using NaughtyAttributes;
 public class Door : Interactable
 {
 #region Fields
-    [ BoxGroup( "Setup" ), SerializeField ] public ClothType[] cloth_remove_array;
+    [ BoxGroup( "Setup" ), SerializeField ] public ClothEnum[] cloth_remove_array;
 #endregion
 
 #region Properties

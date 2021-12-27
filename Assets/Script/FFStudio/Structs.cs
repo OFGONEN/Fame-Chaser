@@ -17,11 +17,11 @@ namespace FFStudio
 	public struct ClothData
 	{
 		public SkinnedMeshRenderer cloth_renderer;
-		public ClothType cloth_type;
+		public ClothEnum cloth_type;
 		public int cloth_cost;
 		public int cloth_fame;
 
-		public ClothData( SkinnedMeshRenderer renderer, ClothType type, int cost, int fame )
+		public ClothData( SkinnedMeshRenderer renderer, ClothEnum type, int cost, int fame )
 		{
 			cloth_renderer = renderer;
 			cloth_type     = type;
@@ -32,7 +32,7 @@ namespace FFStudio
 		public void Clear()
 		{
 			cloth_renderer = null;
-			cloth_type     = ClothType.None;
+			cloth_type     = null;
 			cloth_cost     = 0;
 			cloth_fame     = 0;
 		}

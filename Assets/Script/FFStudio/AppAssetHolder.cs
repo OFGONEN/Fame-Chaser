@@ -10,5 +10,8 @@ public class AppAssetHolder : MonoBehaviour
 #region Fields
 	public GameSettings gameSettings;
 	public CurrentLevelData currentLevelData;
+
+	public ScriptableObject[] enums;
+
 #endregion
 }

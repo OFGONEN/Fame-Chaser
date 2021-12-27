@@ -10,7 +10,7 @@ public class Collectable_Cloth : Interactable
 {
 #region Fields
     [ BoxGroup( "Setup" ), SerializeField ] private SkinnedMeshRenderer cloth_renderer;
-    [ BoxGroup( "Setup" ), SerializeField ] private ClothType cloth_type;
+    [ BoxGroup( "Setup" ), SerializeField ] private ClothEnum cloth_type;
     [ BoxGroup( "Setup" ), SerializeField ] private int cloth_cost;
     [ BoxGroup( "Setup" ), SerializeField ] private int cloth_fame;
 

@@ -112,7 +112,7 @@ public class Player : MonoBehaviour
 
 	public void DressCloth( ClothData data )
 	{
-		var index = ( int )data.cloth_type - 1;
+		var index = data.cloth_type.cloth_index;
 		cloth_data_array[ index ] = data;
 
 		var renderer = cloth_renderers[ index ];
@@ -126,7 +126,7 @@ public class Player : MonoBehaviour
 		cloth_particle.Raise( "cloth", renderer.bounds.center );
 	}
 
-	public void TakeClothesOff( ClothType[] clothesToRemove )
+	public void TakeClothesOff( ClothEnum[] clothesToRemove )
 	{
 		//TODO(ofg): should play take all of your clothes off animation
 		for( var i = 0; i < clothesToRemove.Length; i++ )
@@ -197,14 +197,13 @@ public class Player : MonoBehaviour
 	}
 
 	//! Does not play animation
-	private void TakeClothOff( ClothType type )
+	private void TakeClothOff( ClothEnum type )
 	{
-		var index    = ( int )type - 1;
+		var index    = type.cloth_index;
 		var data     = cloth_data_array[ index ];
 		var renderer = cloth_renderers[ index ];
 
-		if( data.cloth_type != type )
-			return;
+		if( data.cloth_type == null ) return;
 
 		fame_count += data.cloth_fame;
 
