@@ -28,5 +28,13 @@ namespace FFStudio
 			cloth_cost     = cost;
 			cloth_fame     = fame;
 		}
+
+		public void Clear()
+		{
+			cloth_renderer = null;
+			cloth_type     = ClothType.None;
+			cloth_cost     = 0;
+			cloth_fame     = 0;
+		}
 	}
 }

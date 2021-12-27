@@ -17,6 +17,7 @@ namespace FFStudio
 
     public enum ClothType
     {
+        None,
         Hat,
         Shirt,
         Skirt,

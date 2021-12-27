@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
 	// Private \\
 	[ SerializeField, ReadOnly ] private ClothData[] cloth_data_array;
 	[ SerializeField, ReadOnly ] private int money_count;
+	[ SerializeField, ReadOnly ] private int fame_count;
 
 	private TriggerListener triggerListener;
 
@@ -111,9 +112,10 @@ public class Player : MonoBehaviour
 
 	public void DressCloth( ClothData data )
 	{
-		cloth_data_array[ ( int )data.cloth_type ] = data;
+		var index = ( int )data.cloth_type - 1;
+		cloth_data_array[ index ] = data;
 
-		var renderer = cloth_renderers[ ( int )data.cloth_type ];
+		var renderer = cloth_renderers[ index ];
 
 		renderer.sharedMaterials = data.cloth_renderer.sharedMaterials;
 		renderer.localBounds     = data.cloth_renderer.localBounds;
@@ -129,7 +131,7 @@ public class Player : MonoBehaviour
 		//TODO(ofg): should play take all of your clothes off animation
 		for( var i = 0; i < clothesToRemove.Length; i++ )
 		{
-			FFLogger.Log( "Should remove: " + clothesToRemove[ i ] );
+			TakeClothOff( clothesToRemove[ i ] );
 		}
 	}
 #endregion
@@ -192,6 +194,24 @@ public class Player : MonoBehaviour
 		transform.position = Vector3.MoveTowards( transform.position,
 		transform.position + Vector3.right * input_horizontal.sharedValue.Sign(),
 		Time.deltaTime * GameSettings.Instance.player_movement_speed * Mathf.Abs( input_horizontal.sharedValue ) );
+	}
+
+	//! Does not play animation
+	private void TakeClothOff( ClothType type )
+	{
+		var index    = ( int )type - 1;
+		var data     = cloth_data_array[ index ];
+		var renderer = cloth_renderers[ index ];
+
+		if( data.cloth_type != type )
+			return;
+
+		fame_count += data.cloth_fame;
+
+		cloth_renderers[ index ].sharedMesh = null;
+		cloth_data_array[ index ].Clear();
+
+		cloth_particle.Raise( "fame", renderer.bounds.center );
 	}
 #endregion
 
