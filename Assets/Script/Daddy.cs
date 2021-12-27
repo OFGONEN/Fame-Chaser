@@ -16,6 +16,7 @@ public class Daddy : MonoBehaviour
 
 	// Private \\
 	private Rigidbody[] ragdoll_rigidbodies;
+	private TriggerListener triggerListener;
 	private Transform transform_start;
     private Transform transform_end;
 
@@ -27,11 +28,22 @@ public class Daddy : MonoBehaviour
 #endregion
 
 #region Unity API
+	private void OnEnable()
+	{
+		triggerListener.Subscribe( OnTrigger );
+	}
+
+	private void OnDisable()
+	{
+		triggerListener.Subscribe( OnTrigger );
+	}
+
 	private void Awake()
 	{
 		updateMethod = ExtensionMethods.EmptyMethod;
 
 		ragdoll_rigidbodies = GetComponentsInChildren< Rigidbody >();
+		triggerListener = GetComponentInChildren< TriggerListener >();
 
 		ToggleRagdoll( false );
 	}
@@ -49,7 +61,9 @@ public class Daddy : MonoBehaviour
 		transform_start = daddy_start_position.SharedValue as Transform;
 		transform_end   = daddy_end_position.SharedValue as Transform;
 
+		ToggleRagdoll( false );
 		gameObject.SetActive( true );
+		triggerListener.AttachedCollider.enabled = true;
 
 		transform.position = transform_start.position;
 		transform.forward  = ( transform_end.position - transform_start.position ).normalized;
@@ -72,6 +86,8 @@ public class Daddy : MonoBehaviour
 	private void RagdollOff()
 	{
 		updateMethod = ExtensionMethods.EmptyMethod;
+
+		triggerListener.AttachedCollider.enabled = false;
 		ToggleRagdoll( true );
 	}
 
@@ -82,6 +98,11 @@ public class Daddy : MonoBehaviour
 			rb.useGravity  = active;
 			rb.isKinematic = !active;
 		}
+	}
+
+	private void OnTrigger( Collider collider )
+	{
+
 	}
 #endregion
 
