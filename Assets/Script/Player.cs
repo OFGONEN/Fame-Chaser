@@ -81,7 +81,7 @@ public class Player : MonoBehaviour
 		triggerListener.AttachedCollider.enabled = false;
 		swapTriggerLane = triggerLane;
 
-		updateMethod = ExtensionMethods.EmptyMethod;
+		updateMethod = OnUpdate_Movement_ChoiceLane;
 		swapLane_Out = SwapLane_Out_Money;
 
 		triggerLane_Sequence = DOTween.Sequence();
@@ -94,7 +94,7 @@ public class Player : MonoBehaviour
 		triggerListener.AttachedCollider.enabled = false;
 		swapTriggerLane = triggerLane;
 
-		updateMethod = ExtensionMethods.EmptyMethod;
+		updateMethod = OnUpdate_Movement_ChoiceLane;
 		swapLane_Out = SwapLane_Out_Fame;
 
 		triggerLane_Sequence = DOTween.Sequence();
@@ -150,7 +150,7 @@ public class Player : MonoBehaviour
 #region Implementation
 	private void LevelStartResponse()
 	{
-		updateMethod = OnUpdate_Movement;
+		updateMethod = OnUpdate_Movement_MainLane;
 		animator.SetTrigger( "walk" );
 	}
 
@@ -200,11 +200,12 @@ public class Player : MonoBehaviour
 		triggerListener.AttachedCollider.enabled = true;
 		triggerLane_Sequence = triggerLane_Sequence.KillProper();
 
-		updateMethod = OnUpdate_Movement;
+		updateMethod = OnUpdate_Movement_MainLane;
 	}
 
     private void SwapLane_Out_Fame()
     {
+
 	}
 
     private void SwapLane_Out_Money()
@@ -212,11 +213,22 @@ public class Player : MonoBehaviour
 
     }
 
-	private void OnUpdate_Movement()
+	private void OnUpdate_Movement_MainLane()
 	{
-		transform.position = Vector3.MoveTowards( transform.position,
-		transform.position + Vector3.right * input_horizontal.sharedValue.Sign(),
-		Time.deltaTime * GameSettings.Instance.player_movement_speed * Mathf.Abs( input_horizontal.sharedValue ) );
+		var position = transform.position;
+
+		position.x = Mathf.Lerp( position.x, position.x + 1 * input_horizontal.sharedValue.Sign(), Time.deltaTime * GameSettings.Instance.player_movement_speed_lateral * Mathf.Abs( input_horizontal.sharedValue ) );
+		position.z = Mathf.Lerp( position.z, position.z + 1, Time.deltaTime * GameSettings.Instance.player_movement_speed_forward );
+
+		transform.position = position;
+	}
+
+	private void OnUpdate_Movement_ChoiceLane()
+	{
+		var position = transform.position;
+		position.z 	 = Mathf.Lerp( position.z, position.z + 1, Time.deltaTime * GameSettings.Instance.player_movement_speed_forward );
+
+		transform.position = position;
 	}
 
 	//! Does not play animation
