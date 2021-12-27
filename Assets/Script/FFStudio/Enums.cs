@@ -14,4 +14,12 @@ namespace FFStudio
         Vector3Y,
         Vector3Z
     }
+
+    public enum ClothType
+    {
+        Hat,
+        Shirt,
+        Skirt,
+        Shoe
+    }
 }
