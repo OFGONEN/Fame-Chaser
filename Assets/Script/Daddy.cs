@@ -12,9 +12,13 @@ public class Daddy : MonoBehaviour
 #region Fields
     [ BoxGroup( "Shared Variables" ), SerializeField ] private DaddyPool daddy_pool;
     [ BoxGroup( "Shared Variables" ), SerializeField ] private DaddySet daddy_set;
+    [ BoxGroup( "Shared Variables" ), SerializeField ] private Stackable_Money_Pool money_pool;
     [ BoxGroup( "Shared Variables" ), SerializeField ] private SharedReferenceNotifier daddy_spawn_position;
     [ BoxGroup( "Shared Variables" ), SerializeField ] private SharedReferenceNotifier daddy_start_position;
     [ BoxGroup( "Shared Variables" ), SerializeField ] private SharedReferenceNotifier daddy_end_position;
+
+    [ BoxGroup( "Setup" ) ] public Transform daddy_money_position;
+    [ BoxGroup( "Setup" ), HideInInspector ] public int daddy_money_count;
 
 	// Private \\
 	private Rigidbody[] ragdoll_rigidbodies;
@@ -27,6 +31,7 @@ public class Daddy : MonoBehaviour
 	private UnityMessage updateMethod;
 	private UnityMessage couple_DetachedMethod;
 	private Sequence couple_sequence;
+	private Sequence money_sequence;
 #endregion
 
 #region Properties
@@ -163,6 +168,16 @@ public class Daddy : MonoBehaviour
 	private void OnCoupleComplete()
 	{
 		couple_sequence = couple_sequence.KillProper();
+
+		money_sequence = DOTween.Sequence();
+		var money_count = 10;
+
+		for( var i = 0; i < money_count; i++ )
+		{
+			var index = i;
+			money_sequence.AppendCallback( () => SpawnMoney( index ) );
+			money_sequence.AppendInterval( GameSettings.Instance.daddy_money_delay );
+		}
 	}
 
 	private void OnCoupleDetached_Coupling()
@@ -173,6 +188,16 @@ public class Daddy : MonoBehaviour
 		couple_DetachedMethod = ExtensionMethods.EmptyMethod;
 
 		RagdollOff();
+	}
+
+	private void SpawnMoney( int index )
+	{
+		var money = money_pool.GetEntity();
+		money.transform.SetParent( transform.parent );
+		money.transform.position = daddy_money_position.position + index * GameSettings.Instance.daddy_money_height * Vector3.up;
+		money.transform.rotation = daddy_money_position.rotation;
+		money.gameObject.SetActive( true );
+
 	}
 #endregion
 

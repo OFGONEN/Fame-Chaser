@@ -10,7 +10,7 @@ public class Stackable_Money : MonoBehaviour
 #region Fields
     [ SerializeField ] private Stackable_Money_Pool money_pool;
     [ SerializeField ] private ParticleSpawnEvent money_particle;
-    public int money_count;
+    [ HideInInspector ] public int money_count;
 #endregion
 
 #region Properties

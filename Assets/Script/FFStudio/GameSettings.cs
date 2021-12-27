@@ -41,8 +41,10 @@ namespace FFStudio
         [ BoxGroup( "Daddy" ) ] public float daddy_movement_speed   = 5f;
         [ BoxGroup( "Daddy" ) ] public float daddy_couple_duration  = 0.75f;
         [ BoxGroup( "Daddy" ) ] public float daddy_ragdoll_duration = 1f;
+        [ BoxGroup( "Daddy" ) ] public int daddy_money_bill         = 10;
         [ BoxGroup( "Daddy" ) ] public float daddy_money_delay      = 0.125f;
         [ BoxGroup( "Daddy" ) ] public float daddy_money_transfer   = 0.2f;
+        [ BoxGroup( "Daddy" ) ] public float daddy_money_height     = 0.2f;
 
         [ BoxGroup( "Input" ) ] public float input_horizontal_deadzone = 0.01f; // 828 * 0.01 = 8 pixel
 #endregion
