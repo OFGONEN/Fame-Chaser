@@ -42,7 +42,7 @@ namespace FFStudio
 			swipeThreshold = Screen.width * GameSettings.Instance.swipeThreshold / 100;
 
 			leanTouch         = GetComponent<LeanTouch>();
-			leanTouch.enabled = false;
+			// leanTouch.enabled = false;
 		}
 #endregion
 		

@@ -61,6 +61,11 @@ public class Player : MonoBehaviour
 		triggerListener = GetComponentInChildren< TriggerListener >();
     }
 
+	private void Start()
+	{
+		updateMethod = OnUpdate_Movement;
+	}
+
 	private void Update()
 	{
 		updateMethod();
