@@ -13,5 +13,11 @@ public class AppAssetHolder : MonoBehaviour
 
 	public ScriptableObject[] enums;
 
+	public DaddyPool daddyPool;
+
+	private void Awake()
+	{
+		daddyPool.InitPool();
+	}
 #endregion
 }
