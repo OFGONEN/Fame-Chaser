@@ -39,6 +39,7 @@ namespace FFStudio
 
         // Sugar Daddy
         [ BoxGroup( "Daddy" ) ] public float daddy_movement_speed = 1f; 
+        [ BoxGroup( "Daddy" ) ] public float daddy_duration_ragdoll = 1f; 
 
         [ BoxGroup( "Input" ) ] public float input_horizontal_deadzone = 0.01f; // 828 * 0.01 = 8 pixel
 #endregion

@@ -28,4 +28,5 @@ MonoBehaviour:
   player_movement_speed_forward: 5
   player_duration_cloth_off: 0.75
   daddy_movement_speed: 5
+  daddy_duration_ragdoll: 1
   input_horizontal_deadzone: 0.001

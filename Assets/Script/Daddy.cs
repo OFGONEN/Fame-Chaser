@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using FFStudio;
+using DG.Tweening;
 using NaughtyAttributes;
 
 public class Daddy : MonoBehaviour
@@ -31,11 +32,15 @@ public class Daddy : MonoBehaviour
 	private void OnEnable()
 	{
 		triggerListener.Subscribe( OnTrigger );
+
+		daddy_set.AddDictionary( GetInstanceID(), this );
 	}
 
 	private void OnDisable()
 	{
-		triggerListener.Subscribe( OnTrigger );
+		triggerListener.Unsubscribe( OnTrigger );
+
+		daddy_set.RemoveDictionary( GetInstanceID() );
 	}
 
 	private void Awake()
@@ -85,10 +90,13 @@ public class Daddy : MonoBehaviour
 
 	private void RagdollOff()
 	{
+		daddy_set.RemoveDictionary( GetInstanceID() );
 		updateMethod = ExtensionMethods.EmptyMethod;
 
 		triggerListener.AttachedCollider.enabled = false;
 		ToggleRagdoll( true );
+
+		DOVirtual.DelayedCall( GameSettings.Instance.daddy_duration_ragdoll, ReturnToPool );
 	}
 
 	private void ToggleRagdoll( bool active )
@@ -102,7 +110,13 @@ public class Daddy : MonoBehaviour
 
 	private void OnTrigger( Collider collider )
 	{
+		daddy_set.RemoveDictionary( GetInstanceID() );
+	}
 
+	private void ReturnToPool()
+	{
+		gameObject.SetActive( false );
+		daddy_pool.ReturnEntity( this );
 	}
 #endregion
 
