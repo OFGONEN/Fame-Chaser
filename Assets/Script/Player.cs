@@ -131,7 +131,10 @@ public class Player : MonoBehaviour
 		//TODO(ofg): should play take all of your clothes off animation
 		for( var i = 0; i < clothesToRemove.Length; i++ )
 		{
-			TakeClothOff( clothesToRemove[ i ] );
+			var cloth_index = clothesToRemove[ i ].cloth_index;
+
+			if( cloth_data_array[ cloth_index  ].cloth_type != null )
+				TakeClothOff( cloth_index );
 		}
 	}
 #endregion
@@ -140,6 +143,8 @@ public class Player : MonoBehaviour
     [ Button() ]
     private void SwapLane_Main()
     {
+		swapLane_Out();
+
 		var position_out = swapTriggerLane.SwapPlayerOut();
 
 		triggerListener.AttachedCollider.enabled = false;
@@ -175,8 +180,6 @@ public class Player : MonoBehaviour
 		triggerLane_Sequence = triggerLane_Sequence.KillProper();
 
 		updateMethod = OnUpdate_Movement;
-
-		swapLane_Out();
 	}
 
     private void SwapLane_Out_Fame()
@@ -197,13 +200,10 @@ public class Player : MonoBehaviour
 	}
 
 	//! Does not play animation
-	private void TakeClothOff( ClothEnum type )
+	private void TakeClothOff( int index )
 	{
-		var index    = type.cloth_index;
 		var data     = cloth_data_array[ index ];
 		var renderer = cloth_renderers[ index ];
-
-		if( data.cloth_type == null ) return;
 
 		fame_count += data.cloth_fame;
 
