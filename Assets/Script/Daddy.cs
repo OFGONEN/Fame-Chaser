@@ -12,12 +12,14 @@ public class Daddy : MonoBehaviour
 #region Fields
     [ BoxGroup( "Shared Variables" ), SerializeField ] private DaddyPool daddy_pool;
     [ BoxGroup( "Shared Variables" ), SerializeField ] private DaddySet daddy_set;
+    [ BoxGroup( "Shared Variables" ), SerializeField ] private SharedReferenceNotifier daddy_spawn_position;
     [ BoxGroup( "Shared Variables" ), SerializeField ] private SharedReferenceNotifier daddy_start_position;
     [ BoxGroup( "Shared Variables" ), SerializeField ] private SharedReferenceNotifier daddy_end_position;
 
 	// Private \\
 	private Rigidbody[] ragdoll_rigidbodies;
 	private TriggerListener triggerListener;
+	private Transform transform_spawn;
 	private Transform transform_start;
     private Transform transform_end;
 
@@ -63,6 +65,7 @@ public class Daddy : MonoBehaviour
 	[ Button() ]
     public void Spawn()
     {
+		transform_spawn = daddy_spawn_position.SharedValue as Transform;
 		transform_start = daddy_start_position.SharedValue as Transform;
 		transform_end   = daddy_end_position.SharedValue as Transform;
 
@@ -70,8 +73,11 @@ public class Daddy : MonoBehaviour
 		gameObject.SetActive( true );
 		triggerListener.AttachedCollider.enabled = true;
 
-		transform.position = transform_start.position;
-		transform.forward  = ( transform_end.position - transform_start.position ).normalized;
+		var spawn_position = transform_spawn.position;
+		spawn_position.z = transform_start.position.z;
+
+		transform.position = spawn_position;
+		transform.forward  = ( transform_spawn.position - spawn_position ).normalized;
 
 		updateMethod = OnUpdate_Movement;
 	}
@@ -90,9 +96,13 @@ public class Daddy : MonoBehaviour
 #region Implementation
 	private void OnUpdate_Movement()
 	{
-		var position = Vector3.MoveTowards( transform.position, transform_end.position, Time.deltaTime * GameSettings.Instance.daddy_movement_speed );
+		var spawn_position = transform_spawn.position;
+		var end_position = transform_end.position;
+		end_position.x = spawn_position.x;
 
-		if( Vector3.Distance( position, transform_end.position ) <= 0.1f )
+		var position = Vector3.MoveTowards( transform.position, spawn_position, Time.deltaTime * GameSettings.Instance.daddy_movement_speed );
+
+		if( Vector3.Distance( position, end_position ) <= 0.1f )
 			RagdollOff();
 		else
 			transform.position = position;
