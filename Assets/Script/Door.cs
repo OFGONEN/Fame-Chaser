@@ -26,6 +26,8 @@ public class Door : Interactable
     {
 		var player = collider.GetComponentInChildren<TriggerListener>().AttachedComponent as Player;
 		player.TakeClothesOff( cloth_remove_array );
+
+		triggerListener.Unsubscribe( OnTrigger );
 	}
 #endregion
 
