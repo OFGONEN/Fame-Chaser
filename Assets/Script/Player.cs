@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
 	[ BoxGroup( "Setup" ), SerializeField ] private ParticleSpawnEvent cloth_particle; 
 	[ BoxGroup( "Setup" ), SerializeField ] private SkinnedMeshRenderer[] cloth_renderers; // Hat, Shirt, Skirt, Shoe
 	[ BoxGroup( "Setup" ), SerializeField ] private SkinnedMeshRenderer cloth_reference_renderer; 
+	[ BoxGroup( "Setup" ), SerializeField ] private Transform couple_position; 
 
 	// Private \\
 	[ SerializeField, ReadOnly ] private ClothData[] cloth_data_array;
@@ -37,6 +38,7 @@ public class Player : MonoBehaviour
 #endregion
 
 #region Properties
+	public Transform CouplePosition => couple_position;
 #endregion
 
 #region Unity API

@@ -25,6 +25,7 @@ public class Daddy : MonoBehaviour
 
 	// Delegates
 	private UnityMessage updateMethod;
+	private Sequence couple_sequence;
 #endregion
 
 #region Properties
@@ -130,12 +131,30 @@ public class Daddy : MonoBehaviour
 		{
 			daddy.RagdollOff();
 		}
+
+		updateMethod = ExtensionMethods.EmptyMethod;
+
+		var player          = collider.GetComponent< TriggerListener >().AttachedComponent as Player;
+		var couple_position = player.CouplePosition;
+
+		transform.SetParent( player.transform );
+
+		couple_sequence = DOTween.Sequence();
+		couple_sequence.Append( transform.DOLocalMove( couple_position.localPosition, GameSettings.Instance.daddy_duration_couple ) );
+		couple_sequence.Join( transform.DOLocalRotate( couple_position.localEulerAngles, GameSettings.Instance.daddy_duration_couple / 2f ) );
+		couple_sequence.OnComplete( OnCoupleComplete );
 	}
 
 	private void ReturnToPool()
 	{
 		gameObject.SetActive( false );
 		daddy_pool.ReturnEntity( this );
+	}
+
+	private void OnCoupleComplete()
+	{
+		couple_sequence = couple_sequence.KillProper();
+		// animation set edicem.
 	}
 #endregion
 
