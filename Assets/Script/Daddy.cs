@@ -75,6 +75,16 @@ public class Daddy : MonoBehaviour
 
 		updateMethod = OnUpdate_Movement;
 	}
+
+	public void RagdollOff()
+	{
+		updateMethod = ExtensionMethods.EmptyMethod;
+
+		triggerListener.AttachedCollider.enabled = false;
+		ToggleRagdoll( true );
+
+		DOVirtual.DelayedCall( GameSettings.Instance.daddy_duration_ragdoll, ReturnToPool );
+	}
 #endregion
 
 #region Implementation
@@ -86,17 +96,6 @@ public class Daddy : MonoBehaviour
 			RagdollOff();
 		else
 			transform.position = position;
-	}
-
-	private void RagdollOff()
-	{
-		daddy_set.RemoveDictionary( GetInstanceID() );
-		updateMethod = ExtensionMethods.EmptyMethod;
-
-		triggerListener.AttachedCollider.enabled = false;
-		ToggleRagdoll( true );
-
-		DOVirtual.DelayedCall( GameSettings.Instance.daddy_duration_ragdoll, ReturnToPool );
 	}
 
 	private void ToggleRagdoll( bool active )
@@ -111,6 +110,11 @@ public class Daddy : MonoBehaviour
 	private void OnTrigger( Collider collider )
 	{
 		daddy_set.RemoveDictionary( GetInstanceID() );
+
+		foreach( var daddy in daddy_set.itemDictionary.Values )
+		{
+			daddy.RagdollOff();
+		}
 	}
 
 	private void ReturnToPool()
