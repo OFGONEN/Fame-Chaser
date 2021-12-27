@@ -17,7 +17,7 @@ public class AppAssetHolder : MonoBehaviour
 
 	private void Awake()
 	{
-		daddyPool.InitPool();
+		daddyPool.InitPool( transform );
 	}
 #endregion
 }
