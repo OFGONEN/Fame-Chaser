@@ -13,11 +13,13 @@ public class AppAssetHolder : MonoBehaviour
 
 	public ScriptableObject[] enums;
 
-	public DaddyPool daddyPool;
+	public DaddyPool pool_daddy;
+	public Stackable_Money_Pool pool_money;
 
 	private void Awake()
 	{
-		daddyPool.InitPool( transform );
+		pool_daddy.InitPool( transform );
+		pool_money.InitPool( transform );
 	}
 #endregion
 }
