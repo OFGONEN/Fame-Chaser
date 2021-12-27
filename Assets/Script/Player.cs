@@ -22,9 +22,11 @@ public class Player : MonoBehaviour
 	[ BoxGroup( "Setup" ), SerializeField ] private Transform couple_position; 
 
 	// Private \\
+	[ SerializeField, ReadOnly ] private Daddy current_daddy;
 	[ SerializeField, ReadOnly ] private ClothData[] cloth_data_array;
 	[ SerializeField, ReadOnly ] private int money_count;
 	[ SerializeField, ReadOnly ] private int fame_count;
+
 
 	private Animator animator;
 	private TriggerListener triggerListener;
@@ -38,7 +40,6 @@ public class Player : MonoBehaviour
 #endregion
 
 #region Properties
-	public Transform CouplePosition => couple_position;
 #endregion
 
 #region Unity API
@@ -147,6 +148,12 @@ public class Player : MonoBehaviour
 				TakeClothOff( cloth_index );
 		}
 	}
+
+	public Transform MatchDaddy( Daddy daddy )
+	{
+		current_daddy = daddy;
+		return couple_position;
+	}
 #endregion
 
 #region Implementation
@@ -212,8 +219,10 @@ public class Player : MonoBehaviour
 
     private void SwapLane_Out_Money()
     {
+		if( current_daddy == null ) return;
 
-    }
+		current_daddy.CoupleDeatch();
+	}
 
 	private void OnUpdate_Movement_MainLane()
 	{

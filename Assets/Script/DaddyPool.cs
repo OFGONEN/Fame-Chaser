@@ -10,6 +10,8 @@ public class DaddyPool : ComponentPool< Daddy >
 {
 	private Transform initial_parent;
 
+	public Transform InitialParent => initial_parent;
+
 	public void InitPool( Transform parent )
 	{
 		initial_parent = parent;

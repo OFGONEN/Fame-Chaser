@@ -25,6 +25,7 @@ public class Daddy : MonoBehaviour
 
 	// Delegates
 	private UnityMessage updateMethod;
+	private UnityMessage couple_DetachedMethod;
 	private Sequence couple_sequence;
 #endregion
 
@@ -49,6 +50,7 @@ public class Daddy : MonoBehaviour
 	private void Awake()
 	{
 		updateMethod = ExtensionMethods.EmptyMethod;
+		couple_DetachedMethod = ExtensionMethods.EmptyMethod;
 
 		ragdoll_rigidbodies = GetComponentsInChildren< Rigidbody >();
 		triggerListener = GetComponentInChildren< TriggerListener >();
@@ -94,7 +96,13 @@ public class Daddy : MonoBehaviour
 		triggerListener.AttachedCollider.enabled = false;
 		ToggleRagdoll( true );
 
+		//TODO cache this Tween ?
 		DOVirtual.DelayedCall( GameSettings.Instance.daddy_duration_ragdoll, ReturnToPool );
+	}
+
+	public void CoupleDeatch()
+	{
+		couple_DetachedMethod();
 	}
 #endregion
 
@@ -133,9 +141,10 @@ public class Daddy : MonoBehaviour
 		}
 
 		updateMethod = ExtensionMethods.EmptyMethod;
+		couple_DetachedMethod = OnCoupleDetached_Coupling;
 
 		var player          = collider.GetComponent< TriggerListener >().AttachedComponent as Player;
-		var couple_position = player.CouplePosition;
+		var couple_position = player.MatchDaddy( this );
 
 		transform.SetParent( player.transform );
 
@@ -154,7 +163,16 @@ public class Daddy : MonoBehaviour
 	private void OnCoupleComplete()
 	{
 		couple_sequence = couple_sequence.KillProper();
-		// animation set edicem.
+	}
+
+	private void OnCoupleDetached_Coupling()
+	{
+		couple_sequence = couple_sequence.KillProper();
+		transform.SetParent( daddy_pool.InitialParent );
+
+		couple_DetachedMethod = ExtensionMethods.EmptyMethod;
+
+		RagdollOff();
 	}
 #endregion
 
