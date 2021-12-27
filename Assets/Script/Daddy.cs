@@ -74,10 +74,14 @@ public class Daddy : MonoBehaviour
 		triggerListener.AttachedCollider.enabled = true;
 
 		var spawn_position = transform_spawn.position;
-		spawn_position.z = transform_start.position.z;
+
+		// Reference spawn position is ahead of start position
+		if( transform_spawn.InverseTransformPoint( transform_start.position ).z < 0 )
+			spawn_position.z = transform_start.position.z;
+
 
 		transform.position = spawn_position;
-		transform.forward  = ( transform_spawn.position - spawn_position ).normalized;
+		transform.forward  = ( transform_end.position - spawn_position ).normalized;
 
 		updateMethod = OnUpdate_Movement;
 	}
@@ -97,10 +101,11 @@ public class Daddy : MonoBehaviour
 	private void OnUpdate_Movement()
 	{
 		var spawn_position = transform_spawn.position;
+
 		var end_position = transform_end.position;
 		end_position.x = spawn_position.x;
 
-		var position = Vector3.MoveTowards( transform.position, spawn_position, Time.deltaTime * GameSettings.Instance.daddy_movement_speed );
+		var position = Vector3.MoveTowards( transform.position, end_position, Time.deltaTime * GameSettings.Instance.daddy_movement_speed );
 
 		if( Vector3.Distance( position, end_position ) <= 0.1f )
 			RagdollOff();
