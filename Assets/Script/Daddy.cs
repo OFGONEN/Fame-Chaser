@@ -46,8 +46,6 @@ public class Daddy : MonoBehaviour
 	private void OnEnable()
 	{
 		triggerListener.Subscribe( OnTrigger );
-
-		daddy_set.AddDictionary( GetInstanceID(), this );
 	}
 
 	private void OnDisable()
@@ -56,8 +54,6 @@ public class Daddy : MonoBehaviour
 
 		ragdoll_tween   = ragdoll_tween.KillProper();
 		couple_sequence = couple_sequence.KillProper();
-
-		daddy_set.RemoveDictionary( GetInstanceID() );
 	}
 
 	private void Awake()
@@ -148,19 +144,26 @@ public class Daddy : MonoBehaviour
 
 	private void OnTrigger( Collider collider )
 	{
-		daddy_set.RemoveDictionary( GetInstanceID() );
-
-		foreach( var daddy in daddy_set.itemDictionary.Values )
-		{
-			daddy.RagdollOff();
-		}
-
+		triggerListener.AttachedCollider.enabled = false;
 		updateMethod = ExtensionMethods.EmptyMethod;
 		couple_DetachedMethod = OnCoupleDetached_Coupling;
 
-		    player                = collider.GetComponent< TriggerListener >().AttachedComponent as Player;
-		var couple_position       = player.MatchDaddy( this );
-		    player_money_position = player.MoneyPosition;
+		Transform couple_position = null;
+
+		player = collider.GetComponent< TriggerListener >().AttachedComponent as Player;
+		var canMatch = player.MatchDaddy( this, ref couple_position );
+
+		if( !canMatch )
+		{
+			RagdollOff();
+			ragdoll_rigidbodies[ 0 ].AddForce( 
+				( transform.position - collider.transform.position ).normalized.SetY( GameSettings.Instance.daddy_ragdoll_force_vertical.GiveRandom()  )
+				 * GameSettings.Instance.daddy_ragdoll_force, 
+				 ForceMode.Impulse );
+			return;
+		}
+
+		player_money_position = player.MoneyPosition;
 
 		transform.SetParent( player.transform );
 

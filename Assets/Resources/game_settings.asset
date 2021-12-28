@@ -29,7 +29,9 @@ MonoBehaviour:
   player_duration_cloth_off: 0.75
   daddy_movement_speed: 5
   daddy_couple_duration: 0.75
-  daddy_ragdoll_duration: 1
+  daddy_ragdoll_duration: 3
+  daddy_ragdoll_force: 200
+  daddy_ragdoll_force_vertical: {x: 0, y: 1}
   daddy_money_bill: 10
   daddy_money_delay: 0.125
   daddy_money_transfer: 0.2

@@ -74,6 +74,11 @@ public class Player : MonoBehaviour
 		animator        = GetComponentInChildren< Animator >();
     }
 
+	private void Start()
+	{
+		LevelStartResponse();
+	}
+
 	private void Update()
 	{
 		updateMethod();
@@ -151,10 +156,13 @@ public class Player : MonoBehaviour
 		}
 	}
 
-	public Transform MatchDaddy( Daddy daddy )
+	public bool MatchDaddy( Daddy daddy, ref Transform coupleTransform )
 	{
-		current_daddy = daddy;
-		return couple_position;
+		if( current_daddy != null ) return false;
+
+		current_daddy 	= daddy;
+		coupleTransform = couple_position;
+		return true;
 	}
 
 	public void OnDaddyMoneyDeplete()
@@ -229,6 +237,7 @@ public class Player : MonoBehaviour
 		if( current_daddy == null ) return;
 
 		current_daddy.CoupleDeatch();
+		current_daddy = null;
 	}
 
 	private void OnUpdate_Movement_MainLane()
