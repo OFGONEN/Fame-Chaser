@@ -50,3 +50,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7cc6d8cf026468749a38f01bbeacffec, type: 2}
   - {fileID: 11400000, guid: 34ee81094602a5f4c8e9156b7ad77ed0, type: 2}
   - {fileID: 11400000, guid: 2b950ec42b8d12941adefed686854a65, type: 2}
+  pool_daddy: {fileID: 11400000, guid: b75964b9c4717f648892443badc13753, type: 2}
+  pool_money: {fileID: 11400000, guid: 7914a3d9db1cd9342bfb40b75f7d36aa, type: 2}

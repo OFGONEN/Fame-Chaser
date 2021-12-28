@@ -312,6 +312,11 @@ namespace FFStudio
 			return tween;
 		}
 
+		public static float GiveRandom( this Vector2 v2 )
+		{
+			return Random.Range( v2.x, v2.y );
+		}
+
 		public static Color SetAlpha( this Color color, float alpha )
 		{
 			Color newColor = color;

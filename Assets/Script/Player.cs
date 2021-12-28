@@ -19,11 +19,15 @@ public class Player : MonoBehaviour
 	[ BoxGroup( "Setup" ), SerializeField ] private ParticleSpawnEvent cloth_particle; 
 	[ BoxGroup( "Setup" ), SerializeField ] private SkinnedMeshRenderer[] cloth_renderers; // Hat, Shirt, Skirt, Shoe
 	[ BoxGroup( "Setup" ), SerializeField ] private SkinnedMeshRenderer cloth_reference_renderer; 
+	[ BoxGroup( "Setup" ), SerializeField ] private Transform couple_position; 
+	[ BoxGroup( "Setup" ), SerializeField ] private Transform money_position; 
 
 	// Private \\
+	[ SerializeField, ReadOnly ] private Daddy current_daddy;
 	[ SerializeField, ReadOnly ] private ClothData[] cloth_data_array;
 	[ SerializeField, ReadOnly ] private int money_count;
 	[ SerializeField, ReadOnly ] private int fame_count;
+
 
 	private Animator animator;
 	private TriggerListener triggerListener;
@@ -37,6 +41,7 @@ public class Player : MonoBehaviour
 #endregion
 
 #region Properties
+	public Transform MoneyPosition => money_position;
 #endregion
 
 #region Unity API
@@ -68,6 +73,11 @@ public class Player : MonoBehaviour
 		triggerListener = GetComponentInChildren< TriggerListener >();
 		animator        = GetComponentInChildren< Animator >();
     }
+
+	private void Start()
+	{
+		LevelStartResponse();
+	}
 
 	private void Update()
 	{
@@ -145,6 +155,20 @@ public class Player : MonoBehaviour
 				TakeClothOff( cloth_index );
 		}
 	}
+
+	public bool MatchDaddy( Daddy daddy, ref Transform coupleTransform )
+	{
+		if( current_daddy != null ) return false;
+
+		current_daddy 	= daddy;
+		coupleTransform = couple_position;
+		return true;
+	}
+
+	public void OnDaddyMoneyDeplete()
+	{
+		SwapLane_Main();
+	}
 #endregion
 
 #region Implementation
@@ -210,8 +234,11 @@ public class Player : MonoBehaviour
 
     private void SwapLane_Out_Money()
     {
+		if( current_daddy == null ) return;
 
-    }
+		current_daddy.CoupleDeatch();
+		current_daddy = null;
+	}
 
 	private void OnUpdate_Movement_MainLane()
 	{

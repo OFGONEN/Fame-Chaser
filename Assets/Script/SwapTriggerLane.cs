@@ -71,7 +71,7 @@ public abstract class SwapTriggerLane : MonoBehaviour
 		Handles.color = Color.green;
 		Handles.DrawSolidDisc( position_in, Vector3.up, 0.1f );
 		Handles.DrawDottedLine( position_in, position_in + Vector3.up, 5f );
-		Handles.Label( position_in + Vector3.up, "Swap Point Out" );
+		Handles.Label( position_in + Vector3.up, "Swap Point In" );
 	}
 #endif
 #endregion
