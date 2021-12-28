@@ -23,15 +23,12 @@ public class Stackable_Money : MonoBehaviour
 #region API
     public void Deposit() 
     {
-		gameObject.SetActive( false );
 		money_pool.ReturnEntity( this );
 	}
 
     public void DepositWithMoney() 
     {
 		money_particle.Raise( "stack_money", transform.position );
-
-		gameObject.SetActive( false );
 		money_pool.ReturnEntity( this );
 	}
 #endregion

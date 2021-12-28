@@ -30,6 +30,7 @@ public class Stackable_Money_Pool : ComponentPool< Stackable_Money >
 	public override void ReturnEntity( Stackable_Money entity )
 	{
 		stack.Push( entity );
+		entity.gameObject.SetActive( false );
 		entity.transform.SetParent( initial_parent );
 	}
 }

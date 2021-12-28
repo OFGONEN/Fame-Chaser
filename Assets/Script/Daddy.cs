@@ -27,11 +27,13 @@ public class Daddy : MonoBehaviour
 	private Transform transform_start;
     private Transform transform_end;
 
+	private List< Stackable_Money > daddy_money_list = new List< Stackable_Money >( 64 );
+	private List< Stackable_Money > player_money_list = new List< Stackable_Money >( 64 );
+
 	// Delegates
 	private UnityMessage updateMethod;
 	private UnityMessage couple_DetachedMethod;
 	private Sequence couple_sequence;
-	private Sequence money_sequence;
 #endregion
 
 #region Properties
@@ -168,24 +170,26 @@ public class Daddy : MonoBehaviour
 	private void OnCoupleComplete()
 	{
 		couple_sequence = couple_sequence.KillProper();
+		couple_sequence = DOTween.Sequence();
+
+		couple_DetachedMethod = OnCoupleDetached_Money;
 
 		var money_count = daddy_money_count / GameSettings.Instance.daddy_money_bill;
 
-		money_sequence = DOTween.Sequence();
 
 		for( var i = 0; i < money_count; i++ )
 		{
 			var index = i;
-			money_sequence.AppendCallback( () => SpawnMoney( index, GameSettings.Instance.daddy_money_bill ) );
-			money_sequence.AppendInterval( GameSettings.Instance.daddy_money_delay );
+			couple_sequence.AppendCallback( () => SpawnMoney( index, GameSettings.Instance.daddy_money_bill ) );
+			couple_sequence.AppendInterval( GameSettings.Instance.daddy_money_delay );
 		}
 
 		var money_remainder = daddy_money_count % GameSettings.Instance.daddy_money_bill;
 
 		if( money_remainder > 0 )
 		{
-			money_sequence.AppendCallback( () => SpawnMoney( money_count, money_remainder ) );
-			money_sequence.AppendInterval( GameSettings.Instance.daddy_money_delay );
+			couple_sequence.AppendCallback( () => SpawnMoney( money_count, money_remainder ) );
+			couple_sequence.AppendInterval( GameSettings.Instance.daddy_money_delay );
 		}
 	}
 
@@ -199,6 +203,21 @@ public class Daddy : MonoBehaviour
 		RagdollOff();
 	}
 
+	private void OnCoupleDetached_Money()
+	{
+		couple_sequence = couple_sequence.KillProper();
+		transform.SetParent( daddy_pool.InitialParent );
+
+		couple_DetachedMethod = ExtensionMethods.EmptyMethod;
+		RagdollOff();
+
+		// Handle Money
+		for( var i = 0; i < daddy_money_list.Count; i++ )
+		{
+			daddy_money_list[ i ].Deposit();
+		}
+	}
+
 	private void SpawnMoney( int index, int moneyCount )
 	{
 		var money = money_pool.GetEntity();
@@ -208,6 +227,8 @@ public class Daddy : MonoBehaviour
 		money.gameObject.SetActive( true );
 
 		money.money_count = moneyCount;
+
+		daddy_money_list.Add( money );
 	}
 #endregion
 
