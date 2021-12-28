@@ -36,6 +36,7 @@ public class Daddy : MonoBehaviour
 	private UnityMessage updateMethod;
 	private UnityMessage couple_DetachedMethod;
 	private Sequence couple_sequence;
+	private Tween ragdoll_tween;
 #endregion
 
 #region Properties
@@ -52,6 +53,9 @@ public class Daddy : MonoBehaviour
 	private void OnDisable()
 	{
 		triggerListener.Unsubscribe( OnTrigger );
+
+		ragdoll_tween   = ragdoll_tween.KillProper();
+		couple_sequence = couple_sequence.KillProper();
 
 		daddy_set.RemoveDictionary( GetInstanceID() );
 	}
@@ -108,8 +112,7 @@ public class Daddy : MonoBehaviour
 		triggerListener.AttachedCollider.enabled = false;
 		ToggleRagdoll( true );
 
-		//TODO cache this Tween ?
-		DOVirtual.DelayedCall( GameSettings.Instance.daddy_ragdoll_duration, ReturnToPool );
+		ragdoll_tween = DOVirtual.DelayedCall( GameSettings.Instance.daddy_ragdoll_duration, ReturnToPool );
 	}
 
 	public void CoupleDeatch()
@@ -169,6 +172,8 @@ public class Daddy : MonoBehaviour
 
 	private void ReturnToPool()
 	{
+		ragdoll_tween = ragdoll_tween.KillProper();
+
 		gameObject.SetActive( false );
 		daddy_pool.ReturnEntity( this );
 	}
