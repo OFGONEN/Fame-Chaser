@@ -226,7 +226,8 @@ public class Player : MonoBehaviour
 
 		animator.SetTrigger( "cloth_off" );
 
-		takeClothOff_Tween = DOVirtual.DelayedCall( GameSettings.Instance.player_duration_cloth_off, () => Delayed_TakeClothOff( 0 ) );
+		// takeClothOff_Tween = DOVirtual.DelayedCall( GameSettings.Instance.player_duration_cloth_off, () => Delayed_TakeClothOff( 0 ) );
+		Delayed_TakeClothOff( 0 );
 	}
 
     private void OnSwapTriggerLane_Out_Complete()
@@ -285,7 +286,7 @@ public class Player : MonoBehaviour
 
 	private void Delayed_TakeClothOff( int index )
 	{
-		if( index >= cloth_data_array.Length )
+		if( index >= cloth_data_array.Length || ( index == 0 && !HasAnyCloth() ) )
 		{
 			SwapLane_Main();
 			return;
@@ -302,6 +303,18 @@ public class Player : MonoBehaviour
 
 		TakeClothOff( index );
 		takeClothOff_Tween = DOVirtual.DelayedCall( GameSettings.Instance.player_duration_cloth_off, () => Delayed_TakeClothOff( index + 1 ) );
+	}
+
+	private bool HasAnyCloth()
+	{
+		bool hasCloth = false;
+
+		for( var i = 0; i < cloth_data_array.Length; i++ )
+		{
+			hasCloth = cloth_data_array[ i ].cloth_type != null;
+		}
+
+		return hasCloth;
 	}
 #endregion
 
