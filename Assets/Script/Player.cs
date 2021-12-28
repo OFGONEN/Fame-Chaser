@@ -244,7 +244,8 @@ public class Player : MonoBehaviour
 	{
 		var position = transform.position;
 
-		position.x = Mathf.Lerp( position.x, position.x + 1 * input_horizontal.sharedValue.Sign(), Time.deltaTime * GameSettings.Instance.player_movement_speed_lateral * Mathf.Abs( input_horizontal.sharedValue ) );
+		var lerp = Mathf.Lerp( position.x, position.x + 1 * input_horizontal.sharedValue.Sign(), Time.deltaTime * GameSettings.Instance.player_movement_speed_lateral * Mathf.Abs( input_horizontal.sharedValue ) );
+		position.x = Mathf.Clamp( lerp, -GameSettings.Instance.player_movement_clamp_lateral, GameSettings.Instance.player_movement_clamp_lateral );
 		position.z = Mathf.Lerp( position.z, position.z + 1, Time.deltaTime * GameSettings.Instance.player_movement_speed_forward );
 
 		transform.position = position;

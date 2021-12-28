@@ -26,6 +26,7 @@ MonoBehaviour:
   swap_point_in_duration: 0.75
   player_movement_speed_lateral: 500
   player_movement_speed_forward: 5
+  player_movement_clamp_lateral: 4.5
   player_duration_cloth_off: 0.75
   daddy_movement_speed: 5
   daddy_couple_duration: 0.75

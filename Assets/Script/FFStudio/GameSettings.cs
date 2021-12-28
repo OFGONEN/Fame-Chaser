@@ -35,6 +35,7 @@ namespace FFStudio
         // Player
         [ BoxGroup( "Player" ) ] public float player_movement_speed_lateral = 1f; 
         [ BoxGroup( "Player" ) ] public float player_movement_speed_forward = 1f; 
+        [ BoxGroup( "Player" ) ] public float player_movement_clamp_lateral = 5f; 
         [ BoxGroup( "Player" ) ] public float player_duration_cloth_off = 0.75f; 
 
         // Sugar Daddy
