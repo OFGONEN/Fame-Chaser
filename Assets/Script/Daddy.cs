@@ -213,21 +213,21 @@ public class Daddy : MonoBehaviour
 		var delay    = GameSettings.Instance.daddy_money_delay;
 		var height   = GameSettings.Instance.daddy_money_height;
 
-		for( var i = 0; i < daddy_money_list.Count; i++ )
+		for( var i = daddy_money_list.Count - 1; i >= 0; i-- )
 		{
-			var index = i;
+			var index = daddy_money_list.Count - i - 1;
 			var money = daddy_money_list[ i ];
 			money.ChangeDepositMethod();
 
 			var position = player_money_position.localPosition;
 			couple_sequence.AppendCallback( () => player_money_list.Add( money ) );
 			couple_sequence.Append( money.transform.DOLocalMoveX( position.x, duration ) );
-			couple_sequence.Join( money.transform.DOLocalMoveY( position.y + i * height , duration ) );
+			couple_sequence.Join( money.transform.DOLocalMoveY( position.y + index * height , duration ) );
 			couple_sequence.Join( money.transform.DOLocalMoveZ( position.z, duration ) );
 			couple_sequence.AppendInterval( delay );
 		}
 
-		//todo couple_sequence.oncomplete'inde mainlane 'e gecmek lazim
+		couple_sequence.OnComplete( player.OnDaddyMoneyDeplete );
 	}
 
 	private void OnCoupleDetached_Coupling()

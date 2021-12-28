@@ -156,6 +156,11 @@ public class Player : MonoBehaviour
 		current_daddy = daddy;
 		return couple_position;
 	}
+
+	public void OnDaddyMoneyDeplete()
+	{
+		SwapLane_Main();
+	}
 #endregion
 
 #region Implementation
