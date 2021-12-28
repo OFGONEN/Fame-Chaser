@@ -220,15 +220,24 @@ public class Daddy : MonoBehaviour
 
 		for( var i = daddy_money_list.Count - 1; i >= 0; i-- )
 		{
-			var index = daddy_money_list.Count - i - 1;
-			var money = daddy_money_list[ i ];
+			AnimationCurve curve;
+			var index    = daddy_money_list.Count - i - 1;
+			var money    = daddy_money_list[ i ];
+			var position = player_money_position.localPosition;
+			var rotation = player_money_position.eulerAngles;
+
 			money.ChangeDepositMethod();
 
-			var position = player_money_position.localPosition;
+			if( index <= daddy_money_list.Count / 2 )
+				curve = GameSettings.Instance.curve_downward;
+			else
+				curve = GameSettings.Instance.curve_upward;
+
 			couple_sequence.AppendCallback( () => player_money_list.Add( money ) );
 			couple_sequence.Append( money.transform.DOLocalMoveX( position.x, duration ) );
-			couple_sequence.Join( money.transform.DOLocalMoveY( position.y + index * height , duration ) );
+			couple_sequence.Join( money.transform.DOLocalMoveY( position.y + index * height, duration ).SetEase( curve ) );
 			couple_sequence.Join( money.transform.DOLocalMoveZ( position.z, duration ) );
+			couple_sequence.Join( money.transform.DORotate( rotation, duration ) );
 			couple_sequence.AppendInterval( delay );
 		}
 

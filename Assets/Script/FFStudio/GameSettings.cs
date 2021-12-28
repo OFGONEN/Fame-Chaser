@@ -47,6 +47,9 @@ namespace FFStudio
         [ BoxGroup( "Daddy" ) ] public float daddy_money_height     = 0.2f;
 
         [ BoxGroup( "Input" ) ] public float input_horizontal_deadzone = 0.01f; // 828 * 0.01 = 8 pixel
+        [ BoxGroup( "Input" ) ] public AnimationCurve curve_upward;
+        [ BoxGroup( "Input" ) ] public AnimationCurve curve_downward;
+
 #endregion
 
 #region Implementation
