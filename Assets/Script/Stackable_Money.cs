@@ -4,13 +4,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using FFStudio;
+using NaughtyAttributes;
 
 public class Stackable_Money : MonoBehaviour
 {
 #region Fields
     [ SerializeField ] private Stackable_Money_Pool money_pool;
     [ SerializeField ] private ParticleSpawnEvent money_particle;
-    [ HideInInspector ] public int money_count;
+    [ ReadOnly ] public int money_count;
 #endregion
 
 #region Properties

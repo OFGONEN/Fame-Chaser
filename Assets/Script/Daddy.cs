@@ -169,13 +169,22 @@ public class Daddy : MonoBehaviour
 	{
 		couple_sequence = couple_sequence.KillProper();
 
+		var money_count = daddy_money_count / GameSettings.Instance.daddy_money_bill;
+
 		money_sequence = DOTween.Sequence();
-		var money_count = 10;
 
 		for( var i = 0; i < money_count; i++ )
 		{
 			var index = i;
-			money_sequence.AppendCallback( () => SpawnMoney( index ) );
+			money_sequence.AppendCallback( () => SpawnMoney( index, GameSettings.Instance.daddy_money_bill ) );
+			money_sequence.AppendInterval( GameSettings.Instance.daddy_money_delay );
+		}
+
+		var money_remainder = daddy_money_count % GameSettings.Instance.daddy_money_bill;
+
+		if( money_remainder > 0 )
+		{
+			money_sequence.AppendCallback( () => SpawnMoney( money_count, money_remainder ) );
 			money_sequence.AppendInterval( GameSettings.Instance.daddy_money_delay );
 		}
 	}
@@ -190,7 +199,7 @@ public class Daddy : MonoBehaviour
 		RagdollOff();
 	}
 
-	private void SpawnMoney( int index )
+	private void SpawnMoney( int index, int moneyCount )
 	{
 		var money = money_pool.GetEntity();
 		money.transform.SetParent( transform.parent );
@@ -198,6 +207,7 @@ public class Daddy : MonoBehaviour
 		money.transform.rotation = daddy_money_position.rotation;
 		money.gameObject.SetActive( true );
 
+		money.money_count = moneyCount;
 	}
 #endregion
 
