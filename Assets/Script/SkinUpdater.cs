@@ -12,6 +12,10 @@ public class SkinUpdater : MonoBehaviour
 	public SkinnedMeshRenderer target;
 	public SkinnedMeshRenderer reference;
 
+	public GameObject[] targetObjects;
+
+	public int index = 0;
+
 	[Button()]
 	public void UpdateSkin()
 	{
@@ -20,5 +24,13 @@ public class SkinUpdater : MonoBehaviour
 		current.sharedMesh = target.sharedMesh;
 		current.rootBone = reference.rootBone;
 		current.bones = reference.bones;
+	}
+
+	[ Button() ]
+	public void Iterate()
+	{
+		target = targetObjects[ index ].GetComponentInChildren< SkinnedMeshRenderer >();
+		index++;
+		UpdateSkin();
 	}
 }
