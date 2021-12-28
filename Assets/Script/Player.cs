@@ -38,10 +38,13 @@ public class Player : MonoBehaviour
 
 	private UnityMessage swapLane_Out;
 	private UnityMessage updateMethod;
+	private UnityMessage forceMainLaneMethod;
 #endregion
 
 #region Properties
 	public Transform MoneyPosition => money_position;
+	public UnityMessage ForceMainLaneMethod => forceMainLaneMethod;
+	
 #endregion
 
 #region Unity API
@@ -67,8 +70,9 @@ public class Player : MonoBehaviour
 
 		cloth_data_array = new ClothData[ cloth_renderers.Length ];
 
-		updateMethod 	= ExtensionMethods.EmptyMethod;
-		swapLane_Out    = ExtensionMethods.EmptyMethod;
+		updateMethod        = ExtensionMethods.EmptyMethod;
+		swapLane_Out        = ExtensionMethods.EmptyMethod;
+		forceMainLaneMethod = ExtensionMethods.EmptyMethod;
 
 		triggerListener = GetComponentInChildren< TriggerListener >();
 		animator        = GetComponentInChildren< Animator >();
@@ -91,8 +95,9 @@ public class Player : MonoBehaviour
 		triggerListener.AttachedCollider.enabled = false;
 		swapTriggerLane = triggerLane;
 
-		updateMethod = OnUpdate_Movement_ChoiceLane;
-		swapLane_Out = SwapLane_Out_Money;
+		updateMethod        = OnUpdate_Movement_ChoiceLane;
+		swapLane_Out        = SwapLane_Out_Money;
+		forceMainLaneMethod = SwapLane_Main;
 
 		triggerLane_Sequence = DOTween.Sequence();
 		triggerLane_Sequence.Append( transform.DOMoveX( position.x, GameSettings.Instance.swap_point_in_duration ) );
@@ -104,8 +109,9 @@ public class Player : MonoBehaviour
 		triggerListener.AttachedCollider.enabled = false;
 		swapTriggerLane = triggerLane;
 
-		updateMethod = OnUpdate_Movement_ChoiceLane;
-		swapLane_Out = SwapLane_Out_Fame;
+		updateMethod        = OnUpdate_Movement_ChoiceLane;
+		swapLane_Out        = SwapLane_Out_Fame;
+		forceMainLaneMethod = SwapLane_Main;
 
 		triggerLane_Sequence = DOTween.Sequence();
 		triggerLane_Sequence.Append( transform.DOMoveX( position.x, GameSettings.Instance.swap_point_in_duration ) );
@@ -183,6 +189,10 @@ public class Player : MonoBehaviour
     {
 		takeClothOff_Tween = takeClothOff_Tween.KillProper();
 		swapLane_Out();
+
+		swapLane_Out        = ExtensionMethods.EmptyMethod;
+		forceMainLaneMethod = ExtensionMethods.EmptyMethod;
+
 
 		animator.SetTrigger( "walk" );
 
