@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
 	[ BoxGroup( "Setup" ), SerializeField ] private SkinnedMeshRenderer[] cloth_renderers; // Hat, Shirt, Skirt, Shoe
 	[ BoxGroup( "Setup" ), SerializeField ] private SkinnedMeshRenderer cloth_reference_renderer; 
 	[ BoxGroup( "Setup" ), SerializeField ] private Transform couple_position; 
+	[ BoxGroup( "Setup" ), SerializeField ] private Transform money_position; 
 
 	// Private \\
 	[ SerializeField, ReadOnly ] private Daddy current_daddy;
@@ -40,6 +41,7 @@ public class Player : MonoBehaviour
 #endregion
 
 #region Properties
+	public Transform MoneyPosition => money_position;
 #endregion
 
 #region Unity API

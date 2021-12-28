@@ -18,17 +18,19 @@ public class Daddy : MonoBehaviour
     [ BoxGroup( "Shared Variables" ), SerializeField ] private SharedReferenceNotifier daddy_end_position;
 
     [ BoxGroup( "Setup" ) ] public Transform daddy_money_position;
-    [ BoxGroup( "Setup" ), HideInInspector ] public int daddy_money_count;
+    [ BoxGroup( "Setup" ) ] public int daddy_money_count;
 
 	// Private \\
+	private Player player;
 	private Rigidbody[] ragdoll_rigidbodies;
 	private TriggerListener triggerListener;
 	private Transform transform_spawn;
 	private Transform transform_start;
     private Transform transform_end;
+    private Transform player_money_position;
 
-	private List< Stackable_Money > daddy_money_list = new List< Stackable_Money >( 64 );
-	private List< Stackable_Money > player_money_list = new List< Stackable_Money >( 64 );
+	[ SerializeField, ReadOnly ] private List< Stackable_Money > daddy_money_list  = new List< Stackable_Money >( 64 );
+	[ SerializeField, ReadOnly ] private List< Stackable_Money > player_money_list = new List< Stackable_Money >( 64 );
 
 	// Delegates
 	private UnityMessage updateMethod;
@@ -78,6 +80,9 @@ public class Daddy : MonoBehaviour
 		transform_spawn = daddy_spawn_position.SharedValue as Transform;
 		transform_start = daddy_start_position.SharedValue as Transform;
 		transform_end   = daddy_end_position.SharedValue as Transform;
+
+		daddy_money_list.Clear();
+		player_money_list.Clear();
 
 		ToggleRagdoll( false );
 		gameObject.SetActive( true );
@@ -150,8 +155,9 @@ public class Daddy : MonoBehaviour
 		updateMethod = ExtensionMethods.EmptyMethod;
 		couple_DetachedMethod = OnCoupleDetached_Coupling;
 
-		var player          = collider.GetComponent< TriggerListener >().AttachedComponent as Player;
-		var couple_position = player.MatchDaddy( this );
+		    player                = collider.GetComponent< TriggerListener >().AttachedComponent as Player;
+		var couple_position       = player.MatchDaddy( this );
+		    player_money_position = player.MoneyPosition;
 
 		transform.SetParent( player.transform );
 
@@ -174,8 +180,13 @@ public class Daddy : MonoBehaviour
 
 		couple_DetachedMethod = OnCoupleDetached_Money;
 
-		var money_count = daddy_money_count / GameSettings.Instance.daddy_money_bill;
+		SpawnMoneyOnDaddy(); // Edits couple_sequence
+		couple_sequence.OnComplete( TransferMoneyToPlayer );
+	}
 
+	private void SpawnMoneyOnDaddy()
+	{
+		var money_count = daddy_money_count / GameSettings.Instance.daddy_money_bill;
 
 		for( var i = 0; i < money_count; i++ )
 		{
@@ -191,6 +202,32 @@ public class Daddy : MonoBehaviour
 			couple_sequence.AppendCallback( () => SpawnMoney( money_count, money_remainder ) );
 			couple_sequence.AppendInterval( GameSettings.Instance.daddy_money_delay );
 		}
+	}
+
+	private void TransferMoneyToPlayer()
+	{
+		couple_sequence = couple_sequence.KillProper();
+		couple_sequence = DOTween.Sequence();
+
+		var duration = GameSettings.Instance.daddy_money_transfer;
+		var delay    = GameSettings.Instance.daddy_money_delay;
+		var height   = GameSettings.Instance.daddy_money_height;
+
+		for( var i = 0; i < daddy_money_list.Count; i++ )
+		{
+			var index = i;
+			var money = daddy_money_list[ i ];
+			money.ChangeDepositMethod();
+
+			var position = player_money_position.localPosition;
+			couple_sequence.AppendCallback( () => player_money_list.Add( money ) );
+			couple_sequence.Append( money.transform.DOLocalMoveX( position.x, duration ) );
+			couple_sequence.Join( money.transform.DOLocalMoveY( position.y + i * height , duration ) );
+			couple_sequence.Join( money.transform.DOLocalMoveZ( position.z, duration ) );
+			couple_sequence.AppendInterval( delay );
+		}
+
+		//todo couple_sequence.oncomplete'inde mainlane 'e gecmek lazim
 	}
 
 	private void OnCoupleDetached_Coupling()
@@ -212,10 +249,17 @@ public class Daddy : MonoBehaviour
 		RagdollOff();
 
 		// Handle Money
+		int money_amount = 0;
+
+		for( var i = 0; i < player_money_list.Count; i++ )
+			money_amount += player_money_list[ i ].money_count;
+
 		for( var i = 0; i < daddy_money_list.Count; i++ )
 		{
 			daddy_money_list[ i ].Deposit();
 		}
+
+		player.GainMoney( money_amount );
 	}
 
 	private void SpawnMoney( int index, int moneyCount )
