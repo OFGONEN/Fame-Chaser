@@ -96,7 +96,7 @@ public class Daddy : MonoBehaviour
 
 
 		transform.position = spawn_position;
-		transform.forward  = ( transform_end.position - spawn_position ).normalized;
+		transform.forward  = ( transform_end.position.SetX( spawn_position.x ) - spawn_position ).normalized;
 
 		updateMethod = OnUpdate_Movement;
 	}
