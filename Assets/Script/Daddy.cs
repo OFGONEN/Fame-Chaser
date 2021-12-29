@@ -21,13 +21,14 @@ public class Daddy : MonoBehaviour
     [ BoxGroup( "Setup" ) ] public int daddy_money_count;
 
 	// Private \\
-	private Player player;
+	private Animator animator;
 	private Rigidbody[] ragdoll_rigidbodies;
 	private TriggerListener triggerListener;
 	private Transform transform_spawn;
 	private Transform transform_start;
     private Transform transform_end;
     private Transform player_money_position;
+	private Player player;
 
 	[ SerializeField, ReadOnly ] private List< Stackable_Money > daddy_money_list  = new List< Stackable_Money >( 64 );
 	[ SerializeField, ReadOnly ] private List< Stackable_Money > player_money_list = new List< Stackable_Money >( 64 );
@@ -61,8 +62,9 @@ public class Daddy : MonoBehaviour
 		updateMethod = ExtensionMethods.EmptyMethod;
 		couple_DetachedMethod = ExtensionMethods.EmptyMethod;
 
+		animator            = GetComponentInChildren< Animator >();
 		ragdoll_rigidbodies = GetComponentsInChildren< Rigidbody >();
-		triggerListener = GetComponentInChildren< TriggerListener >();
+		triggerListener     = GetComponentInChildren< TriggerListener >();
 
 		ToggleRagdoll( false );
 	}
@@ -80,6 +82,8 @@ public class Daddy : MonoBehaviour
 		transform_spawn = daddy_spawn_position.SharedValue as Transform;
 		transform_start = daddy_start_position.SharedValue as Transform;
 		transform_end   = daddy_end_position.SharedValue as Transform;
+
+		animator.SetBool( "match", false );
 
 		daddy_money_list.Clear();
 		player_money_list.Clear();
@@ -135,6 +139,8 @@ public class Daddy : MonoBehaviour
 
 	private void ToggleRagdoll( bool active )
 	{
+		animator.enabled = !active;
+
 		foreach( var rb in ragdoll_rigidbodies )
 		{
 			rb.useGravity  = active;
@@ -187,6 +193,8 @@ public class Daddy : MonoBehaviour
 		couple_sequence = DOTween.Sequence();
 
 		couple_DetachedMethod = OnCoupleDetached_Money;
+
+		animator.SetBool( "match", true );
 
 		SpawnMoneyOnDaddy(); // Edits couple_sequence
 		couple_sequence.OnComplete( TransferMoneyToPlayer );
