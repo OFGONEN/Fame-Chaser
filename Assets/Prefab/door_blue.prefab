@@ -130,7 +130,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8205028256132926143, guid: 602dc88c641e50947b94c86716e52073, type: 3}
       propertyPath: m_Name
-      value: door
+      value: door_blue
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 602dc88c641e50947b94c86716e52073, type: 3}

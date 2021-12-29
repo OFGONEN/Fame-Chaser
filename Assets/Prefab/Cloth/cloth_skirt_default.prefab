@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2696273540896122738, guid: 5ad0d2f43a31bc3499103adaa640bd82, type: 3}
       propertyPath: m_Name
-      value: cloth
+      value: cloth_skirt_default
       objectReference: {fileID: 0}
     - target: {fileID: 2696273540896122738, guid: 5ad0d2f43a31bc3499103adaa640bd82, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -103,7 +103,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 223f193256ab92243a561cf07620ad83, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 223f193256ab92243a561cf07620ad83, type: 3}
       propertyPath: m_LocalPosition.z
