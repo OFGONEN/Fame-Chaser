@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8625180487762226689}
   - component: {fileID: 8625180487762226690}
   - component: {fileID: 7577872392980783821}
+  - component: {fileID: -4959072364105840199}
   m_Layer: 30
   m_Name: swap_trigger_fame
   m_TagString: Untagged
@@ -61,6 +62,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   swap_point_in: {fileID: 8625180487765307985}
   swap_point_out: {fileID: 8625180488153040245}
+--- !u!114 &-4959072364105840199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8625180487762226692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c5cf41ea274c404ea73899fb5b80769, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attachedComponent: {fileID: 7577872392980783821}
 --- !u!1 &8625180487765307986
 GameObject:
   m_ObjectHideFlags: 0
