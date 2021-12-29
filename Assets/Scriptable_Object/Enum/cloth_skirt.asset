@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: cloth_skirt
   m_EditorClassIdentifier: 
   cloth_index: 2
+  default_cloth: {fileID: 75493480999110893, guid: 223f193256ab92243a561cf07620ad83, type: 3}
