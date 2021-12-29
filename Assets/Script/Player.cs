@@ -77,6 +77,11 @@ public class Player : MonoBehaviour
 		triggerListener = GetComponentInChildren< TriggerListener >();
 		animator        = GetComponentInChildren< Animator >();
     }
+	
+	private void Start()
+	{
+		LevelStartResponse();
+	}
 
 	private void Update()
 	{
@@ -295,7 +300,7 @@ public class Player : MonoBehaviour
 
 	private void Delayed_TakeClothOff( int index )
 	{
-		if( index >= cloth_data_array.Length || ( index == 0 && !HasAnyCloth() ) )
+		if( index >= cloth_data_array.Length || !HasAnyCloth() )
 		{
 			SwapLane_Main();
 			return;
@@ -325,8 +330,6 @@ public class Player : MonoBehaviour
 			if( hasCloth )
 				break;
 		}
-
-		FFLogger.Log( "Has Cloth:" + hasCloth );
 
 		return hasCloth;
 	}
