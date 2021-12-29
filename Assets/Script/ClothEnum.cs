@@ -8,4 +8,6 @@ using UnityEngine;
 public class ClothEnum : ScriptableObject
 {
 	public int cloth_index;
+
+	public SkinnedMeshRenderer default_cloth;
 }

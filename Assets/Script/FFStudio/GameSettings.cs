@@ -52,7 +52,8 @@ namespace FFStudio
         [ BoxGroup( "Input" ) ] public float input_horizontal_deadzone = 0.01f; // 828 * 0.01 = 8 pixel
         [ BoxGroup( "Input" ) ] public AnimationCurve curve_upward;
         [ BoxGroup( "Input" ) ] public AnimationCurve curve_downward;
-
+        
+        [ BoxGroup( "Texture" ) ] public float texture_arrow_scrollSpeed = 1.0f;
 #endregion
 
 #region Implementation
