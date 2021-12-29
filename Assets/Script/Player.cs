@@ -78,11 +78,6 @@ public class Player : MonoBehaviour
 		animator        = GetComponentInChildren< Animator >();
     }
 
-	private void Start()
-	{
-		LevelStartResponse();
-	}
-
 	private void Update()
 	{
 		updateMethod();
@@ -184,7 +179,6 @@ public class Player : MonoBehaviour
 		animator.SetTrigger( "walk" );
 	}
 
-    [ Button() ]
     private void SwapLane_Main()
     {
 		takeClothOff_Tween = takeClothOff_Tween.KillProper();
