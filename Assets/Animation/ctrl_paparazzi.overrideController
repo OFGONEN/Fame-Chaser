@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: ctrl_paparazzi
+  m_Controller: {fileID: 9100000, guid: d98fc5ff66384fe4297256af62fa0eb3, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 1503f81857684994ab3c1b3156e5ddf6, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 5016ad7ebd1752d49b8164a11b09e813, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: a95b4f7052612d9409e3b35a25ccee2d, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: d347c52e6d4633148b79c6cd7a73e5f3, type: 2}
