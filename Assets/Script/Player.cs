@@ -264,6 +264,19 @@ public class Player : MonoBehaviour
 		transform.position = position;
 	}
 
+	public void DressCloth( ClothEnum clothEnum )
+	{
+		var index = clothEnum.cloth_index;
+
+		var renderer = cloth_renderers[ index ];
+
+		renderer.sharedMaterials = clothEnum.default_cloth.sharedMaterials;
+		renderer.localBounds     = clothEnum.default_cloth.localBounds;
+		renderer.sharedMesh      = clothEnum.default_cloth.sharedMesh;
+		renderer.rootBone        = cloth_reference_renderer.rootBone;
+		renderer.bones           = cloth_reference_renderer.bones;
+	}
+
 	//! Does not play animation
 	private void TakeClothOff( int index )
 	{
@@ -272,7 +285,7 @@ public class Player : MonoBehaviour
 
 		fame_count += data.cloth_fame;
 
-		cloth_renderers[ index ].sharedMesh = null;
+		DressCloth( cloth_data_array[ index ].cloth_type );
 		cloth_data_array[ index ].Clear();
 
 		cloth_particle.Raise( "fame", renderer.bounds.center );
