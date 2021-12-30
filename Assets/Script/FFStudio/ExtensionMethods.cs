@@ -317,6 +317,11 @@ namespace FFStudio
 			return Random.Range( v2.x, v2.y );
 		}
 
+		public static int GiveRandom( this Vector2Int v2 )
+		{
+			return Random.Range( v2.x, v2.y );
+		}
+
 		public static Color SetAlpha( this Color color, float alpha )
 		{
 			Color newColor = color;

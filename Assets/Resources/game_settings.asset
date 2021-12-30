@@ -37,6 +37,7 @@ MonoBehaviour:
   daddy_money_delay: 0.125
   daddy_money_transfer: 0.2
   daddy_money_height: 0.2
+  daddy_money_amount: {x: 25, y: 100}
   input_horizontal_deadzone: 0.001
   curve_upward:
     serializedVersion: 2

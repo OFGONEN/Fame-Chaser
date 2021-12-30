@@ -50,10 +50,7 @@ namespace FFStudio
 			ParticleEffectPool pool;
 
 			if( !particleEffectDictionary.TryGetValue( spawnEvent.particleAlias, out pool ) )
-			{
-				FFLogger.Log( "Particle:" + spawnEvent.particleAlias + " is missing!" );
 				return;
-			}
 
 			var effect = pool.GetEntity();
 			effect.PlayParticle( spawnEvent );

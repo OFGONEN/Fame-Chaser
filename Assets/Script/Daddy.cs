@@ -18,7 +18,7 @@ public class Daddy : MonoBehaviour
     [ BoxGroup( "Shared Variables" ), SerializeField ] private SharedReferenceNotifier daddy_end_position;
 
     [ BoxGroup( "Setup" ) ] public Transform daddy_money_position;
-    [ BoxGroup( "Setup" ) ] public int daddy_money_count;
+     
 
 	// Private \\
 	private Animator animator;
@@ -30,6 +30,7 @@ public class Daddy : MonoBehaviour
     private Transform player_money_position;
 	private Player player;
 
+	[ SerializeField, ReadOnly ] private int daddy_money_count;
 	[ SerializeField, ReadOnly ] private List< Stackable_Money > daddy_money_list  = new List< Stackable_Money >( 64 );
 	[ SerializeField, ReadOnly ] private List< Stackable_Money > player_money_list = new List< Stackable_Money >( 64 );
 
@@ -76,14 +77,15 @@ public class Daddy : MonoBehaviour
 #endregion
 
 #region API
-	[ Button() ]
-    public void Spawn()
+    public void Spawn( int money )
     {
 		transform_spawn = daddy_spawn_position.SharedValue as Transform;
 		transform_start = daddy_start_position.SharedValue as Transform;
 		transform_end   = daddy_end_position.SharedValue as Transform;
 
 		animator.SetBool( "match", false );
+
+		daddy_money_count = money;
 
 		daddy_money_list.Clear();
 		player_money_list.Clear();

@@ -48,6 +48,7 @@ namespace FFStudio
         [ BoxGroup( "Daddy" ) ] public float daddy_money_delay      = 0.125f;
         [ BoxGroup( "Daddy" ) ] public float daddy_money_transfer   = 0.2f;
         [ BoxGroup( "Daddy" ) ] public float daddy_money_height     = 0.2f;
+        [ BoxGroup( "Daddy" ) ] public Vector2Int daddy_money_amount;
 
         [ BoxGroup( "Input" ) ] public float input_horizontal_deadzone = 0.01f; // 828 * 0.01 = 8 pixel
         [ BoxGroup( "Input" ) ] public AnimationCurve curve_upward;

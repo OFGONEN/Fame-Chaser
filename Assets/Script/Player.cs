@@ -78,11 +78,6 @@ public class Player : MonoBehaviour
 		animator        = GetComponentInChildren< Animator >();
     }
 	
-	private void Start()
-	{
-		LevelStartResponse();
-	}
-
 	private void Update()
 	{
 		updateMethod();
