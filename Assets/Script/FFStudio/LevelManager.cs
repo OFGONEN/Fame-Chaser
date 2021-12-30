@@ -49,7 +49,7 @@ namespace FFStudio
             levelLoadedListener.response   = LevelLoadedResponse;
             levelRevealedListener.response = LevelRevealedResponse;
             levelStartedListener.response  = LevelStartedResponse;
-			levelStartedListener.response  = LevelFinishedResponse;
+			listener_finish_line.response  = LevelFinishedResponse;
 		}
 #endregion
 
@@ -90,6 +90,9 @@ namespace FFStudio
 
 			var daddy = daddy_pool_array[ random ].GetEntity();
 			daddy.Spawn( money );
+
+			var delay = CurrentLevelData.Instance.levelData.daddy_spawn_rate.GiveRandom();
+			daddy_spawn_tween = DOVirtual.DelayedCall( delay, SpawnDaddy );
 		}
 #endregion
     }
