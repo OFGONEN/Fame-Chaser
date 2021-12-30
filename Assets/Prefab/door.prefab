@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5536947389553830342}
   - component: {fileID: 1680693121459480666}
   - component: {fileID: 3794288850094712081}
+  - component: {fileID: 1116756198844537913}
   m_Layer: 30
   m_Name: door
   m_TagString: Untagged
@@ -59,6 +60,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cloth_remove_array: []
+--- !u!114 &1116756198844537913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8205028256132926143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c5cf41ea274c404ea73899fb5b80769, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attachedComponent: {fileID: 3794288850094712081}
 --- !u!1001 &457961288527068336
 PrefabInstance:
   m_ObjectHideFlags: 0
