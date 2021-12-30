@@ -81,6 +81,7 @@ namespace FFStudio
         private void LevelFinishedResponse()
         {
 			daddy_spawn_tween = daddy_spawn_tween.KillProper();
+			levelCompleted.Raise();
 		}
 
         private void SpawnDaddy()

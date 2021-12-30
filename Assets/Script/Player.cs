@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
 	[ BoxGroup( "Event Listeners" ), SerializeField ] private EventListenerDelegateResponse level_start_listener;
 	[ BoxGroup( "Event Listeners" ), SerializeField ] private EventListenerDelegateResponse swipe_left_listener;
 	[ BoxGroup( "Event Listeners" ), SerializeField ] private EventListenerDelegateResponse swipe_right_listener;
+	[ BoxGroup( "Event Listeners" ), SerializeField ] private EventListenerDelegateResponse level_finished_listener;
 
 	[ BoxGroup( "Shared Variables" ), SerializeField ] private SharedFloat input_horizontal;
 
@@ -53,6 +54,7 @@ public class Player : MonoBehaviour
 		level_start_listener.OnEnable();
 		swipe_left_listener.OnEnable();
 		swipe_right_listener.OnEnable();
+		level_finished_listener.OnEnable();
 	}
 
 	private void OnDisable()
@@ -60,13 +62,15 @@ public class Player : MonoBehaviour
 		level_start_listener.OnDisable();
 		swipe_left_listener.OnDisable();
 		swipe_right_listener.OnDisable();
+		level_finished_listener.OnDisable();
 	}
 
     private void Awake()
     {
-		level_start_listener.response = LevelStartResponse;
-		swipe_left_listener.response  = ExtensionMethods.EmptyMethod;
-		swipe_right_listener.response = ExtensionMethods.EmptyMethod;
+		level_start_listener.response    = LevelStartResponse;
+		swipe_left_listener.response     = ExtensionMethods.EmptyMethod;
+		swipe_right_listener.response    = ExtensionMethods.EmptyMethod;
+		level_finished_listener.response = LevelFinishedResponse;
 
 		cloth_data_array = new ClothData[ cloth_renderers.Length ];
 
@@ -181,6 +185,12 @@ public class Player : MonoBehaviour
 		updateMethod = OnUpdate_Movement_MainLane;
 		animator.SetBool( "walk", true );
 	}
+
+	private void LevelFinishedResponse()
+	{
+		updateMethod = ExtensionMethods.EmptyMethod;
+	}
+
 
     private void SwapLane_Main()
     {
