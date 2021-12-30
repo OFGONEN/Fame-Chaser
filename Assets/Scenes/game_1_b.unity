@@ -2020,7 +2020,7 @@ PrefabInstance:
     - target: {fileID: 7733999630550986111, guid: a78dcda2b34762a41b593b72238db551, type: 3}
       propertyPath: cloth_remove_array.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: 7cc6d8cf026468749a38f01bbeacffec, type: 2}
+      objectReference: {fileID: 11400000, guid: 2b950ec42b8d12941adefed686854a65, type: 2}
     - target: {fileID: 7733999630550986111, guid: a78dcda2b34762a41b593b72238db551, type: 3}
       propertyPath: cloth_remove_array.Array.data[2]
       value: 
