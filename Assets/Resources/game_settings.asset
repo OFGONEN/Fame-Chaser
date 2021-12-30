@@ -24,7 +24,7 @@ MonoBehaviour:
   swap_point_out_randomness: 0.5
   swap_point_out_duration: 0.75
   swap_point_in_duration: 0.75
-  player_movement_speed_lateral: 500
+  player_movement_speed_lateral: 250
   player_movement_speed_forward: 5
   player_movement_clamp_lateral: 4.5
   player_duration_cloth_off: 0.75
@@ -105,4 +105,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  camera_follow_speed: 4
+  camera_follow_depth: 2
+  camera_follow_height: 2
+  camera_follow_rotation: 15
+  camera_follow_duration: 0.75
   texture_arrow_scrollSpeed: 1.5
