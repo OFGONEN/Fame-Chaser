@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aea5dd6c77fb09642abbcfc9e3a82c95, type: 3}
-  m_Name: pool_daddy
+  m_Name: pool_daddy_1
   m_EditorClassIdentifier: 
   stackSize: 5
-  poolEntity: {fileID: 320496520650960373, guid: e7165cc7290597047845cc1e3ee3290e, type: 3}
+  poolEntity: {fileID: 1082576154909243159, guid: 31c401bf602764b2d99d187135d4b17c, type: 3}
