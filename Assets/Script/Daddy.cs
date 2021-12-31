@@ -175,6 +175,8 @@ public class Daddy : MonoBehaviour
 
 		transform.SetParent( player.transform );
 
+		animator.SetBool( "match", true );
+
 		couple_sequence = DOTween.Sequence();
 		couple_sequence.Append( transform.DOLocalMove( couple_position.localPosition, GameSettings.Instance.daddy_couple_duration ) );
 		couple_sequence.Join( transform.DOLocalRotate( couple_position.localEulerAngles, GameSettings.Instance.daddy_couple_duration / 2f ) );
@@ -196,7 +198,7 @@ public class Daddy : MonoBehaviour
 
 		couple_DetachedMethod = OnCoupleDetached_Money;
 
-		animator.SetBool( "match", true );
+		// animator.SetBool( "match", true );
 
 		SpawnMoneyOnDaddy(); // Edits couple_sequence
 		couple_sequence.OnComplete( TransferMoneyToPlayer );
