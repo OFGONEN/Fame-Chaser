@@ -16,6 +16,8 @@ MonoBehaviour:
     gameEvent: {fileID: 11400000, guid: efef06bf257ee27438d6c2aab4936226, type: 2}
   level_finished_listener:
     gameEvent: {fileID: 11400000, guid: dc03b0c65e7585c42a58477d3454e848, type: 2}
+  lane_swap_listener:
+    gameEvent: {fileID: 11400000, guid: e7fc057854197427baa5e9de0e62d3ac, type: 2}
   player_reference: {fileID: 11400000, guid: 44b2e3ec682b24496b96125c8854d105, type: 2}
 --- !u!1001 &517208299064243529
 PrefabInstance:
@@ -70,7 +72,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0063da579da01457fa903c292ffca8ba, type: 3}
       propertyPath: m_Name
-      value: char_paparazzi_rig
+      value: paparazzi
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 0063da579da01457fa903c292ffca8ba, type: 3}
       propertyPath: m_Controller

@@ -14,4 +14,17 @@ namespace FFStudio
         Vector3Y,
         Vector3Z
     }
+
+    public enum LaneType
+    {
+        Main,
+        Money,
+        Fame
+    }
+
+    public enum SwapType
+    {
+        In,
+        Out
+    }
 }

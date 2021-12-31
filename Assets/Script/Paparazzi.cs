@@ -11,6 +11,7 @@ public class Paparazzi : MonoBehaviour
 #region Fields
     [ BoxGroup( "Event Listeners" ) ] public EventListenerDelegateResponse level_start_listener;
     [ BoxGroup( "Event Listeners" ) ] public EventListenerDelegateResponse level_finished_listener;
+    [ BoxGroup( "Event Listeners" ) ] public EventListenerDelegateResponse lane_swap_listener;
 
     [ BoxGroup( "Shared Variables" ) ] public SharedReferenceNotifier player_reference;
 
@@ -33,18 +34,21 @@ public class Paparazzi : MonoBehaviour
     {
 		level_start_listener.OnEnable();
 		level_finished_listener.OnEnable();
+		lane_swap_listener.OnEnable();
 	}
 
     private void OnDisable()
     {
 		level_start_listener.OnDisable();
 		level_finished_listener.OnDisable();
+		lane_swap_listener.OnDisable();
     }
 
     private void Awake()
     {
-		level_start_listener.response = LevelStartResponse;
+		level_start_listener.response    = LevelStartResponse;
 		level_finished_listener.response = LevelFinishedResponse;
+		lane_swap_listener.response      = LaneSwapResponse;
 
 		animator = GetComponentInChildren< Animator >();
 
@@ -79,6 +83,11 @@ public class Paparazzi : MonoBehaviour
 		animator.SetBool( "match", false );
 	}
 
+	private void LaneSwapResponse()
+	{
+		var swap_event = lane_swap_listener.gameEvent as TriggerLaneEvent;
+	}
+
 	private void OnUpdate_Movement()
     {
 		var position = transform.position;
@@ -88,6 +97,7 @@ public class Paparazzi : MonoBehaviour
 	private void OnUpdate_Photo()
     {
     }
+
 #endregion
 
 #region Editor Only
