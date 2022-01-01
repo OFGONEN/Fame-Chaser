@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using FFStudio;
+using DG.Tweening;
 using NaughtyAttributes;
 
 public class Paparazzi : MonoBehaviour
@@ -86,6 +87,16 @@ public class Paparazzi : MonoBehaviour
 	private void LaneSwapResponse()
 	{
 		var swap_event = lane_swap_listener.gameEvent as TriggerLaneEvent;
+
+		if( swap_event.lane == LaneType.Fame && swap_event.swap == SwapType.In )
+		{
+			// transform.DORotate( Vector3.)
+			updateMethod = OnUpdate_Photo;
+		}
+		else if( swap_event.lane == LaneType.Fame && swap_event.swap == SwapType.Out )
+		{
+			updateMethod = OnUpdate_Movement;
+		}
 	}
 
 	private void OnUpdate_Movement()
@@ -98,6 +109,10 @@ public class Paparazzi : MonoBehaviour
 
 	private void OnUpdate_Photo()
     {
+		var position   = transform.position;
+		    position.z = player_transform.position.z;
+
+		transform.position = Vector3.Lerp( transform.position, position + Vector3.forward * GameSettings.Instance.paparazzi_photo_distance, Time.deltaTime * GameSettings.Instance.player_movement_speed_forward );
     }
 
 #endregion

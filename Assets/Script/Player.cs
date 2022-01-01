@@ -100,8 +100,6 @@ public class Player : MonoBehaviour
 		swapLane_Out        = SwapLane_Out_Money;
 		forceMainLaneMethod = SwapLane_Main;
 
-		lane_swap_event.Raise( LaneType.Fame, SwapType.In );
-
 		triggerLane_Sequence = DOTween.Sequence();
 		triggerLane_Sequence.Append( transform.DOMoveX( position.x, GameSettings.Instance.swap_point_in_duration ) );
 		triggerLane_Sequence.OnComplete( OnSwapTriggerLane_In_Money_Complete );
@@ -115,6 +113,8 @@ public class Player : MonoBehaviour
 		updateMethod        = OnUpdate_Movement_ChoiceLane;
 		swapLane_Out        = SwapLane_Out_Fame;
 		forceMainLaneMethod = SwapLane_Main;
+
+		lane_swap_event.Raise( LaneType.Fame, SwapType.In );
 
 		triggerLane_Sequence = DOTween.Sequence();
 		triggerLane_Sequence.Append( transform.DOMoveX( position.x, GameSettings.Instance.swap_point_in_duration ) );
