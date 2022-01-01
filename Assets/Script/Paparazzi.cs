@@ -90,8 +90,10 @@ public class Paparazzi : MonoBehaviour
 
 	private void OnUpdate_Movement()
     {
-		var position = transform.position;
-		transform.position = Vector3.Lerp( position, position + Vector3.forward, Time.deltaTime * GameSettings.Instance.player_movement_speed_forward );
+		var position   = transform.position;
+		    position.z = player_transform.position.z;
+
+		transform.position = Vector3.Lerp( transform.position, position + Vector3.forward, Time.deltaTime * GameSettings.Instance.player_movement_speed_forward );
 	}
 
 	private void OnUpdate_Photo()
