@@ -114,4 +114,12 @@ MonoBehaviour:
   paparazzi_photo_distance: 3
   currency_level_dolar: 19000000280000003c00000064000000
   currency_level_fame: 0a000000140000001e00000032000000
+  cloth_outline_color:
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 0.85638046, b: 0, a: 1}
+  - {r: 1, g: 0.44843483, b: 0, a: 1}
+  cloth_outline_widht:
+  - 2
+  - 2.5
+  - 3
   texture_arrow_scrollSpeed: 1.5

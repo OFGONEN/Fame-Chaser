@@ -65,6 +65,9 @@ namespace FFStudio
 
         [ BoxGroup( "Currency" ) ] public int[] currency_level_dolar;
         [ BoxGroup( "Currency" ) ] public int[] currency_level_fame;
+
+        [ BoxGroup( "Cloth" ) ] public Color[] cloth_outline_color;
+        [ BoxGroup( "Cloth" ) ] public float[] cloth_outline_widht;
         
         [ BoxGroup( "Texture" ) ] public float texture_arrow_scrollSpeed = 1.0f;
 #endregion
