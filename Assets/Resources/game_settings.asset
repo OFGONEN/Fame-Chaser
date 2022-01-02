@@ -110,6 +110,6 @@ MonoBehaviour:
   camera_follow_height: 2
   camera_follow_rotation: 15
   camera_follow_duration: 0.75
-  paparazzi_rotate_duration: 0.15
+  paparazzi_rotate_duration: 0.35
   paparazzi_photo_distance: 3
   texture_arrow_scrollSpeed: 1.5
