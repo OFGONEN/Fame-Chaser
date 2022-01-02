@@ -17,6 +17,7 @@ public class Daddy : MonoBehaviour
     [ BoxGroup( "Shared Variables" ), SerializeField ] private SharedReferenceNotifier daddy_start_position;
     [ BoxGroup( "Shared Variables" ), SerializeField ] private SharedReferenceNotifier daddy_end_position;
 
+    [ BoxGroup( "Setup" ) ] public ParticleSpawnEvent money_particle;
     [ BoxGroup( "Setup" ) ] public Transform daddy_money_position;
      
 
@@ -288,6 +289,8 @@ public class Daddy : MonoBehaviour
 		{
 			daddy_money_list[ i ].Deposit();
 		}
+
+		money_particle.Raise( "stack_money", player_money_position.position );
 
 		player.GainMoney( money_amount );
 	}
