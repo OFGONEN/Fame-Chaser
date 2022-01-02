@@ -144,7 +144,7 @@ public class Player : MonoBehaviour
 
 		var renderer = cloth_renderers[ index ];
 
-		renderer.sharedMaterials = data.cloth_renderer.sharedMaterials;
+		renderer.sharedMaterials[ 0 ] = data.cloth_renderer.sharedMaterials[ 0 ];
 		renderer.localBounds     = data.cloth_renderer.localBounds;
 		renderer.sharedMesh      = data.cloth_renderer.sharedMesh;
 		renderer.rootBone        = cloth_reference_renderer.rootBone;
@@ -287,7 +287,7 @@ public class Player : MonoBehaviour
 
 		var renderer = cloth_renderers[ index ];
 
-		renderer.sharedMaterials = clothEnum.default_cloth.sharedMaterials;
+		renderer.sharedMaterials[ 0 ] = clothEnum.default_cloth.sharedMaterials[ 0 ];
 		renderer.localBounds     = clothEnum.default_cloth.localBounds;
 		renderer.sharedMesh      = clothEnum.default_cloth.sharedMesh;
 		renderer.rootBone        = cloth_reference_renderer.rootBone;
