@@ -240,6 +240,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: collectable_money_50
       objectReference: {fileID: 0}
+    - target: {fileID: 3300896818979776620, guid: b95be6748320585499f3c3da327d6d84, type: 3}
+      propertyPath: money_count
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b95be6748320585499f3c3da327d6d84, type: 3}
 --- !u!4 &44645260 stripped
@@ -301,6 +305,10 @@ PrefabInstance:
     - target: {fileID: 1152786899287386249, guid: b95be6748320585499f3c3da327d6d84, type: 3}
       propertyPath: m_Name
       value: collectable_money_42
+      objectReference: {fileID: 0}
+    - target: {fileID: 3300896818979776620, guid: b95be6748320585499f3c3da327d6d84, type: 3}
+      propertyPath: money_count
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b95be6748320585499f3c3da327d6d84, type: 3}
@@ -488,6 +496,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: collectable_money_47
       objectReference: {fileID: 0}
+    - target: {fileID: 3300896818979776620, guid: b95be6748320585499f3c3da327d6d84, type: 3}
+      propertyPath: money_count
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b95be6748320585499f3c3da327d6d84, type: 3}
 --- !u!4 &113505666 stripped
@@ -611,6 +623,10 @@ PrefabInstance:
     - target: {fileID: 1152786899287386249, guid: b95be6748320585499f3c3da327d6d84, type: 3}
       propertyPath: m_Name
       value: collectable_money_60
+      objectReference: {fileID: 0}
+    - target: {fileID: 3300896818979776620, guid: b95be6748320585499f3c3da327d6d84, type: 3}
+      propertyPath: money_count
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b95be6748320585499f3c3da327d6d84, type: 3}
@@ -971,6 +987,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: collectable_money_5
       objectReference: {fileID: 0}
+    - target: {fileID: 3300896818979776620, guid: b95be6748320585499f3c3da327d6d84, type: 3}
+      propertyPath: money_count
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b95be6748320585499f3c3da327d6d84, type: 3}
 --- !u!4 &234636354 stripped
@@ -1095,6 +1115,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: collectable_money_40
       objectReference: {fileID: 0}
+    - target: {fileID: 3300896818979776620, guid: b95be6748320585499f3c3da327d6d84, type: 3}
+      propertyPath: money_count
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b95be6748320585499f3c3da327d6d84, type: 3}
 --- !u!4 &249773296 stripped
@@ -1156,6 +1180,10 @@ PrefabInstance:
     - target: {fileID: 1152786899287386249, guid: b95be6748320585499f3c3da327d6d84, type: 3}
       propertyPath: m_Name
       value: collectable_money_4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3300896818979776620, guid: b95be6748320585499f3c3da327d6d84, type: 3}
+      propertyPath: money_count
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b95be6748320585499f3c3da327d6d84, type: 3}
@@ -1368,6 +1396,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: collectable_money_14
       objectReference: {fileID: 0}
+    - target: {fileID: 3300896818979776620, guid: b95be6748320585499f3c3da327d6d84, type: 3}
+      propertyPath: money_count
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b95be6748320585499f3c3da327d6d84, type: 3}
 --- !u!4 &372172977 stripped
@@ -1554,6 +1586,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: collectable_money_32
       objectReference: {fileID: 0}
+    - target: {fileID: 3300896818979776620, guid: b95be6748320585499f3c3da327d6d84, type: 3}
+      propertyPath: money_count
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b95be6748320585499f3c3da327d6d84, type: 3}
 --- !u!4 &416980880 stripped
@@ -1672,6 +1708,10 @@ PrefabInstance:
     - target: {fileID: 1152786899287386249, guid: b95be6748320585499f3c3da327d6d84, type: 3}
       propertyPath: m_Name
       value: collectable_money_30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3300896818979776620, guid: b95be6748320585499f3c3da327d6d84, type: 3}
+      propertyPath: money_count
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b95be6748320585499f3c3da327d6d84, type: 3}
@@ -2087,6 +2127,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: collectable_money_24
       objectReference: {fileID: 0}
+    - target: {fileID: 3300896818979776620, guid: b95be6748320585499f3c3da327d6d84, type: 3}
+      propertyPath: money_count
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b95be6748320585499f3c3da327d6d84, type: 3}
 --- !u!4 &495497706 stripped
@@ -2148,6 +2192,10 @@ PrefabInstance:
     - target: {fileID: 1152786899287386249, guid: b95be6748320585499f3c3da327d6d84, type: 3}
       propertyPath: m_Name
       value: collectable_money_55
+      objectReference: {fileID: 0}
+    - target: {fileID: 3300896818979776620, guid: b95be6748320585499f3c3da327d6d84, type: 3}
+      propertyPath: money_count
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b95be6748320585499f3c3da327d6d84, type: 3}
@@ -2408,6 +2456,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: collectable_money_56
       objectReference: {fileID: 0}
+    - target: {fileID: 3300896818979776620, guid: b95be6748320585499f3c3da327d6d84, type: 3}
+      propertyPath: money_count
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b95be6748320585499f3c3da327d6d84, type: 3}
 --- !u!4 &623378856 stripped
@@ -2469,6 +2521,10 @@ PrefabInstance:
     - target: {fileID: 1152786899287386249, guid: b95be6748320585499f3c3da327d6d84, type: 3}
       propertyPath: m_Name
       value: collectable_money_7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3300896818979776620, guid: b95be6748320585499f3c3da327d6d84, type: 3}
+      propertyPath: money_count
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b95be6748320585499f3c3da327d6d84, type: 3}
@@ -2594,6 +2650,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: collectable_money_49
       objectReference: {fileID: 0}
+    - target: {fileID: 3300896818979776620, guid: b95be6748320585499f3c3da327d6d84, type: 3}
+      propertyPath: money_count
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b95be6748320585499f3c3da327d6d84, type: 3}
 --- !u!4 &680696120 stripped
@@ -2656,6 +2716,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: collectable_money_29
       objectReference: {fileID: 0}
+    - target: {fileID: 3300896818979776620, guid: b95be6748320585499f3c3da327d6d84, type: 3}
+      propertyPath: money_count
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b95be6748320585499f3c3da327d6d84, type: 3}
 --- !u!4 &696176783 stripped
@@ -2717,6 +2781,10 @@ PrefabInstance:
     - target: {fileID: 1152786899287386249, guid: b95be6748320585499f3c3da327d6d84, type: 3}
       propertyPath: m_Name
       value: collectable_money_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3300896818979776620, guid: b95be6748320585499f3c3da327d6d84, type: 3}
+      propertyPath: money_count
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b95be6748320585499f3c3da327d6d84, type: 3}
@@ -2809,6 +2877,10 @@ PrefabInstance:
     - target: {fileID: 1152786899287386249, guid: b95be6748320585499f3c3da327d6d84, type: 3}
       propertyPath: m_Name
       value: collectable_money_13
+      objectReference: {fileID: 0}
+    - target: {fileID: 3300896818979776620, guid: b95be6748320585499f3c3da327d6d84, type: 3}
+      propertyPath: money_count
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b95be6748320585499f3c3da327d6d84, type: 3}
@@ -3058,6 +3130,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: collectable_money_57
       objectReference: {fileID: 0}
+    - target: {fileID: 3300896818979776620, guid: b95be6748320585499f3c3da327d6d84, type: 3}
+      propertyPath: money_count
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b95be6748320585499f3c3da327d6d84, type: 3}
 --- !u!4 &765577399 stripped
@@ -3119,6 +3195,10 @@ PrefabInstance:
     - target: {fileID: 1152786899287386249, guid: b95be6748320585499f3c3da327d6d84, type: 3}
       propertyPath: m_Name
       value: collectable_money_9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3300896818979776620, guid: b95be6748320585499f3c3da327d6d84, type: 3}
+      propertyPath: money_count
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b95be6748320585499f3c3da327d6d84, type: 3}
@@ -3244,6 +3324,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: collectable_money_31
       objectReference: {fileID: 0}
+    - target: {fileID: 3300896818979776620, guid: b95be6748320585499f3c3da327d6d84, type: 3}
+      propertyPath: money_count
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b95be6748320585499f3c3da327d6d84, type: 3}
 --- !u!4 &834342563 stripped
@@ -3367,6 +3451,10 @@ PrefabInstance:
     - target: {fileID: 1152786899287386249, guid: b95be6748320585499f3c3da327d6d84, type: 3}
       propertyPath: m_Name
       value: collectable_money_28
+      objectReference: {fileID: 0}
+    - target: {fileID: 3300896818979776620, guid: b95be6748320585499f3c3da327d6d84, type: 3}
+      propertyPath: money_count
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b95be6748320585499f3c3da327d6d84, type: 3}
@@ -3554,6 +3642,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: collectable_money_8
       objectReference: {fileID: 0}
+    - target: {fileID: 3300896818979776620, guid: b95be6748320585499f3c3da327d6d84, type: 3}
+      propertyPath: money_count
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b95be6748320585499f3c3da327d6d84, type: 3}
 --- !u!4 &880953860 stripped
@@ -3708,6 +3800,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: collectable_money_52
       objectReference: {fileID: 0}
+    - target: {fileID: 3300896818979776620, guid: b95be6748320585499f3c3da327d6d84, type: 3}
+      propertyPath: money_count
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b95be6748320585499f3c3da327d6d84, type: 3}
 --- !u!4 &939695419 stripped
@@ -3832,6 +3928,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: collectable_money_26
       objectReference: {fileID: 0}
+    - target: {fileID: 3300896818979776620, guid: b95be6748320585499f3c3da327d6d84, type: 3}
+      propertyPath: money_count
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b95be6748320585499f3c3da327d6d84, type: 3}
 --- !u!4 &949130643 stripped
@@ -3894,6 +3994,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: collectable_money_48
       objectReference: {fileID: 0}
+    - target: {fileID: 3300896818979776620, guid: b95be6748320585499f3c3da327d6d84, type: 3}
+      propertyPath: money_count
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b95be6748320585499f3c3da327d6d84, type: 3}
 --- !u!4 &962149281 stripped
@@ -3955,6 +4059,10 @@ PrefabInstance:
     - target: {fileID: 1152786899287386249, guid: b95be6748320585499f3c3da327d6d84, type: 3}
       propertyPath: m_Name
       value: collectable_money_45
+      objectReference: {fileID: 0}
+    - target: {fileID: 3300896818979776620, guid: b95be6748320585499f3c3da327d6d84, type: 3}
+      propertyPath: money_count
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b95be6748320585499f3c3da327d6d84, type: 3}
@@ -4080,6 +4188,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: collectable_money_46
       objectReference: {fileID: 0}
+    - target: {fileID: 3300896818979776620, guid: b95be6748320585499f3c3da327d6d84, type: 3}
+      propertyPath: money_count
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b95be6748320585499f3c3da327d6d84, type: 3}
 --- !u!4 &1032011644 stripped
@@ -4141,6 +4253,10 @@ PrefabInstance:
     - target: {fileID: 1152786899287386249, guid: b95be6748320585499f3c3da327d6d84, type: 3}
       propertyPath: m_Name
       value: collectable_money_41
+      objectReference: {fileID: 0}
+    - target: {fileID: 3300896818979776620, guid: b95be6748320585499f3c3da327d6d84, type: 3}
+      propertyPath: money_count
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b95be6748320585499f3c3da327d6d84, type: 3}
@@ -4476,6 +4592,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: collectable_money_43
       objectReference: {fileID: 0}
+    - target: {fileID: 3300896818979776620, guid: b95be6748320585499f3c3da327d6d84, type: 3}
+      propertyPath: money_count
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b95be6748320585499f3c3da327d6d84, type: 3}
 --- !u!4 &1114786475 stripped
@@ -4537,6 +4657,10 @@ PrefabInstance:
     - target: {fileID: 1152786899287386249, guid: b95be6748320585499f3c3da327d6d84, type: 3}
       propertyPath: m_Name
       value: collectable_money_54
+      objectReference: {fileID: 0}
+    - target: {fileID: 3300896818979776620, guid: b95be6748320585499f3c3da327d6d84, type: 3}
+      propertyPath: money_count
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b95be6748320585499f3c3da327d6d84, type: 3}
@@ -5064,6 +5188,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: collectable_money_2
       objectReference: {fileID: 0}
+    - target: {fileID: 3300896818979776620, guid: b95be6748320585499f3c3da327d6d84, type: 3}
+      propertyPath: money_count
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b95be6748320585499f3c3da327d6d84, type: 3}
 --- !u!4 &1229463261 stripped
@@ -5250,6 +5378,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: collectable_money_25
       objectReference: {fileID: 0}
+    - target: {fileID: 3300896818979776620, guid: b95be6748320585499f3c3da327d6d84, type: 3}
+      propertyPath: money_count
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b95be6748320585499f3c3da327d6d84, type: 3}
 --- !u!4 &1302868864 stripped
@@ -5312,6 +5444,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: collectable_money_10
       objectReference: {fileID: 0}
+    - target: {fileID: 3300896818979776620, guid: b95be6748320585499f3c3da327d6d84, type: 3}
+      propertyPath: money_count
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b95be6748320585499f3c3da327d6d84, type: 3}
 --- !u!4 &1310205355 stripped
@@ -5373,6 +5509,10 @@ PrefabInstance:
     - target: {fileID: 1152786899287386249, guid: b95be6748320585499f3c3da327d6d84, type: 3}
       propertyPath: m_Name
       value: collectable_money_35
+      objectReference: {fileID: 0}
+    - target: {fileID: 3300896818979776620, guid: b95be6748320585499f3c3da327d6d84, type: 3}
+      propertyPath: money_count
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b95be6748320585499f3c3da327d6d84, type: 3}
@@ -5642,6 +5782,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: collectable_money
       objectReference: {fileID: 0}
+    - target: {fileID: 3300896818979776620, guid: b95be6748320585499f3c3da327d6d84, type: 3}
+      propertyPath: money_count
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b95be6748320585499f3c3da327d6d84, type: 3}
 --- !u!4 &1385666451 stripped
@@ -5795,6 +5939,10 @@ PrefabInstance:
     - target: {fileID: 1152786899287386249, guid: b95be6748320585499f3c3da327d6d84, type: 3}
       propertyPath: m_Name
       value: collectable_money_36
+      objectReference: {fileID: 0}
+    - target: {fileID: 3300896818979776620, guid: b95be6748320585499f3c3da327d6d84, type: 3}
+      propertyPath: money_count
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b95be6748320585499f3c3da327d6d84, type: 3}
@@ -6012,6 +6160,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: collectable_money_12
       objectReference: {fileID: 0}
+    - target: {fileID: 3300896818979776620, guid: b95be6748320585499f3c3da327d6d84, type: 3}
+      propertyPath: money_count
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b95be6748320585499f3c3da327d6d84, type: 3}
 --- !u!4 &1493118789 stripped
@@ -6135,6 +6287,10 @@ PrefabInstance:
     - target: {fileID: 1152786899287386249, guid: b95be6748320585499f3c3da327d6d84, type: 3}
       propertyPath: m_Name
       value: collectable_money_37
+      objectReference: {fileID: 0}
+    - target: {fileID: 3300896818979776620, guid: b95be6748320585499f3c3da327d6d84, type: 3}
+      propertyPath: money_count
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b95be6748320585499f3c3da327d6d84, type: 3}
@@ -6329,6 +6485,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: collectable_money_53
       objectReference: {fileID: 0}
+    - target: {fileID: 3300896818979776620, guid: b95be6748320585499f3c3da327d6d84, type: 3}
+      propertyPath: money_count
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b95be6748320585499f3c3da327d6d84, type: 3}
 --- !u!4 &1566889127 stripped
@@ -6515,6 +6675,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: collectable_money_33
       objectReference: {fileID: 0}
+    - target: {fileID: 3300896818979776620, guid: b95be6748320585499f3c3da327d6d84, type: 3}
+      propertyPath: money_count
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b95be6748320585499f3c3da327d6d84, type: 3}
 --- !u!4 &1680893888 stripped
@@ -6576,6 +6740,10 @@ PrefabInstance:
     - target: {fileID: 1152786899287386249, guid: b95be6748320585499f3c3da327d6d84, type: 3}
       propertyPath: m_Name
       value: collectable_money_27
+      objectReference: {fileID: 0}
+    - target: {fileID: 3300896818979776620, guid: b95be6748320585499f3c3da327d6d84, type: 3}
+      propertyPath: money_count
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b95be6748320585499f3c3da327d6d84, type: 3}
@@ -6668,6 +6836,10 @@ PrefabInstance:
     - target: {fileID: 1152786899287386249, guid: b95be6748320585499f3c3da327d6d84, type: 3}
       propertyPath: m_Name
       value: collectable_money_39
+      objectReference: {fileID: 0}
+    - target: {fileID: 3300896818979776620, guid: b95be6748320585499f3c3da327d6d84, type: 3}
+      propertyPath: money_count
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b95be6748320585499f3c3da327d6d84, type: 3}
@@ -7128,6 +7300,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: collectable_money_44
       objectReference: {fileID: 0}
+    - target: {fileID: 3300896818979776620, guid: b95be6748320585499f3c3da327d6d84, type: 3}
+      propertyPath: money_count
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b95be6748320585499f3c3da327d6d84, type: 3}
 --- !u!4 &1863915914 stripped
@@ -7251,6 +7427,10 @@ PrefabInstance:
     - target: {fileID: 1152786899287386249, guid: b95be6748320585499f3c3da327d6d84, type: 3}
       propertyPath: m_Name
       value: collectable_money_38
+      objectReference: {fileID: 0}
+    - target: {fileID: 3300896818979776620, guid: b95be6748320585499f3c3da327d6d84, type: 3}
+      propertyPath: money_count
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b95be6748320585499f3c3da327d6d84, type: 3}
@@ -7778,6 +7958,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: collectable_money_6
       objectReference: {fileID: 0}
+    - target: {fileID: 3300896818979776620, guid: b95be6748320585499f3c3da327d6d84, type: 3}
+      propertyPath: money_count
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b95be6748320585499f3c3da327d6d84, type: 3}
 --- !u!4 &2046840872 stripped
@@ -7839,6 +8023,10 @@ PrefabInstance:
     - target: {fileID: 1152786899287386249, guid: b95be6748320585499f3c3da327d6d84, type: 3}
       propertyPath: m_Name
       value: collectable_money_51
+      objectReference: {fileID: 0}
+    - target: {fileID: 3300896818979776620, guid: b95be6748320585499f3c3da327d6d84, type: 3}
+      propertyPath: money_count
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b95be6748320585499f3c3da327d6d84, type: 3}
@@ -7964,6 +8152,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: collectable_money_34
       objectReference: {fileID: 0}
+    - target: {fileID: 3300896818979776620, guid: b95be6748320585499f3c3da327d6d84, type: 3}
+      propertyPath: money_count
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b95be6748320585499f3c3da327d6d84, type: 3}
 --- !u!4 &2107183078 stripped
@@ -8088,6 +8280,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: collectable_money_3
       objectReference: {fileID: 0}
+    - target: {fileID: 3300896818979776620, guid: b95be6748320585499f3c3da327d6d84, type: 3}
+      propertyPath: money_count
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b95be6748320585499f3c3da327d6d84, type: 3}
 --- !u!4 &2117824195 stripped
@@ -8206,6 +8402,10 @@ PrefabInstance:
     - target: {fileID: 1152786899287386249, guid: b95be6748320585499f3c3da327d6d84, type: 3}
       propertyPath: m_Name
       value: collectable_money_11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3300896818979776620, guid: b95be6748320585499f3c3da327d6d84, type: 3}
+      propertyPath: money_count
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b95be6748320585499f3c3da327d6d84, type: 3}
