@@ -40,7 +40,11 @@ public class Collectable_Cloth : Interactable
     {
         var player = other.GetComponent< TriggerListener >().AttachedComponent as Player;
 
-        if( !player.SpendMoney( cloth_cost ) )
+        var currency = GameSettings.Instance.currency_level_dolar;
+
+		var random_currency = Random.Range( currency[ cloth_cost - 1 ], currency[ cloth_cost ] );
+
+		if( !player.SpendMoney( random_currency ) )
 			return;
 		
         player.DressCloth( new ClothData( cloth_renderer, cloth_type, cloth_cost, cloth_fame ) );

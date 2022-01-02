@@ -62,6 +62,9 @@ namespace FFStudio
 
         [ BoxGroup( "Paparazzi" ) ] public float paparazzi_rotate_duration = 0.15f;
         [ BoxGroup( "Paparazzi" ) ] public float paparazzi_photo_distance = 1f;
+
+        [ BoxGroup( "Currency" ) ] public int[] currency_level_dolar;
+        [ BoxGroup( "Currency" ) ] public int[] currency_level_fame;
         
         [ BoxGroup( "Texture" ) ] public float texture_arrow_scrollSpeed = 1.0f;
 #endregion

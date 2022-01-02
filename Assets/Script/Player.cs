@@ -300,7 +300,11 @@ public class Player : MonoBehaviour
 		var data     = cloth_data_array[ index ];
 		var renderer = cloth_renderers[ index ];
 
-		fame_count += data.cloth_fame;
+		var currency = GameSettings.Instance.currency_level_fame;
+
+		var random_fame = Random.Range( currency[ data.cloth_fame - 1 ], currency[ data.cloth_fame ] );
+
+		fame_count += random_fame;
 
 		DressCloth( cloth_data_array[ index ].cloth_type );
 		cloth_data_array[ index ].Clear();
