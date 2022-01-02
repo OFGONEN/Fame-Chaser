@@ -243,12 +243,13 @@ public class Daddy : MonoBehaviour
 
 			money.ChangeDepositMethod();
 
-			if( index <= daddy_money_list.Count / 2 )
+			if( index < daddy_money_list.Count / 2 )
 				curve = GameSettings.Instance.curve_downward;
 			else
 				curve = GameSettings.Instance.curve_upward;
 
 			couple_sequence.AppendCallback( () => player_money_list.Add( money ) );
+			couple_sequence.AppendCallback( () => money.transform.SetParent( player_money_position ) );
 			couple_sequence.Append( money.transform.DOLocalMoveX( position.x, duration ) );
 			couple_sequence.Join( money.transform.DOLocalMoveY( position.y + index * height, duration ).SetEase( curve ) );
 			couple_sequence.Join( money.transform.DOLocalMoveZ( position.z, duration ) );
@@ -294,8 +295,8 @@ public class Daddy : MonoBehaviour
 	private void SpawnMoney( int index, int moneyCount )
 	{
 		var money = money_pool.GetEntity();
-		money.transform.SetParent( transform.parent );
-		money.transform.position = daddy_money_position.position + index * GameSettings.Instance.daddy_money_height * Vector3.up;
+		money.transform.SetParent( daddy_money_position );
+		money.transform.localPosition = index * GameSettings.Instance.daddy_money_height * Vector3.up;
 		money.transform.rotation = daddy_money_position.rotation;
 		money.gameObject.SetActive( true );
 
