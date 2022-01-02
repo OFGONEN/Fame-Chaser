@@ -90,11 +90,14 @@ public class Paparazzi : MonoBehaviour
 
 		if( swap_event.lane == LaneType.Fame && swap_event.swap == SwapType.In )
 		{
-			// transform.DORotate( Vector3.)
+			animator.SetBool( "match", true );
+			transform.DORotate( Vector3.up * 180f, GameSettings.Instance.paparazzi_rotate_duration );
 			updateMethod = OnUpdate_Photo;
 		}
 		else if( swap_event.lane == LaneType.Fame && swap_event.swap == SwapType.Out )
 		{
+			animator.SetBool( "match", false );
+			transform.DORotate( Vector3.zero, GameSettings.Instance.paparazzi_rotate_duration );
 			updateMethod = OnUpdate_Movement;
 		}
 	}
