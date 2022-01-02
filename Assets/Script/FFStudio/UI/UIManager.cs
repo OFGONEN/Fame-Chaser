@@ -15,8 +15,9 @@ namespace FFStudio
         public EventListenerDelegateResponse levelCompleteResponse;
         public EventListenerDelegateResponse levelFailResponse;
         public EventListenerDelegateResponse tapInputListener;
+		public EventListenerDelegateResponse ui_particle_listener;
 
-        [ Header( "UI Elements" ) ]
+		[ Header( "UI Elements" ) ]
         public UILoadingBar levelLoadingBar;
 		public UIText levelLoadingText;
 		public UILoadingBar levelProgressBar;
@@ -44,7 +45,8 @@ namespace FFStudio
             levelFailResponse.OnEnable();
             levelCompleteResponse.OnEnable();
             tapInputListener.OnEnable();
-        }
+			ui_particle_listener.OnEnable();
+		}
 
         private void OnDisable()
         {
@@ -52,6 +54,7 @@ namespace FFStudio
             levelFailResponse.OnDisable();
             levelCompleteResponse.OnDisable();
             tapInputListener.OnDisable();
+			ui_particle_listener.OnDisable();
         }
 
         private void Awake()
@@ -60,6 +63,8 @@ namespace FFStudio
             levelFailResponse.response     = LevelFailResponse;
             levelCompleteResponse.response = LevelCompleteResponse;
             tapInputListener.response      = ExtensionMethods.EmptyMethod;
+
+			ui_particle_listener.response = UIParticleResponse;
 
 			ui_particle_pool.InitPool( ui_dynamic_canvas );
 
@@ -118,6 +123,16 @@ namespace FFStudio
             elephantLevelEvent.elephantEventType = ElephantEvent.LevelFailed;
             elephantLevelEvent.Raise();
         }
+
+        private void UIParticleResponse()
+        {
+			var particle_event = ui_particle_listener.gameEvent as UIParticle_Event;
+
+            var ui_particle = ui_particle_pool.GetEntity();
+			ui_particle.imageRenderer.sprite = particle_event.sprite;
+
+			ui_particle.Spawn( particle_event.position_start, particle_event.position_end );
+		}
 
         private void NewLevelLoaded()
         {

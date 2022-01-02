@@ -9,12 +9,13 @@ public class Test_UIParticle : MonoBehaviour
 {
 #region Fields
     // public UIParticle[] particle;
-    public int particle_count;
+    public UIParticle_Event particle_event;
 
     public RectTransform spawn_position;
     public RectTransform target_position;
+	public Sprite sprite;
 
-    public UIParticle_Pool pool;
+	public UIParticle_Pool pool;
 #endregion
 
 #region Properties
@@ -27,11 +28,7 @@ public class Test_UIParticle : MonoBehaviour
     [ Button() ]
     public void  Test()
     {
-        for( var i = 0; i < particle_count; i++ )
-        {
-			var particle = pool.GetEntity();
-			particle.Spawn( spawn_position.position, target_position.position );
-        }
+		particle_event.Raise( sprite, spawn_position.position, target_position.position );
 	}
 #endregion
 

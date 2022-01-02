@@ -876,6 +876,8 @@ MonoBehaviour:
     gameEvent: {fileID: 11400000, guid: ec850936269bc2e47b26cfebd8bdad97, type: 2}
   tapInputListener:
     gameEvent: {fileID: 11400000, guid: 182cfa2632cfdba49bfaf3471d114d23, type: 2}
+  ui_particle_listener:
+    gameEvent: {fileID: 11400000, guid: 7e2edc6fea519ed49bd13893d8734ceb, type: 2}
   levelLoadingBar: {fileID: 124199663324013123}
   levelLoadingText: {fileID: 124199664755808479}
   levelProgressBar: {fileID: 573053808394766274}
