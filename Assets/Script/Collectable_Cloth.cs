@@ -16,12 +16,20 @@ public class Collectable_Cloth : Interactable
 
     // Private \\
     private TriggerListener cloth_trigger;
+    private PriceTag cloth_price_tag;
 #endregion
 
 #region Properties
 #endregion
 
 #region Unity API
+    protected override void Awake()
+    {
+		base.Awake();
+
+		cloth_price_tag = GetComponentInChildren< PriceTag >();
+		cloth_price_tag.SetText( cloth_cost, cloth_fame );
+	}
 #endregion
 
 #region API

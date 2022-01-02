@@ -26,7 +26,7 @@ public abstract class Interactable : MonoBehaviour
 		triggerListener.Unsubscribe( OnTrigger );
 	}
 
-    private void Awake()
+    protected virtual void Awake()
     {
         triggerListener = GetComponentInChildren< TriggerListener >();
     }
