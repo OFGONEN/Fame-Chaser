@@ -59,6 +59,9 @@ namespace FFStudio
         [ BoxGroup( "Camera" ) ] public float camera_follow_height;
         [ BoxGroup( "Camera" ) ] public float camera_follow_rotation;
         [ BoxGroup( "Camera" ) ] public float camera_follow_duration;
+
+        [ BoxGroup( "Paparazzi" ) ] public float paparazzi_rotate_duration = 0.15f;
+        [ BoxGroup( "Paparazzi" ) ] public float paparazzi_photo_distance = 1f;
         
         [ BoxGroup( "Texture" ) ] public float texture_arrow_scrollSpeed = 1.0f;
 #endregion

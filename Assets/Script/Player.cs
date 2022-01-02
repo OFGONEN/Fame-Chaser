@@ -17,7 +17,9 @@ public class Player : MonoBehaviour
 
 	[ BoxGroup( "Shared Variables" ), SerializeField ] private SharedFloat input_horizontal;
 
-	[ BoxGroup( "Setup" ), SerializeField ] private ParticleSpawnEvent cloth_particle; 
+	[ BoxGroup( "Fired Events" ), SerializeField ] private ParticleSpawnEvent cloth_event; 
+	[ BoxGroup( "Fired Events" ), SerializeField ] private TriggerLaneEvent lane_swap_event; 
+
 	[ BoxGroup( "Setup" ), SerializeField ] private SkinnedMeshRenderer[] cloth_renderers; // Hat, Shirt, Skirt, Shoe
 	[ BoxGroup( "Setup" ), SerializeField ] private SkinnedMeshRenderer cloth_reference_renderer; 
 	[ BoxGroup( "Setup" ), SerializeField ] private Transform couple_position; 
@@ -112,6 +114,8 @@ public class Player : MonoBehaviour
 		swapLane_Out        = SwapLane_Out_Fame;
 		forceMainLaneMethod = SwapLane_Main;
 
+		lane_swap_event.Raise( LaneType.Fame, SwapType.In );
+
 		triggerLane_Sequence = DOTween.Sequence();
 		triggerLane_Sequence.Append( transform.DOMoveX( position.x, GameSettings.Instance.swap_point_in_duration ) );
 		triggerLane_Sequence.OnComplete( OnSwapTriggerLane_In_Fame_Complete );
@@ -146,7 +150,7 @@ public class Player : MonoBehaviour
 		renderer.rootBone        = cloth_reference_renderer.rootBone;
 		renderer.bones           = cloth_reference_renderer.bones;
 
-		cloth_particle.Raise( "cloth", renderer.bounds.center );
+		cloth_event.Raise( "cloth", renderer.bounds.center );
 	}
 
 	public void TakeClothesOff( ClothEnum[] clothesToRemove )
@@ -247,6 +251,7 @@ public class Player : MonoBehaviour
     private void SwapLane_Out_Fame()
     {
 		animator.SetBool( "cloth", false );
+		lane_swap_event.Raise( LaneType.Fame, SwapType.Out );
 	}
 
     private void SwapLane_Out_Money()
@@ -300,7 +305,7 @@ public class Player : MonoBehaviour
 		DressCloth( cloth_data_array[ index ].cloth_type );
 		cloth_data_array[ index ].Clear();
 
-		cloth_particle.Raise( "fame", renderer.bounds.center );
+		cloth_event.Raise( "fame", renderer.bounds.center );
 	}
 
 	private void Delayed_TakeClothOff( int index )
