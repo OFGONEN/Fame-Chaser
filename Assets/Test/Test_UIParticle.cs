@@ -8,10 +8,13 @@ using NaughtyAttributes;
 public class Test_UIParticle : MonoBehaviour
 {
 #region Fields
-    public UIParticle[] particle;
+    // public UIParticle[] particle;
+    public int particle_count;
 
     public RectTransform spawn_position;
     public RectTransform target_position;
+
+    public UIParticle_Pool pool;
 #endregion
 
 #region Properties
@@ -24,9 +27,10 @@ public class Test_UIParticle : MonoBehaviour
     [ Button() ]
     public void  Test()
     {
-        for( var i = 0; i < particle.Length; i++ )
+        for( var i = 0; i < particle_count; i++ )
         {
-		    particle[ i ].Spawn( spawn_position.position, target_position.position );
+			var particle = pool.GetEntity();
+			particle.Spawn( spawn_position.position, target_position.position );
         }
 	}
 #endregion

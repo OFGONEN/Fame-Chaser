@@ -31,6 +31,10 @@ namespace FFStudio
         public GameEvent loadNewLevelEvent;
         public GameEvent resetLevelEvent;
         public ElephantLevelEvent elephantLevelEvent;
+
+        [ Header( "Setup" ) ]
+        public UIParticle_Pool ui_particle_pool;
+        public RectTransform ui_dynamic_canvas;
 #endregion
 
 #region Unity API
@@ -57,7 +61,9 @@ namespace FFStudio
             levelCompleteResponse.response = LevelCompleteResponse;
             tapInputListener.response      = ExtensionMethods.EmptyMethod;
 
-            informationText.textRenderer.text = "Tap to Start";
+			ui_particle_pool.InitPool( ui_dynamic_canvas );
+
+			informationText.textRenderer.text = "Tap to Start";
         }
 #endregion
 

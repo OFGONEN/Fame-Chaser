@@ -10,6 +10,7 @@ using NaughtyAttributes;
 public class UIParticle : UIImage
 {
 #region Fields
+	public UIParticle_Pool ui_pool_particle;
     // Private \\
     private Sequence particle_sequence;
 #endregion
@@ -57,8 +58,7 @@ public class UIParticle : UIImage
 	private void OnParticle_Complete()
 	{
 		particle_sequence = particle_sequence.KillProper();
-
-		gameObject.SetActive( false );
+		ui_pool_particle.ReturnEntity( this );
 	}
 #endregion
 
