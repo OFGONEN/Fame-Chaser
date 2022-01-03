@@ -32,6 +32,10 @@ namespace FFStudio
         [ Foldout( "UI Particle" ), Tooltip( "UI Particle - spawn radius"     ) ] public int ui_particle_spawn_radius;
         [ Foldout( "UI Particle" ), Tooltip( "UI Particle - horizontal move ease positive"     ) ] public AnimationCurve ui_particle_ease_horizontal_positive;
         [ Foldout( "UI Particle" ), Tooltip( "UI Particle - horizontal move ease negative"     ) ] public AnimationCurve ui_particle_ease_horizontal_negative;
+        [ Foldout( "UI Particle" ) ] public float ui_particle_fame_count;
+        [ Foldout( "UI Particle" ) ] public float ui_particle_dolar_count;
+        [ Foldout( "UI Particle" ) ] public Sprite ui_particle_fame_sprite;
+        [ Foldout( "UI Particle" ) ] public Sprite ui_particle_dolar_sprite;
 
         [ BoxGroup( "SwapTriggerLane" ) ] public float swap_point_out_randomness = 1f;
         [ BoxGroup( "SwapTriggerLane" ) ] public float swap_point_out_duration = 0.75f;

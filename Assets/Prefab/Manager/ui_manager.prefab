@@ -997,6 +997,7 @@ GameObject:
   - component: {fileID: 5158881191616555118}
   - component: {fileID: 7872302099946991084}
   - component: {fileID: 7867633997157234821}
+  - component: {fileID: 1846874604186580185}
   m_Layer: 5
   m_Name: image_indicator
   m_TagString: Untagged
@@ -1079,6 +1080,20 @@ MonoBehaviour:
   startScale: {x: 0, y: 0, z: 0}
   indicatorProgress: {fileID: 11400000, guid: 43438d720c16f2e4aa5a19d520e1e15f, type: 2}
   offsetPercentage: 2
+--- !u!114 &1846874604186580185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2727841508869638070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a8b9286af946534c832e5352b9db9e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedReferenceProperty: {fileID: 11400000, guid: c486dd009ed12492091d80b4762c49e6, type: 2}
+  referenceComponent: {fileID: 8146888214394973453}
 --- !u!1 &3474085241652285997
 GameObject:
   m_ObjectHideFlags: 0

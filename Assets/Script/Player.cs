@@ -17,7 +17,10 @@ public class Player : MonoBehaviour
 
 	[ BoxGroup( "Shared Variables" ), SerializeField ] private SharedFloat input_horizontal;
 	[ BoxGroup( "Shared Variables" ), SerializeField ] private SharedFloatNotifier level_progress;
+	[ BoxGroup( "Shared Variables" ), SerializeField ] private SharedReferenceNotifier camera_reference;
+	[ BoxGroup( "Shared Variables" ), SerializeField ] private SharedReferenceNotifier level_progress_indicator_reference;
 
+	[ BoxGroup( "Fired Events" ), SerializeField ] private UIParticle_Event ui_particle_event; 
 	[ BoxGroup( "Fired Events" ), SerializeField ] private ParticleSpawnEvent cloth_event; 
 	[ BoxGroup( "Fired Events" ), SerializeField ] private TriggerLaneEvent lane_swap_event; 
 
@@ -36,8 +39,10 @@ public class Player : MonoBehaviour
 
 	private Animator animator;
 	private TriggerListener triggerListener;
+	private Transform level_progress_indicator;
+	private Camera main_camera;
 
-    private SwapTriggerLane swapTriggerLane;
+	private SwapTriggerLane swapTriggerLane;
     private Sequence triggerLane_Sequence;
 	private Tween takeClothOff_Tween;
 
@@ -85,6 +90,12 @@ public class Player : MonoBehaviour
 		triggerListener = GetComponentInChildren< TriggerListener >();
 		animator        = GetComponentInChildren< Animator >();
     }
+
+	private void Start()
+	{
+		level_progress_indicator = level_progress_indicator_reference.SharedValue as Transform;
+		main_camera         	 = ( camera_reference.SharedValue as Transform ).GetComponent< Camera >();
+	}
 	
 	private void Update()
 	{
@@ -321,12 +332,26 @@ public class Player : MonoBehaviour
 		fame_count += random_fame;
 		level_progress.SharedValue = fame_count / CurrentLevelData.Instance.levelData.fame_target_count;
 
+		var position_renderer = cloth_renderers[ index ].transform.position;
+		var position_start    = main_camera.WorldToScreenPoint( position_renderer );
 
+		int particle_count = Mathf.CeilToInt( fame_count / GameSettings.Instance.ui_particle_fame_count );
+		SpawnFameUIParticle( position_start, particle_count );
 
 		DressCloth( cloth_data_array[ index ].cloth_type );
 		cloth_data_array[ index ].Clear();
 
 		cloth_event.Raise( "fame", renderer.bounds.center, transform );
+	}
+
+	private void SpawnFameUIParticle( Vector2 position_start, int count )
+	{
+		var position_end = level_progress_indicator.position;
+
+		for( var i = 0; i < count; i++ )
+		{
+			ui_particle_event.Raise( GameSettings.Instance.ui_particle_fame_sprite, position_start, position_end );
+		}
 	}
 
 	private void Delayed_TakeClothOff( int index )
