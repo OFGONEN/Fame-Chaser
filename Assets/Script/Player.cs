@@ -153,6 +153,8 @@ public class Player : MonoBehaviour
 
 		if( disable_skirt )
 			cloth_skirt_renderer.enabled = false;
+		else
+			cloth_skirt_renderer.enabled = true;
 
 		var random = Random.Range( 1, 4 );
 
