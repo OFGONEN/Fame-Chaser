@@ -30,7 +30,7 @@ public class Door : Interactable
 
 		triggerListener.Unsubscribe( OnTrigger );
 
-		cloth_remove_particle.Raise( "door", transform.position );
+		cloth_remove_particle.Raise( "door", collider.bounds.center, player.transform );
 	}
 #endregion
 
