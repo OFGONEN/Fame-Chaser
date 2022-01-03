@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
 
 	[ BoxGroup( "Setup" ), SerializeField ] private SkinnedMeshRenderer[] cloth_renderers; // Hat, Shirt, Skirt, Shoe
 	[ BoxGroup( "Setup" ), SerializeField ] private SkinnedMeshRenderer cloth_reference_renderer; 
+	[ BoxGroup( "Setup" ), SerializeField ] private SkinnedMeshRenderer cloth_skirt_renderer; 
 	[ BoxGroup( "Setup" ), SerializeField ] private Transform couple_position; 
 	[ BoxGroup( "Setup" ), SerializeField ] private Transform money_position; 
 
@@ -137,7 +138,7 @@ public class Player : MonoBehaviour
 		}
 	}
 
-	public void DressCloth( ClothData data )
+	public void DressCloth( ClothData data, bool disable_skirt )
 	{
 		var index = data.cloth_type.cloth_index;
 		cloth_data_array[ index ] = data;
@@ -149,6 +150,9 @@ public class Player : MonoBehaviour
 		renderer.sharedMesh      = data.cloth_renderer.sharedMesh;
 		renderer.rootBone        = cloth_reference_renderer.rootBone;
 		renderer.bones           = cloth_reference_renderer.bones;
+
+		if( disable_skirt )
+			cloth_skirt_renderer.enabled = false;
 
 		var random = Random.Range( 1, 4 );
 
@@ -290,6 +294,9 @@ public class Player : MonoBehaviour
 		var index = clothEnum.cloth_index;
 
 		var renderer = cloth_renderers[ index ];
+
+		if( clothEnum.cloth_index == 1 ) // Shirt
+			cloth_skirt_renderer.enabled = true;
 
 		renderer.sharedMaterials[ 0 ] = clothEnum.default_cloth.sharedMaterials[ 0 ];
 		renderer.localBounds     = clothEnum.default_cloth.localBounds;

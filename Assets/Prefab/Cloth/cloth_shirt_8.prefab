@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2696273540896122738, guid: 5ad0d2f43a31bc3499103adaa640bd82, type: 3}
       propertyPath: m_Name
-      value: cloth
+      value: cloth_shirt_8
       objectReference: {fileID: 0}
     - target: {fileID: 3441454770950698249, guid: 5ad0d2f43a31bc3499103adaa640bd82, type: 3}
       propertyPath: m_RootOrder
@@ -68,9 +68,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 7cc6d8cf026468749a38f01bbeacffec, type: 2}
     - target: {fileID: 8809797780205124763, guid: 5ad0d2f43a31bc3499103adaa640bd82, type: 3}
+      propertyPath: disable_skirt
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8809797780205124763, guid: 5ad0d2f43a31bc3499103adaa640bd82, type: 3}
       propertyPath: cloth_renderer
       value: 
       objectReference: {fileID: 7068275435000162560}
+    - target: {fileID: 9003666924270257930, guid: 5ad0d2f43a31bc3499103adaa640bd82, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ad0d2f43a31bc3499103adaa640bd82, type: 3}
 --- !u!4 &409205728455154257 stripped

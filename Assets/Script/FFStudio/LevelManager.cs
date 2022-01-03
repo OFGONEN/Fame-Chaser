@@ -34,6 +34,8 @@ namespace FFStudio
             levelRevealedListener.OnEnable();
             levelStartedListener.OnEnable();
 			listener_finish_line.OnEnable();
+
+			daddy_spawn_tween = daddy_spawn_tween.KillProper();
 		}
 
         private void OnDisable()

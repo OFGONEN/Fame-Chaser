@@ -11,6 +11,7 @@ public class Collectable_Cloth : Interactable
 #region Fields
     [ BoxGroup( "Setup" ), SerializeField ] private SkinnedMeshRenderer cloth_renderer;
     [ BoxGroup( "Setup" ), SerializeField ] private ClothEnum cloth_type;
+    [ BoxGroup( "Setup" ), SerializeField ] private bool disable_skirt;
     [ BoxGroup( "Setup" ), SerializeField ] private int cloth_cost;
     [ BoxGroup( "Setup" ), SerializeField ] private int cloth_fame;
 
@@ -57,7 +58,7 @@ public class Collectable_Cloth : Interactable
 		if( !player.SpendMoney( random_currency ) )
 			return;
 		
-        player.DressCloth( new ClothData( cloth_renderer, cloth_type, cloth_cost, cloth_fame ) );
+        player.DressCloth( new ClothData( cloth_renderer, cloth_type, cloth_cost, cloth_fame ), disable_skirt );
         // Player should spawn particle
 		gameObject.SetActive( false );
 	}
