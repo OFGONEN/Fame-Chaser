@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: pool_money
   m_EditorClassIdentifier: 
   stackSize: 20
-  poolEntity: {fileID: 429748518255589158, guid: e68f23f42d4907346ab38cfbc38b0fb6, type: 3}
+  poolEntity: {fileID: 746258793986623353, guid: 9e4fbe20436104d589d6188183daa48d, type: 3}

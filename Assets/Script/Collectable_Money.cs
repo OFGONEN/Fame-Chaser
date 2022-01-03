@@ -29,7 +29,10 @@ public class Collectable_Money : Interactable
     protected override void OnTrigger( Collider collider )
     {
         var player = collider.GetComponent< TriggerListener >().AttachedComponent as Player;
-		player.GainMoney( money_count );
+
+		var currency = GameSettings.Instance.currency_level_dolar;
+
+		player.GainMoney( Random.Range( currency[ money_count - 1 ], currency[ money_count ] ) );
 
 		money_particle.Raise( "money", transform.position );
 

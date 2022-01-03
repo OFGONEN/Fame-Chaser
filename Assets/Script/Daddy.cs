@@ -17,18 +17,21 @@ public class Daddy : MonoBehaviour
     [ BoxGroup( "Shared Variables" ), SerializeField ] private SharedReferenceNotifier daddy_start_position;
     [ BoxGroup( "Shared Variables" ), SerializeField ] private SharedReferenceNotifier daddy_end_position;
 
+    [ BoxGroup( "Setup" ) ] public ParticleSpawnEvent money_particle;
     [ BoxGroup( "Setup" ) ] public Transform daddy_money_position;
-    [ BoxGroup( "Setup" ) ] public int daddy_money_count;
+     
 
 	// Private \\
-	private Player player;
+	private Animator animator;
 	private Rigidbody[] ragdoll_rigidbodies;
 	private TriggerListener triggerListener;
 	private Transform transform_spawn;
 	private Transform transform_start;
     private Transform transform_end;
     private Transform player_money_position;
+	private Player player;
 
+	[ SerializeField, ReadOnly ] private int daddy_money_count;
 	[ SerializeField, ReadOnly ] private List< Stackable_Money > daddy_money_list  = new List< Stackable_Money >( 64 );
 	[ SerializeField, ReadOnly ] private List< Stackable_Money > player_money_list = new List< Stackable_Money >( 64 );
 
@@ -61,8 +64,9 @@ public class Daddy : MonoBehaviour
 		updateMethod = ExtensionMethods.EmptyMethod;
 		couple_DetachedMethod = ExtensionMethods.EmptyMethod;
 
+		animator            = GetComponentInChildren< Animator >();
 		ragdoll_rigidbodies = GetComponentsInChildren< Rigidbody >();
-		triggerListener = GetComponentInChildren< TriggerListener >();
+		triggerListener     = GetComponentInChildren< TriggerListener >();
 
 		ToggleRagdoll( false );
 	}
@@ -74,12 +78,15 @@ public class Daddy : MonoBehaviour
 #endregion
 
 #region API
-	[ Button() ]
-    public void Spawn()
+    public void Spawn( int money )
     {
 		transform_spawn = daddy_spawn_position.SharedValue as Transform;
 		transform_start = daddy_start_position.SharedValue as Transform;
 		transform_end   = daddy_end_position.SharedValue as Transform;
+
+		animator.SetBool( "match", false );
+
+		daddy_money_count = money;
 
 		daddy_money_list.Clear();
 		player_money_list.Clear();
@@ -135,6 +142,8 @@ public class Daddy : MonoBehaviour
 
 	private void ToggleRagdoll( bool active )
 	{
+		animator.enabled = !active;
+
 		foreach( var rb in ragdoll_rigidbodies )
 		{
 			rb.useGravity  = active;
@@ -167,6 +176,8 @@ public class Daddy : MonoBehaviour
 
 		transform.SetParent( player.transform );
 
+		animator.SetBool( "match", true );
+
 		couple_sequence = DOTween.Sequence();
 		couple_sequence.Append( transform.DOLocalMove( couple_position.localPosition, GameSettings.Instance.daddy_couple_duration ) );
 		couple_sequence.Join( transform.DOLocalRotate( couple_position.localEulerAngles, GameSettings.Instance.daddy_couple_duration / 2f ) );
@@ -187,6 +198,8 @@ public class Daddy : MonoBehaviour
 		couple_sequence = DOTween.Sequence();
 
 		couple_DetachedMethod = OnCoupleDetached_Money;
+
+		// animator.SetBool( "match", true );
 
 		SpawnMoneyOnDaddy(); // Edits couple_sequence
 		couple_sequence.OnComplete( TransferMoneyToPlayer );
@@ -231,12 +244,13 @@ public class Daddy : MonoBehaviour
 
 			money.ChangeDepositMethod();
 
-			if( index <= daddy_money_list.Count / 2 )
+			if( index < daddy_money_list.Count / 2 )
 				curve = GameSettings.Instance.curve_downward;
 			else
 				curve = GameSettings.Instance.curve_upward;
 
 			couple_sequence.AppendCallback( () => player_money_list.Add( money ) );
+			couple_sequence.AppendCallback( () => money.transform.SetParent( player_money_position ) );
 			couple_sequence.Append( money.transform.DOLocalMoveX( position.x, duration ) );
 			couple_sequence.Join( money.transform.DOLocalMoveY( position.y + index * height, duration ).SetEase( curve ) );
 			couple_sequence.Join( money.transform.DOLocalMoveZ( position.z, duration ) );
@@ -276,14 +290,16 @@ public class Daddy : MonoBehaviour
 			daddy_money_list[ i ].Deposit();
 		}
 
+		money_particle.Raise( "stack_money", player_money_position.position );
+
 		player.GainMoney( money_amount );
 	}
 
 	private void SpawnMoney( int index, int moneyCount )
 	{
 		var money = money_pool.GetEntity();
-		money.transform.SetParent( transform.parent );
-		money.transform.position = daddy_money_position.position + index * GameSettings.Instance.daddy_money_height * Vector3.up;
+		money.transform.SetParent( daddy_money_position );
+		money.transform.localPosition = index * GameSettings.Instance.daddy_money_height * Vector3.up;
 		money.transform.rotation = daddy_money_position.rotation;
 		money.gameObject.SetActive( true );
 

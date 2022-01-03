@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aea5dd6c77fb09642abbcfc9e3a82c95, type: 3}
-  m_Name: pool_daddy
+  m_Script: {fileID: 11500000, guid: 4ea3c0b9fd00fd441b6cebc5941ee13b, type: 3}
+  m_Name: level_data_6
   m_EditorClassIdentifier: 
-  stackSize: 5
-  poolEntity: {fileID: 320496520650960373, guid: e7165cc7290597047845cc1e3ee3290e, type: 3}
+  sceneIndex: 6
+  overrideAsActiveScene: 0
+  daddy_spawn_rate: {x: 2, y: 4}

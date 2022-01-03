@@ -45,4 +45,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnParticleListener:
     gameEvent: {fileID: 11400000, guid: fe240f220ab36cc44923227184f9c2a7, type: 2}
-  particleEffectPools: []
+  particleEffectPools:
+  - {fileID: 11400000, guid: 67d95a82168143e48a26b9a670c6a12e, type: 2}
+  - {fileID: 11400000, guid: 1f404fbc8679baf49900484890e03acd, type: 2}
+  - {fileID: 11400000, guid: 4391fad172f494bfa9016bec9746d93e, type: 2}
+  - {fileID: 11400000, guid: 16e92e43bc34b44b0bda97ffcb540899, type: 2}

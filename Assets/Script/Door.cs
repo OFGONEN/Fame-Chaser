@@ -10,6 +10,7 @@ public class Door : Interactable
 {
 #region Fields
     [ BoxGroup( "Setup" ), SerializeField ] public ClothEnum[] cloth_remove_array;
+    [ BoxGroup( "Setup" ), SerializeField ] public ParticleSpawnEvent cloth_remove_particle;
 #endregion
 
 #region Properties
@@ -28,6 +29,8 @@ public class Door : Interactable
 		player.TakeClothesOff( cloth_remove_array );
 
 		triggerListener.Unsubscribe( OnTrigger );
+
+		cloth_remove_particle.Raise( "door", transform.position );
 	}
 #endregion
 

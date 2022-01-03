@@ -43,7 +43,7 @@ public class Stackable_Money : MonoBehaviour
     {
 		depositMethod = Disable;
 
-		money_particle.Raise( "stack_money", transform.position );
+		// money_particle.Raise( "stack_money", transform.position );
 		money_pool.ReturnEntity( this );
 	}
 

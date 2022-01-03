@@ -16,12 +16,30 @@ public class Collectable_Cloth : Interactable
 
     // Private \\
     private TriggerListener cloth_trigger;
+    private PriceTag cloth_price_tag;
+    private Outline cloth_outline;
 #endregion
 
 #region Properties
 #endregion
 
 #region Unity API
+    protected override void Awake()
+    {
+		base.Awake();
+
+		cloth_price_tag = GetComponentInChildren< PriceTag >();
+		cloth_outline   = GetComponentInChildren< Outline >();
+
+		cloth_price_tag.SetText( cloth_cost, cloth_fame );
+
+        if( cloth_outline != null )
+        {
+		    cloth_outline.OutlineColor = GameSettings.Instance.cloth_outline_color[ cloth_fame - 1 ];
+		    cloth_outline.OutlineWidth = GameSettings.Instance.cloth_outline_widht[ cloth_fame - 1 ];
+        }
+	}
+
 #endregion
 
 #region API
@@ -32,7 +50,11 @@ public class Collectable_Cloth : Interactable
     {
         var player = other.GetComponent< TriggerListener >().AttachedComponent as Player;
 
-        if( !player.SpendMoney( cloth_cost ) )
+        var currency = GameSettings.Instance.currency_level_dolar;
+
+		var random_currency = Random.Range( currency[ cloth_cost - 1 ], currency[ cloth_cost ] );
+
+		if( !player.SpendMoney( random_currency ) )
 			return;
 		
         player.DressCloth( new ClothData( cloth_renderer, cloth_type, cloth_cost, cloth_fame ) );

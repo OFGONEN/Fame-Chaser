@@ -13,10 +13,13 @@ public class Player : MonoBehaviour
 	[ BoxGroup( "Event Listeners" ), SerializeField ] private EventListenerDelegateResponse level_start_listener;
 	[ BoxGroup( "Event Listeners" ), SerializeField ] private EventListenerDelegateResponse swipe_left_listener;
 	[ BoxGroup( "Event Listeners" ), SerializeField ] private EventListenerDelegateResponse swipe_right_listener;
+	[ BoxGroup( "Event Listeners" ), SerializeField ] private EventListenerDelegateResponse level_finished_listener;
 
 	[ BoxGroup( "Shared Variables" ), SerializeField ] private SharedFloat input_horizontal;
 
-	[ BoxGroup( "Setup" ), SerializeField ] private ParticleSpawnEvent cloth_particle; 
+	[ BoxGroup( "Fired Events" ), SerializeField ] private ParticleSpawnEvent cloth_event; 
+	[ BoxGroup( "Fired Events" ), SerializeField ] private TriggerLaneEvent lane_swap_event; 
+
 	[ BoxGroup( "Setup" ), SerializeField ] private SkinnedMeshRenderer[] cloth_renderers; // Hat, Shirt, Skirt, Shoe
 	[ BoxGroup( "Setup" ), SerializeField ] private SkinnedMeshRenderer cloth_reference_renderer; 
 	[ BoxGroup( "Setup" ), SerializeField ] private Transform couple_position; 
@@ -53,6 +56,7 @@ public class Player : MonoBehaviour
 		level_start_listener.OnEnable();
 		swipe_left_listener.OnEnable();
 		swipe_right_listener.OnEnable();
+		level_finished_listener.OnEnable();
 	}
 
 	private void OnDisable()
@@ -60,13 +64,15 @@ public class Player : MonoBehaviour
 		level_start_listener.OnDisable();
 		swipe_left_listener.OnDisable();
 		swipe_right_listener.OnDisable();
+		level_finished_listener.OnDisable();
 	}
 
     private void Awake()
     {
-		level_start_listener.response = LevelStartResponse;
-		swipe_left_listener.response  = ExtensionMethods.EmptyMethod;
-		swipe_right_listener.response = ExtensionMethods.EmptyMethod;
+		level_start_listener.response    = LevelStartResponse;
+		swipe_left_listener.response     = ExtensionMethods.EmptyMethod;
+		swipe_right_listener.response    = ExtensionMethods.EmptyMethod;
+		level_finished_listener.response = LevelFinishedResponse;
 
 		cloth_data_array = new ClothData[ cloth_renderers.Length ];
 
@@ -78,11 +84,6 @@ public class Player : MonoBehaviour
 		animator        = GetComponentInChildren< Animator >();
     }
 	
-	private void Start()
-	{
-		LevelStartResponse();
-	}
-
 	private void Update()
 	{
 		updateMethod();
@@ -113,6 +114,8 @@ public class Player : MonoBehaviour
 		swapLane_Out        = SwapLane_Out_Fame;
 		forceMainLaneMethod = SwapLane_Main;
 
+		lane_swap_event.Raise( LaneType.Fame, SwapType.In );
+
 		triggerLane_Sequence = DOTween.Sequence();
 		triggerLane_Sequence.Append( transform.DOMoveX( position.x, GameSettings.Instance.swap_point_in_duration ) );
 		triggerLane_Sequence.OnComplete( OnSwapTriggerLane_In_Fame_Complete );
@@ -141,13 +144,13 @@ public class Player : MonoBehaviour
 
 		var renderer = cloth_renderers[ index ];
 
-		renderer.sharedMaterials = data.cloth_renderer.sharedMaterials;
+		renderer.sharedMaterials[ 0 ] = data.cloth_renderer.sharedMaterials[ 0 ];
 		renderer.localBounds     = data.cloth_renderer.localBounds;
 		renderer.sharedMesh      = data.cloth_renderer.sharedMesh;
 		renderer.rootBone        = cloth_reference_renderer.rootBone;
 		renderer.bones           = cloth_reference_renderer.bones;
 
-		cloth_particle.Raise( "cloth", renderer.bounds.center );
+		cloth_event.Raise( "cloth", renderer.bounds.center );
 	}
 
 	public void TakeClothesOff( ClothEnum[] clothesToRemove )
@@ -186,6 +189,12 @@ public class Player : MonoBehaviour
 		updateMethod = OnUpdate_Movement_MainLane;
 		animator.SetBool( "walk", true );
 	}
+
+	private void LevelFinishedResponse()
+	{
+		updateMethod = ExtensionMethods.EmptyMethod;
+	}
+
 
     private void SwapLane_Main()
     {
@@ -227,8 +236,7 @@ public class Player : MonoBehaviour
 
 		animator.SetBool( "cloth", true );
 
-		// takeClothOff_Tween = DOVirtual.DelayedCall( GameSettings.Instance.player_duration_cloth_off, () => Delayed_TakeClothOff( 0 ) );
-		Delayed_TakeClothOff( 0 );
+		takeClothOff_Tween = DOVirtual.DelayedCall( GameSettings.Instance.player_duration_cloth_off, () => Delayed_TakeClothOff( 0 ) );
 	}
 
     private void OnSwapTriggerLane_Out_Complete()
@@ -242,6 +250,7 @@ public class Player : MonoBehaviour
     private void SwapLane_Out_Fame()
     {
 		animator.SetBool( "cloth", false );
+		lane_swap_event.Raise( LaneType.Fame, SwapType.Out );
 	}
 
     private void SwapLane_Out_Money()
@@ -277,7 +286,7 @@ public class Player : MonoBehaviour
 
 		var renderer = cloth_renderers[ index ];
 
-		renderer.sharedMaterials = clothEnum.default_cloth.sharedMaterials;
+		renderer.sharedMaterials[ 0 ] = clothEnum.default_cloth.sharedMaterials[ 0 ];
 		renderer.localBounds     = clothEnum.default_cloth.localBounds;
 		renderer.sharedMesh      = clothEnum.default_cloth.sharedMesh;
 		renderer.rootBone        = cloth_reference_renderer.rootBone;
@@ -290,12 +299,16 @@ public class Player : MonoBehaviour
 		var data     = cloth_data_array[ index ];
 		var renderer = cloth_renderers[ index ];
 
-		fame_count += data.cloth_fame;
+		var currency = GameSettings.Instance.currency_level_fame;
+
+		var random_fame = Random.Range( currency[ data.cloth_fame - 1 ], currency[ data.cloth_fame ] );
+
+		fame_count += random_fame;
 
 		DressCloth( cloth_data_array[ index ].cloth_type );
 		cloth_data_array[ index ].Clear();
 
-		cloth_particle.Raise( "fame", renderer.bounds.center );
+		cloth_event.Raise( "fame", renderer.bounds.center, transform );
 	}
 
 	private void Delayed_TakeClothOff( int index )

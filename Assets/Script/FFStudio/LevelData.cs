@@ -9,8 +9,9 @@ namespace FFStudio
 	public class LevelData : ScriptableObject
     {
 		[ BoxGroup( "Setup" ), Scene() ] public int sceneIndex;
-
         [ BoxGroup( "Setup" ) ] public bool overrideAsActiveScene;
+
+        [ BoxGroup( "LevelData" ) ] public Vector2 daddy_spawn_rate;
 
     }
 }

@@ -27,6 +27,11 @@ namespace FFStudio
 		[ Foldout( "UI Settings" ), Tooltip( "Duration of the movement for floating ui element" ) ] public float ui_Entity_FloatingMove_TweenDuration;
 		[ Foldout( "UI Settings" ), Tooltip( "Joy Stick"                                        )] public float ui_Entity_JoyStick_Gap;
         [ Foldout( "UI Settings" ), Tooltip( "Percentage of the screen to register a swipe"     ) ] public int swipeThreshold;
+        [ Foldout( "UI Settings" ), Tooltip( "Reference UI width"     ) ] public int ui_screen_width;
+
+        [ Foldout( "UI Particle" ), Tooltip( "UI Particle - spawn radius"     ) ] public int ui_particle_spawn_radius;
+        [ Foldout( "UI Particle" ), Tooltip( "UI Particle - horizontal move ease positive"     ) ] public AnimationCurve ui_particle_ease_horizontal_positive;
+        [ Foldout( "UI Particle" ), Tooltip( "UI Particle - horizontal move ease negative"     ) ] public AnimationCurve ui_particle_ease_horizontal_negative;
 
         [ BoxGroup( "SwapTriggerLane" ) ] public float swap_point_out_randomness = 1f;
         [ BoxGroup( "SwapTriggerLane" ) ] public float swap_point_out_duration = 0.75f;
@@ -48,10 +53,26 @@ namespace FFStudio
         [ BoxGroup( "Daddy" ) ] public float daddy_money_delay      = 0.125f;
         [ BoxGroup( "Daddy" ) ] public float daddy_money_transfer   = 0.2f;
         [ BoxGroup( "Daddy" ) ] public float daddy_money_height     = 0.2f;
+        [ BoxGroup( "Daddy" ) ] public Vector2Int daddy_money_amount;
 
         [ BoxGroup( "Input" ) ] public float input_horizontal_deadzone = 0.01f; // 828 * 0.01 = 8 pixel
         [ BoxGroup( "Input" ) ] public AnimationCurve curve_upward;
         [ BoxGroup( "Input" ) ] public AnimationCurve curve_downward;
+
+        [ BoxGroup( "Camera" ) ] public float camera_follow_speed;
+        [ BoxGroup( "Camera" ) ] public float camera_follow_depth;
+        [ BoxGroup( "Camera" ) ] public float camera_follow_height;
+        [ BoxGroup( "Camera" ) ] public float camera_follow_rotation;
+        [ BoxGroup( "Camera" ) ] public float camera_follow_duration;
+
+        [ BoxGroup( "Paparazzi" ) ] public float paparazzi_rotate_duration = 0.15f;
+        [ BoxGroup( "Paparazzi" ) ] public float paparazzi_photo_distance = 1f;
+
+        [ BoxGroup( "Currency" ) ] public int[] currency_level_dolar;
+        [ BoxGroup( "Currency" ) ] public int[] currency_level_fame;
+
+        [ BoxGroup( "Cloth" ) ] public Color[] cloth_outline_color;
+        [ BoxGroup( "Cloth" ) ] public float[] cloth_outline_widht;
         
         [ BoxGroup( "Texture" ) ] public float texture_arrow_scrollSpeed = 1.0f;
 #endregion
