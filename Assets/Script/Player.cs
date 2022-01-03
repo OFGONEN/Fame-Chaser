@@ -236,8 +236,8 @@ public class Player : MonoBehaviour
 
 		animator.SetBool( "cloth", true );
 
-		// takeClothOff_Tween = DOVirtual.DelayedCall( GameSettings.Instance.player_duration_cloth_off, () => Delayed_TakeClothOff( 0 ) );
-		Delayed_TakeClothOff( 0 );
+		takeClothOff_Tween = DOVirtual.DelayedCall( GameSettings.Instance.player_duration_cloth_off, () => Delayed_TakeClothOff( 0 ) );
+		// Delayed_TakeClothOff( 0 );
 	}
 
     private void OnSwapTriggerLane_Out_Complete()
