@@ -60,6 +60,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cloth_remove_array: []
+  cloth_remove_particle: {fileID: 11400000, guid: fe240f220ab36cc44923227184f9c2a7, type: 2}
 --- !u!114 &1116756198844537913
 MonoBehaviour:
   m_ObjectHideFlags: 0
