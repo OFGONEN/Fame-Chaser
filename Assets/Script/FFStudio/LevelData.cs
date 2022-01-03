@@ -12,6 +12,7 @@ namespace FFStudio
         [ BoxGroup( "Setup" ) ] public bool overrideAsActiveScene;
 
         [ BoxGroup( "LevelData" ) ] public Vector2 daddy_spawn_rate;
+        [ BoxGroup( "LevelData" ) ] public float fame_target_count;
 
     }
 }

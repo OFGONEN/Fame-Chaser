@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
 	[ BoxGroup( "Event Listeners" ), SerializeField ] private EventListenerDelegateResponse level_finished_listener;
 
 	[ BoxGroup( "Shared Variables" ), SerializeField ] private SharedFloat input_horizontal;
+	[ BoxGroup( "Shared Variables" ), SerializeField ] private SharedFloatNotifier level_progress;
 
 	[ BoxGroup( "Fired Events" ), SerializeField ] private ParticleSpawnEvent cloth_event; 
 	[ BoxGroup( "Fired Events" ), SerializeField ] private TriggerLaneEvent lane_swap_event; 
@@ -318,6 +319,9 @@ public class Player : MonoBehaviour
 		var random_fame = Random.Range( currency[ data.cloth_fame - 1 ], currency[ data.cloth_fame ] );
 
 		fame_count += random_fame;
+		level_progress.SharedValue = fame_count / CurrentLevelData.Instance.levelData.fame_target_count;
+
+
 
 		DressCloth( cloth_data_array[ index ].cloth_type );
 		cloth_data_array[ index ].Clear();
