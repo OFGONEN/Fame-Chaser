@@ -190,4 +190,6 @@ MonoBehaviour:
   - 2
   - 2.5
   - 3
+  particle_cloth_distance: 0.15
+  particle_cloth_radius: 0.1
   texture_arrow_scrollSpeed: 1.5

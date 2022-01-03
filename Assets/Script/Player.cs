@@ -150,7 +150,12 @@ public class Player : MonoBehaviour
 		renderer.rootBone        = cloth_reference_renderer.rootBone;
 		renderer.bones           = cloth_reference_renderer.bones;
 
-		cloth_event.Raise( "cloth", renderer.bounds.center );
+		var random = Random.Range( 1, 4 );
+
+		var position = renderer.transform.position + Vector3.back * GameSettings.Instance.particle_cloth_distance;
+		position += Random.insideUnitCircle.ConvertV3() * GameSettings.Instance.particle_cloth_radius;
+
+		cloth_event.Raise( "cloth_" + random, position , transform );
 	}
 
 	public void TakeClothesOff( ClothEnum[] clothesToRemove )

@@ -73,6 +73,9 @@ namespace FFStudio
 
         [ BoxGroup( "Cloth" ) ] public Color[] cloth_outline_color;
         [ BoxGroup( "Cloth" ) ] public float[] cloth_outline_widht;
+
+        [ BoxGroup( "Particle" ) ] public float particle_cloth_distance;
+        [ BoxGroup( "Particle" ) ] public float particle_cloth_radius;
         
         [ BoxGroup( "Texture" ) ] public float texture_arrow_scrollSpeed = 1.0f;
 #endregion
