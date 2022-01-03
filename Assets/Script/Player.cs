@@ -237,7 +237,6 @@ public class Player : MonoBehaviour
 		animator.SetBool( "cloth", true );
 
 		takeClothOff_Tween = DOVirtual.DelayedCall( GameSettings.Instance.player_duration_cloth_off, () => Delayed_TakeClothOff( 0 ) );
-		// Delayed_TakeClothOff( 0 );
 	}
 
     private void OnSwapTriggerLane_Out_Complete()
@@ -309,7 +308,7 @@ public class Player : MonoBehaviour
 		DressCloth( cloth_data_array[ index ].cloth_type );
 		cloth_data_array[ index ].Clear();
 
-		cloth_event.Raise( "fame", renderer.bounds.center );
+		cloth_event.Raise( "fame", renderer.bounds.center, transform );
 	}
 
 	private void Delayed_TakeClothOff( int index )
