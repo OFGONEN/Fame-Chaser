@@ -75,6 +75,14 @@ PrefabInstance:
       propertyPath: cloth_renderer
       value: 
       objectReference: {fileID: 5916826775130995307}
+    - target: {fileID: 9003666924270257930, guid: 5ad0d2f43a31bc3499103adaa640bd82, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9003666924270257930, guid: 5ad0d2f43a31bc3499103adaa640bd82, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.037
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ad0d2f43a31bc3499103adaa640bd82, type: 3}
 --- !u!4 &3475297976937067923 stripped
@@ -98,12 +106,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 223f193256ab92243a561cf07620ad83, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 223f193256ab92243a561cf07620ad83, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 223f193256ab92243a561cf07620ad83, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 223f193256ab92243a561cf07620ad83, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 223f193256ab92243a561cf07620ad83, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.256
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 223f193256ab92243a561cf07620ad83, type: 3}
       propertyPath: m_LocalPosition.z
