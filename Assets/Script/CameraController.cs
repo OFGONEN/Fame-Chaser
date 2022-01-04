@@ -12,9 +12,11 @@ public class CameraController : MonoBehaviour
 	#region Fields
 	[BoxGroup( "Event Listeners" ), SerializeField] private EventListenerDelegateResponse level_revealed_listener;
 	[BoxGroup( "Event Listeners" ), SerializeField] private EventListenerDelegateResponse player_lane_swap_listener;
+	[BoxGroup( "Event Listeners" ), SerializeField] private EventListenerDelegateResponse level_finish_listener;
 	[BoxGroup( "Fired Events" ), SerializeField] private GameEvent level_start_event;
 
 	[BoxGroup( "Setup" ), SerializeField] private SharedReferenceNotifier player_reference;
+	[BoxGroup( "Setup" ), SerializeField] private SharedReferenceNotifier player_camera_position_reference;
 
 	private Transform player_transform;
 	private Vector3 player_offset;
@@ -34,19 +36,21 @@ public class CameraController : MonoBehaviour
 	{
 		level_revealed_listener.OnEnable();
 		player_lane_swap_listener.OnEnable();
+		level_finish_listener.OnEnable();
 	}
 
 	private void OnDisable()
 	{
 		level_revealed_listener.OnDisable();
 		player_lane_swap_listener.OnDisable();
+		level_finish_listener.OnDisable();
 	}
 
 	private void Awake()
 	{
-		level_revealed_listener.response = LevelRevealedResponse;
+		level_revealed_listener.response   = LevelRevealedResponse;
 		player_lane_swap_listener.response = LaneSwapResponse;
-		// player_lane_swap_listener.response = ExtensionMethods.EmptyMethod;
+		level_finish_listener.response     = LevelFinishResponse;
 
 		updateMethod = ExtensionMethods.EmptyMethod;
 	}
@@ -95,6 +99,20 @@ public class CameraController : MonoBehaviour
 			updateMethod = OnUpdate_FollowPlayer;
 
 		}
+	}
+
+	private void LevelFinishResponse()
+	{
+		updateMethod = ExtensionMethods.EmptyMethod;
+		DOVirtual.DelayedCall( GameSettings.Instance.player_duration_rotation, TransitionToPlayer );
+	}
+
+	private void TransitionToPlayer()
+	{
+		var player_camera_transform = player_camera_position_reference.SharedValue as Transform;
+
+		transform.DOMove( player_camera_transform.position, GameSettings.Instance.camera_follow_duration );
+		transform.DORotate( player_camera_transform.eulerAngles, GameSettings.Instance.camera_follow_duration );
 	}
 
 	private void OnCameraTransition()

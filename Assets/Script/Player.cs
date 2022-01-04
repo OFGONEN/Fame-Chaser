@@ -222,8 +222,12 @@ public class Player : MonoBehaviour
 	private void LevelFinishedResponse()
 	{
 		updateMethod = ExtensionMethods.EmptyMethod;
-	}
+		animator.SetTrigger( "end" );
 
+		var direction = ( main_camera.transform.position - transform.position ).SetY( 0 );
+
+		transform.DORotate( Quaternion.LookRotation( direction ).eulerAngles, GameSettings.Instance.player_duration_rotation );
+	}
 
     private void SwapLane_Main()
     {

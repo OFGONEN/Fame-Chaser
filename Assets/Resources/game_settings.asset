@@ -102,6 +102,7 @@ MonoBehaviour:
   player_movement_speed_forward: 5
   player_movement_clamp_lateral: 4.5
   player_duration_cloth_off: 0.75
+  player_duration_rotation: 0.5
   daddy_movement_speed: 5
   daddy_couple_duration: 0.75
   daddy_ragdoll_duration: 3

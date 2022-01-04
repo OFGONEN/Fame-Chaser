@@ -48,6 +48,7 @@ namespace FFStudio
         [ Foldout( "Player" ) ] public float player_movement_speed_forward = 1f; 
         [ Foldout( "Player" ) ] public float player_movement_clamp_lateral = 5f; 
         [ Foldout( "Player" ) ] public float player_duration_cloth_off = 0.75f; 
+        [ Foldout( "Player" ) ] public float player_duration_rotation = 0.5f; 
 
         // Sugar Daddy
         [ Foldout( "Daddy" ) ] public float daddy_movement_speed   = 5f;
