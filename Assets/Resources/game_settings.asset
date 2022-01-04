@@ -101,7 +101,7 @@ MonoBehaviour:
   swap_point_out_duration: 0.75
   swap_point_in_duration: 0.75
   player_movement_speed_lateral: 50
-  player_movement_speed_forward: 10
+  player_movement_speed_forward: 5
   player_movement_clamp_lateral: 4.5
   player_duration_cloth_off: 0.75
   player_duration_rotation: 0.5

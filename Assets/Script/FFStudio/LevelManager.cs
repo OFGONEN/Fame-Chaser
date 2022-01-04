@@ -22,6 +22,7 @@ namespace FFStudio
         [ Header( "Level Releated" ) ]
         public SharedFloatNotifier levelProgress;
         public DaddyPool[] daddy_pool_array;
+		public SharedIntNotifier player_money_notifier;
 		public SharedIntNotifier player_fame_notifier;
 
 		// Private \\
@@ -55,6 +56,7 @@ namespace FFStudio
 			listener_finish_line.response  = LevelFinishedResponse;
 
 			player_fame_notifier.SharedValue = 0;
+			player_money_notifier.SharedValue = 0;
 		}
 #endregion
 
@@ -63,6 +65,7 @@ namespace FFStudio
         {
 			levelProgress.SharedValue = 0;
 			player_fame_notifier.SharedValue = 0;
+			player_money_notifier.SharedValue = 0;
 
 			var levelData = CurrentLevelData.Instance.levelData;
 

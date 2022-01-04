@@ -1375,7 +1375,7 @@ MonoBehaviour:
   startScale: {x: 0, y: 0, z: 0}
   textRenderer: {fileID: 4220244291232975718}
   player_money_notifier: {fileID: 11400000, guid: 230b5d768e4344c4f8dd28413551e62f, type: 2}
-  change_color_positive: {r: 0, g: 1, b: 0, a: 1}
+  change_color_positive: {r: 0.96470594, g: 0.7568628, b: 0.17254902, a: 1}
   change_color_negative: {r: 1, g: 0, b: 0, a: 1}
   change_color_neutral: {r: 0, g: 0, b: 0, a: 1}
 --- !u!1001 &86466807945567673
