@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
 	[ BoxGroup( "Shared Variables" ), SerializeField ] private SharedIntNotifier player_money_notifier;
 	[ BoxGroup( "Shared Variables" ), SerializeField ] private SharedIntNotifier player_fame_notifier;
 
+	[ BoxGroup( "Fired Events" ), SerializeField ] private GameEvent level_complete_event; 
 	[ BoxGroup( "Fired Events" ), SerializeField ] private UIParticle_Event ui_particle_event; 
 	[ BoxGroup( "Fired Events" ), SerializeField ] private ParticleSpawnEvent cloth_event; 
 	[ BoxGroup( "Fired Events" ), SerializeField ] private TriggerLaneEvent lane_swap_event; 
@@ -252,11 +253,17 @@ public class Player : MonoBehaviour
 		var position_start = level_progress_indicator.position;
 		int particle_count = Mathf.CeilToInt( fame_count / GameSettings.Instance.ui_particle_fame_count_final );
 
+		float delay = 0;
+
 		for( var i = 0; i < particle_count; i++ )
 		{
+			delay = i * GameSettings.Instance.ui_particle_delay.GiveRandom();
+
 			ui_particle_event.Raise( GameSettings.Instance.ui_particle_fame_sprite, position_start, position_end,
-			i * GameSettings.Instance.ui_particle_delay.GiveRandom(), OnFameParticleDone );
+			delay, OnFameParticleDone );
 		}
+
+		DOVirtual.DelayedCall( delay + GameSettings.Instance.ui_Entity_Move_TweenDuration * 2f, level_complete_event.Raise );
 	}
 
 	private void OnFameParticleDone()
