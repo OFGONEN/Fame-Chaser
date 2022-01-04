@@ -35,12 +35,12 @@ public class UIText_Number : UIText
 #region Implementation
     private void OnPlayerMoneyChange()
     {
-		punch_tween.Kill();
+		punch_tween = punch_tween.KillProper();
 
 		textRenderer.text = player_money_notifier.SharedValue.ToString();
 
 		transform.localScale = startScale;
-		transform.DOPunchScale( Vector3.one * GameSettings.Instance.ui_Entity_PunchScale_Strenght, GameSettings.Instance.ui_Entity_PunchScale_Duration );
+		punch_tween = transform.DOPunchScale( Vector3.one * GameSettings.Instance.ui_Entity_PunchScale_Strenght, GameSettings.Instance.ui_Entity_PunchScale_Duration );
 	}
 #endregion
 }
