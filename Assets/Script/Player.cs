@@ -231,12 +231,14 @@ public class Player : MonoBehaviour
 
 		var sequence = DOTween.Sequence();
 		sequence.Append( transform.DORotate( Quaternion.LookRotation( direction ).eulerAngles, GameSettings.Instance.player_duration_rotation ) );
-		sequence.AppendCallback( () =>
-		{
-			frame.gameObject.SetActive( true );
-			frame.position = main_camera.transform.position;
-		} );
+		sequence.AppendCallback( RepositionFrame );
 		sequence.Append( frame.DOLocalMove( frame_position, GameSettings.Instance.camera_follow_duration ) );
+	}
+
+	private void RepositionFrame()
+	{
+		frame.position = main_camera.transform.position;
+		frame.gameObject.SetActive( true );
 	}
 
     private void SwapLane_Main()

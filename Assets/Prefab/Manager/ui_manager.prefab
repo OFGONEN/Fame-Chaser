@@ -1139,6 +1139,8 @@ MonoBehaviour:
   startScale: {x: 0, y: 0, z: 0}
   textRenderer: {fileID: 1687750997991961622}
   player_money_notifier: {fileID: 11400000, guid: 87b3f4f1399c4f54b85a475aa94d396d, type: 2}
+  change_color_positive: {r: 0, g: 1, b: 0, a: 1}
+  change_color_negative: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &2727841508869638070
 GameObject:
   m_ObjectHideFlags: 0

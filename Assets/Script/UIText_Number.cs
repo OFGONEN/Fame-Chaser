@@ -11,6 +11,8 @@ public class UIText_Number : UIText
 {
 #region Fields
     [ BoxGroup( "Setup" ) ] public SharedIntNotifier player_money_notifier;
+    [ BoxGroup( "Setup" ) ] public Color change_color_positive;
+    [ BoxGroup( "Setup" ) ] public Color change_color_negative;
 
     private Sequence punch_sequence; 
 	private int lastValue;
@@ -40,9 +42,9 @@ public class UIText_Number : UIText
 
 		Color change;
 		if( lastValue > player_money_notifier.SharedValue )
-			change = Color.red;
+			change = change_color_negative;
 		else
-			change = Color.green;
+			change = change_color_positive;
 
 		punch_sequence = DOTween.Sequence();
 
