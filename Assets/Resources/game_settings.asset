@@ -19,6 +19,8 @@ MonoBehaviour:
   ui_Entity_Fade_TweenDuration: 0.5
   ui_Entity_Scale_TweenDuration: 0.5
   ui_Entity_FloatingMove_TweenDuration: 0.5
+  ui_Entity_PunchScale_Strenght: 2
+  ui_Entity_PunchScale_Duration: 0.25
   ui_Entity_JoyStick_Gap: 50
   swipeThreshold: 2
   ui_screen_width: 828
@@ -89,6 +91,10 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  ui_particle_fame_count: 10
+  ui_particle_dolar_count: 10
+  ui_particle_fame_sprite: {fileID: 21300000, guid: 4902e3cbcd7c5438ea7ed8ba458586c3, type: 3}
+  ui_particle_dolar_sprite: {fileID: 21300000, guid: 720c530421ca9493cba6afca9784942d, type: 3}
   swap_point_out_randomness: 0.5
   swap_point_out_duration: 0.75
   swap_point_in_duration: 0.75

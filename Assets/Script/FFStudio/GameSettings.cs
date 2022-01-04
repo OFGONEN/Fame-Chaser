@@ -25,6 +25,8 @@ namespace FFStudio
         [ Foldout( "UI Settings" ), Tooltip( "Duration of the fading for ui element"            ) ] public float ui_Entity_Fade_TweenDuration;
 		[ Foldout( "UI Settings" ), Tooltip( "Duration of the scaling for ui element"           ) ] public float ui_Entity_Scale_TweenDuration;
 		[ Foldout( "UI Settings" ), Tooltip( "Duration of the movement for floating ui element" ) ] public float ui_Entity_FloatingMove_TweenDuration;
+		[ Foldout( "UI Settings" ), Tooltip( "Strength of the punch scale for ui element" ) ] public float ui_Entity_PunchScale_Strenght;
+		[ Foldout( "UI Settings" ), Tooltip( "Duration of the punch scale for ui element" ) ] public float ui_Entity_PunchScale_Duration;
 		[ Foldout( "UI Settings" ), Tooltip( "Joy Stick"                                        )] public float ui_Entity_JoyStick_Gap;
         [ Foldout( "UI Settings" ), Tooltip( "Percentage of the screen to register a swipe"     ) ] public int swipeThreshold;
         [ Foldout( "UI Settings" ), Tooltip( "Reference UI width"     ) ] public int ui_screen_width;
@@ -32,6 +34,10 @@ namespace FFStudio
         [ Foldout( "UI Particle" ), Tooltip( "UI Particle - spawn radius"     ) ] public int ui_particle_spawn_radius;
         [ Foldout( "UI Particle" ), Tooltip( "UI Particle - horizontal move ease positive"     ) ] public AnimationCurve ui_particle_ease_horizontal_positive;
         [ Foldout( "UI Particle" ), Tooltip( "UI Particle - horizontal move ease negative"     ) ] public AnimationCurve ui_particle_ease_horizontal_negative;
+        [ Foldout( "UI Particle" ) ] public float ui_particle_fame_count;
+        [ Foldout( "UI Particle" ) ] public float ui_particle_dolar_count;
+        [ Foldout( "UI Particle" ) ] public Sprite ui_particle_fame_sprite;
+        [ Foldout( "UI Particle" ) ] public Sprite ui_particle_dolar_sprite;
 
         [ BoxGroup( "SwapTriggerLane" ) ] public float swap_point_out_randomness = 1f;
         [ BoxGroup( "SwapTriggerLane" ) ] public float swap_point_out_duration = 0.75f;
