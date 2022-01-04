@@ -114,6 +114,8 @@ public class Player : MonoBehaviour
 		swapLane_Out        = SwapLane_Out_Money;
 		forceMainLaneMethod = SwapLane_Main;
 
+		lane_swap_event.Raise( LaneType.Money, SwapType.In );
+
 		triggerLane_Sequence = DOTween.Sequence();
 		triggerLane_Sequence.Append( transform.DOMoveX( position.x, GameSettings.Instance.swap_point_in_duration ) );
 		triggerLane_Sequence.OnComplete( OnSwapTriggerLane_In_Money_Complete );
@@ -286,6 +288,8 @@ public class Player : MonoBehaviour
 
 		current_daddy.CoupleDeatch();
 		current_daddy = null;
+
+		lane_swap_event.Raise( LaneType.Money, SwapType.Out );
 	}
 
 	private void OnUpdate_Movement_MainLane()
