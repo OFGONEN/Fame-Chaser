@@ -284,12 +284,12 @@ public class Player : MonoBehaviour
 
     private void SwapLane_Out_Money()
     {
+		lane_swap_event.Raise( LaneType.Money, SwapType.Out );
+
 		if( current_daddy == null ) return;
 
 		current_daddy.CoupleDeatch();
 		current_daddy = null;
-
-		lane_swap_event.Raise( LaneType.Money, SwapType.Out );
 	}
 
 	private void OnUpdate_Movement_MainLane()
