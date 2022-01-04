@@ -72,6 +72,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5073c03feb51b42d78694c6452dba697, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camera_reference: {fileID: 11400000, guid: 488e798dd6f140e4a84fa7485b885dd3, type: 2}
+  ui_money_reference: {fileID: 11400000, guid: 23f933a6fd5c5442698e87a325e85be6, type: 2}
+  ui_particle_event: {fileID: 11400000, guid: 7e2edc6fea519ed49bd13893d8734ceb, type: 2}
   money_count: 50
   money_particle: {fileID: 11400000, guid: fe240f220ab36cc44923227184f9c2a7, type: 2}
 --- !u!1001 &4958528619541851244
