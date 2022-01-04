@@ -997,6 +997,7 @@ GameObject:
   - component: {fileID: 4108313757632190982}
   - component: {fileID: 6847650464650442774}
   - component: {fileID: 1687750997991961622}
+  - component: {fileID: 2908779131048289996}
   m_Layer: 5
   m_Name: text_money
   m_TagString: Untagged
@@ -1045,7 +1046,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1120,6 +1121,24 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &2908779131048289996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2697628455444302405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11d8f8c7589a5924e8e13ea2bdfb90d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiTransform: {fileID: 4108313757632190982}
+  destinationTransform: {fileID: 0}
+  startPosition: {x: 0, y: 0, z: 0}
+  startScale: {x: 0, y: 0, z: 0}
+  textRenderer: {fileID: 1687750997991961622}
+  player_money_notifier: {fileID: 11400000, guid: 87b3f4f1399c4f54b85a475aa94d396d, type: 2}
 --- !u!1 &2727841508869638070
 GameObject:
   m_ObjectHideFlags: 0
