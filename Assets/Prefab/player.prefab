@@ -331,6 +331,7 @@ MonoBehaviour:
   - {fileID: 86466807793038079}
   cloth_reference_renderer: {fileID: 5060188054098837481}
   cloth_skirt_renderer: {fileID: 86466809455045363}
+  frame: {fileID: 7848031946114036381}
   couple_position: {fileID: 86466808455047687}
   money_position: {fileID: 86466808202714961}
   current_daddy: {fileID: 0}

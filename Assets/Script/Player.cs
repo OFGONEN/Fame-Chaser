@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
 	[ BoxGroup( "Setup" ), SerializeField ] private SkinnedMeshRenderer[] cloth_renderers; // Hat, Shirt, Skirt, Shoe
 	[ BoxGroup( "Setup" ), SerializeField ] private SkinnedMeshRenderer cloth_reference_renderer; 
 	[ BoxGroup( "Setup" ), SerializeField ] private SkinnedMeshRenderer cloth_skirt_renderer; 
+	[ BoxGroup( "Setup" ), SerializeField ] private Transform frame; 
 	[ BoxGroup( "Setup" ), SerializeField ] private Transform couple_position; 
 	[ BoxGroup( "Setup" ), SerializeField ] private Transform money_position; 
 
@@ -226,7 +227,16 @@ public class Player : MonoBehaviour
 
 		var direction = ( main_camera.transform.position - transform.position ).SetY( 0 );
 
-		transform.DORotate( Quaternion.LookRotation( direction ).eulerAngles, GameSettings.Instance.player_duration_rotation );
+		var frame_position = frame.localPosition;
+
+		var sequence = DOTween.Sequence();
+		sequence.Append( transform.DORotate( Quaternion.LookRotation( direction ).eulerAngles, GameSettings.Instance.player_duration_rotation ) );
+		sequence.AppendCallback( () =>
+		{
+			frame.gameObject.SetActive( true );
+			frame.position = main_camera.transform.position;
+		} );
+		sequence.Append( frame.DOLocalMove( frame_position, GameSettings.Instance.camera_follow_duration ) );
 	}
 
     private void SwapLane_Main()
