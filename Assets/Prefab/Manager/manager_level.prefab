@@ -58,3 +58,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b75964b9c4717f648892443badc13753, type: 2}
   - {fileID: 11400000, guid: 49f4a252e335a4c049de295cc03016c8, type: 2}
   - {fileID: 11400000, guid: 2357b03b472b849fd8d49f100a3783ea, type: 2}
+  player_fame_notifier: {fileID: 11400000, guid: 87b3f4f1399c4f54b85a475aa94d396d, type: 2}

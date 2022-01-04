@@ -22,9 +22,10 @@ namespace FFStudio
         [ Header( "Level Releated" ) ]
         public SharedFloatNotifier levelProgress;
         public DaddyPool[] daddy_pool_array;
+		public SharedIntNotifier player_fame_notifier;
 
-        // Private \\
-        private Tween daddy_spawn_tween; 
+		// Private \\
+		private Tween daddy_spawn_tween; 
 #endregion
 
 #region UnityAPI
@@ -52,6 +53,8 @@ namespace FFStudio
             levelRevealedListener.response = LevelRevealedResponse;
             levelStartedListener.response  = LevelStartedResponse;
 			listener_finish_line.response  = LevelFinishedResponse;
+
+			player_fame_notifier.SharedValue = 0;
 		}
 #endregion
 
@@ -59,6 +62,7 @@ namespace FFStudio
         private void LevelLoadedResponse()
         {
 			levelProgress.SharedValue = 0;
+			player_fame_notifier.SharedValue = 0;
 
 			var levelData = CurrentLevelData.Instance.levelData;
 

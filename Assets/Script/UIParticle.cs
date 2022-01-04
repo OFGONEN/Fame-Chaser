@@ -13,6 +13,8 @@ public class UIParticle : UIImage
 	public UIParticle_Pool ui_pool_particle;
     // Private \\
     private Sequence particle_sequence;
+
+	private UnityMessage complete_delegate;
 #endregion
 
 #region Properties
@@ -42,6 +44,29 @@ public class UIParticle : UIImage
 		particle_sequence.Join( transform.DOMoveX( targetPosition.x, GameSettings.Instance.ui_Entity_Move_TweenDuration ).SetEase( GiveRandomEase() ) );
 		particle_sequence.OnComplete( OnParticle_Complete );
 	}
+
+    public void Spawn( Vector2 position, Vector2 targetPosition, float delay, UnityMessage complete )
+    {
+		gameObject.SetActive( true );
+		uiTransform.position = position;
+
+		var ratio = GameSettings.Instance.ui_particle_spawn_radius / ( float )GameSettings.Instance.ui_screen_width;
+		var radius = ratio * Screen.width;
+
+		var random_position = Random.insideUnitCircle * radius;
+
+		var initial_target = position + random_position;
+		initial_target.x = Mathf.Clamp( initial_target.x, 0, Screen.width );
+
+		complete_delegate = complete;
+
+		particle_sequence = DOTween.Sequence();
+		particle_sequence.Append( transform.DOMove( initial_target, GameSettings.Instance.ui_Entity_Move_TweenDuration ) );
+		particle_sequence.AppendInterval( delay );
+		particle_sequence.Append( transform.DOMoveY( targetPosition.y, GameSettings.Instance.ui_Entity_Move_TweenDuration ) );
+		particle_sequence.Join( transform.DOMoveX( targetPosition.x, GameSettings.Instance.ui_Entity_Move_TweenDuration ).SetEase( GiveRandomEase() ) );
+		particle_sequence.OnComplete( OnParticle_Delegate_Complete );
+	}
 #endregion
 
 #region Implementation
@@ -59,6 +84,12 @@ public class UIParticle : UIImage
 	{
 		particle_sequence = particle_sequence.KillProper();
 		ui_pool_particle.ReturnEntity( this );
+	}
+
+	private void OnParticle_Delegate_Complete()
+	{
+		OnParticle_Complete();
+		complete_delegate();
 	}
 #endregion
 

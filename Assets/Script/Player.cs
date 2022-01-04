@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using FFStudio;
 using DG.Tweening;
+using TMPro;
 using NaughtyAttributes;
 
 public class Player : MonoBehaviour
@@ -20,6 +21,7 @@ public class Player : MonoBehaviour
 	[ BoxGroup( "Shared Variables" ), SerializeField ] private SharedReferenceNotifier camera_reference;
 	[ BoxGroup( "Shared Variables" ), SerializeField ] private SharedReferenceNotifier level_progress_indicator_reference;
 	[ BoxGroup( "Shared Variables" ), SerializeField ] private SharedIntNotifier player_money_notifier;
+	[ BoxGroup( "Shared Variables" ), SerializeField ] private SharedIntNotifier player_fame_notifier;
 
 	[ BoxGroup( "Fired Events" ), SerializeField ] private UIParticle_Event ui_particle_event; 
 	[ BoxGroup( "Fired Events" ), SerializeField ] private ParticleSpawnEvent cloth_event; 
@@ -28,6 +30,7 @@ public class Player : MonoBehaviour
 	[ BoxGroup( "Setup" ), SerializeField ] private SkinnedMeshRenderer[] cloth_renderers; // Hat, Shirt, Skirt, Shoe
 	[ BoxGroup( "Setup" ), SerializeField ] private SkinnedMeshRenderer cloth_reference_renderer; 
 	[ BoxGroup( "Setup" ), SerializeField ] private SkinnedMeshRenderer cloth_skirt_renderer; 
+	[ BoxGroup( "Setup" ), SerializeField ] private TextMeshProUGUI frame_fame_text; 
 	[ BoxGroup( "Setup" ), SerializeField ] private Transform frame; 
 	[ BoxGroup( "Setup" ), SerializeField ] private Transform couple_position; 
 	[ BoxGroup( "Setup" ), SerializeField ] private Transform money_position; 
@@ -233,12 +236,32 @@ public class Player : MonoBehaviour
 		sequence.Append( transform.DORotate( Quaternion.LookRotation( direction ).eulerAngles, GameSettings.Instance.player_duration_rotation ) );
 		sequence.AppendCallback( RepositionFrame );
 		sequence.Append( frame.DOLocalMove( frame_position, GameSettings.Instance.camera_follow_duration ) );
+		sequence.OnComplete( SpawnFameParticle );
 	}
 
 	private void RepositionFrame()
 	{
 		frame.position = main_camera.transform.position;
 		frame.gameObject.SetActive( true );
+	}
+
+	private void SpawnFameParticle()
+	{
+		var position_end = main_camera.WorldToScreenPoint( frame_fame_text.transform.position );
+
+		var position_start = level_progress_indicator.position;
+		int particle_count = Mathf.CeilToInt( fame_count / GameSettings.Instance.ui_particle_fame_count_final );
+
+		for( var i = 0; i < particle_count; i++ )
+		{
+			ui_particle_event.Raise( GameSettings.Instance.ui_particle_fame_sprite, position_start, position_end,
+			i * GameSettings.Instance.ui_particle_delay.GiveRandom(), OnFameParticleDone );
+		}
+	}
+
+	private void OnFameParticleDone()
+	{
+		player_fame_notifier.SharedValue += ( int )GameSettings.Instance.ui_particle_fame_count;
 	}
 
     private void SwapLane_Main()

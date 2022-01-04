@@ -131,7 +131,11 @@ namespace FFStudio
             var ui_particle = ui_particle_pool.GetEntity();
 			ui_particle.imageRenderer.sprite = particle_event.sprite;
 
-			ui_particle.Spawn( particle_event.position_start, particle_event.position_end );
+            if( particle_event.complete_delegate == null )
+			    ui_particle.Spawn( particle_event.position_start, particle_event.position_end );
+            else
+			    ui_particle.Spawn( particle_event.position_start, particle_event.position_end, particle_event.start_delay, particle_event.complete_delegate );
+
 		}
 
         private void NewLevelLoaded()

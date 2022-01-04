@@ -321,6 +321,7 @@ MonoBehaviour:
   camera_reference: {fileID: 11400000, guid: 488e798dd6f140e4a84fa7485b885dd3, type: 2}
   level_progress_indicator_reference: {fileID: 11400000, guid: c486dd009ed12492091d80b4762c49e6, type: 2}
   player_money_notifier: {fileID: 11400000, guid: 87b3f4f1399c4f54b85a475aa94d396d, type: 2}
+  player_fame_notifier: {fileID: 11400000, guid: 230b5d768e4344c4f8dd28413551e62f, type: 2}
   ui_particle_event: {fileID: 11400000, guid: 7e2edc6fea519ed49bd13893d8734ceb, type: 2}
   cloth_event: {fileID: 11400000, guid: fe240f220ab36cc44923227184f9c2a7, type: 2}
   lane_swap_event: {fileID: 11400000, guid: e7fc057854197427baa5e9de0e62d3ac, type: 2}
@@ -331,6 +332,7 @@ MonoBehaviour:
   - {fileID: 86466807793038079}
   cloth_reference_renderer: {fileID: 5060188054098837481}
   cloth_skirt_renderer: {fileID: 86466809455045363}
+  frame_fame_text: {fileID: 4220244291232975718}
   frame: {fileID: 2318606665956335181}
   couple_position: {fileID: 86466808455047687}
   money_position: {fileID: 86466808202714961}
@@ -1375,6 +1377,7 @@ MonoBehaviour:
   player_money_notifier: {fileID: 11400000, guid: 230b5d768e4344c4f8dd28413551e62f, type: 2}
   change_color_positive: {r: 0, g: 1, b: 0, a: 1}
   change_color_negative: {r: 1, g: 0, b: 0, a: 1}
+  change_color_neutral: {r: 0, g: 0, b: 0, a: 1}
 --- !u!1001 &86466807945567673
 PrefabInstance:
   m_ObjectHideFlags: 0

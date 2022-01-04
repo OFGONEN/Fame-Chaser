@@ -1141,6 +1141,7 @@ MonoBehaviour:
   player_money_notifier: {fileID: 11400000, guid: 87b3f4f1399c4f54b85a475aa94d396d, type: 2}
   change_color_positive: {r: 0, g: 1, b: 0, a: 1}
   change_color_negative: {r: 1, g: 0, b: 0, a: 1}
+  change_color_neutral: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &2727841508869638070
 GameObject:
   m_ObjectHideFlags: 0
