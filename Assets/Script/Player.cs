@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
 	[ BoxGroup( "Shared Variables" ), SerializeField ] private SharedFloatNotifier level_progress;
 	[ BoxGroup( "Shared Variables" ), SerializeField ] private SharedReferenceNotifier camera_reference;
 	[ BoxGroup( "Shared Variables" ), SerializeField ] private SharedReferenceNotifier level_progress_indicator_reference;
+	[ BoxGroup( "Shared Variables" ), SerializeField ] private SharedIntNotifier player_money_notifier;
 
 	[ BoxGroup( "Fired Events" ), SerializeField ] private UIParticle_Event ui_particle_event; 
 	[ BoxGroup( "Fired Events" ), SerializeField ] private ParticleSpawnEvent cloth_event; 
@@ -137,6 +138,8 @@ public class Player : MonoBehaviour
 	public void GainMoney( int amount )
 	{
 		money_count += amount;
+
+		player_money_notifier.SharedValue = money_count;
 	}
 
 	public bool SpendMoney( int amount )
@@ -146,6 +149,7 @@ public class Player : MonoBehaviour
 		else
 		{
 			money_count -= amount;
+			player_money_notifier.SharedValue = money_count;
 			return true;
 		}
 	}
