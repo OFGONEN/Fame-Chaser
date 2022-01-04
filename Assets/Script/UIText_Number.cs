@@ -12,7 +12,8 @@ public class UIText_Number : UIText
 #region Fields
     [ BoxGroup( "Setup" ) ] public SharedIntNotifier player_money_notifier;
 
-    private Tween punch_tween; 
+    private Sequence punch_sequence; 
+	private int lastValue;
 #endregion
 
 #region UnityAPI
@@ -35,12 +36,27 @@ public class UIText_Number : UIText
 #region Implementation
     private void OnPlayerMoneyChange()
     {
-		punch_tween = punch_tween.KillProper();
+		punch_sequence = punch_sequence.KillProper();
 
-		textRenderer.text = player_money_notifier.SharedValue.ToString();
+		Color change;
+		if( lastValue > player_money_notifier.SharedValue )
+			change = Color.red;
+		else
+			change = Color.green;
 
+		punch_sequence = DOTween.Sequence();
+
+		lastValue            = player_money_notifier.SharedValue;
+		textRenderer.text    = player_money_notifier.SharedValue.ToString();
 		transform.localScale = startScale;
-		punch_tween = transform.DOPunchScale( Vector3.one * GameSettings.Instance.ui_Entity_PunchScale_Strenght, GameSettings.Instance.ui_Entity_PunchScale_Duration );
+
+		var duration = GameSettings.Instance.ui_Entity_PunchScale_Duration;
+
+		punch_sequence.Append( textRenderer.DOColor( change, duration / 2f ) );
+		punch_sequence.Join( transform.DOPunchScale( Vector3.one * GameSettings.Instance.ui_Entity_PunchScale_Strenght, GameSettings.Instance.ui_Entity_PunchScale_Duration ) );
+		punch_sequence.AppendInterval( duration / 2f );
+		punch_sequence.Join( textRenderer.DOColor( Color.white, duration / 2f ) );
+
 	}
 #endregion
 }
