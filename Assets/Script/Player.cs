@@ -171,7 +171,7 @@ public class Player : MonoBehaviour
 
 		if( disable_skirt )
 			cloth_skirt_renderer.enabled = false;
-		else
+		else if( index == 1 ) // Shirt index
 			cloth_skirt_renderer.enabled = true;
 
 		var random = Random.Range( 1, 4 );
