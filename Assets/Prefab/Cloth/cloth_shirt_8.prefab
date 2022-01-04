@@ -57,11 +57,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8809797780205124763, guid: 5ad0d2f43a31bc3499103adaa640bd82, type: 3}
       propertyPath: cloth_cost
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8809797780205124763, guid: 5ad0d2f43a31bc3499103adaa640bd82, type: 3}
       propertyPath: cloth_fame
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8809797780205124763, guid: 5ad0d2f43a31bc3499103adaa640bd82, type: 3}
       propertyPath: cloth_type
