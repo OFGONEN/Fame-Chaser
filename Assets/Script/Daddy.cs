@@ -19,7 +19,9 @@ public class Daddy : MonoBehaviour
 
     [ BoxGroup( "Setup" ) ] public ParticleSpawnEvent money_particle;
     [ BoxGroup( "Setup" ) ] public Transform daddy_money_position;
-     
+    [ BoxGroup( "Setup" ), SerializeField ] private SharedReferenceNotifier camera_reference;
+    [ BoxGroup( "Setup" ), SerializeField ] private SharedReferenceNotifier ui_money_reference;
+    [ BoxGroup( "Setup" ), SerializeField ] private UIParticle_Event ui_particle_event;
 
 	// Private \\
 	private Animator animator;
@@ -30,6 +32,8 @@ public class Daddy : MonoBehaviour
     private Transform transform_end;
     private Transform player_money_position;
 	private Player player;
+    private Camera main_camera;
+    private Transform ui_money;
 
 	[ SerializeField, ReadOnly ] private int daddy_money_count;
 	[ SerializeField, ReadOnly ] private List< Stackable_Money > daddy_money_list  = new List< Stackable_Money >( 64 );
@@ -69,6 +73,12 @@ public class Daddy : MonoBehaviour
 		triggerListener     = GetComponentInChildren< TriggerListener >();
 
 		ToggleRagdoll( false );
+	}
+
+    private void Start()
+    {
+        main_camera = ( camera_reference.SharedValue as Transform ).GetComponent< Camera >();
+		ui_money = ui_money_reference.SharedValue as Transform;
 	}
 
 	private void Update()
@@ -288,6 +298,17 @@ public class Daddy : MonoBehaviour
 		for( var i = 0; i < daddy_money_list.Count; i++ )
 		{
 			daddy_money_list[ i ].Deposit();
+		}
+
+		// ui particle
+		var particle_start  = main_camera.WorldToScreenPoint( player_money_position.position );
+		var particle_end    = ui_money.position;
+		var particle_sprite = GameSettings.Instance.ui_particle_dolar_sprite;
+		int particle_count  = Mathf.CeilToInt( money_amount / GameSettings.Instance.ui_particle_dolar_count );
+
+        for( var i = 0; i < particle_count; i++ )
+        {
+			ui_particle_event.Raise( particle_sprite, particle_start, particle_end );
 		}
 
 		money_particle.Raise( "stack_money", player_money_position.position );
