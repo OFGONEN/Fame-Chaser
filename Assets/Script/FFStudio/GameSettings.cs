@@ -66,10 +66,14 @@ namespace FFStudio
         [ Foldout( "Input" ) ] public AnimationCurve curve_downward;
 
         [ Foldout( "Camera" ) ] public float camera_follow_speed;
+        [ Foldout( "Camera" ) ] public float camera_follow_speed_depth;
         [ Foldout( "Camera" ) ] public float camera_follow_depth;
         [ Foldout( "Camera" ) ] public float camera_follow_height;
         [ Foldout( "Camera" ) ] public float camera_follow_rotation;
         [ Foldout( "Camera" ) ] public float camera_follow_duration;
+        [ Foldout( "Camera" ) ] public float camera_trigger_follow_depth;
+        [ Foldout( "Camera" ) ] public float camera_trigger_follow_rotation;
+        [ Foldout( "Camera" ) ] public float camera_trigger_follow_lateral;
 
         [ Foldout( "Paparazzi" ) ] public float paparazzi_rotate_duration = 0.15f;
         [ Foldout( "Paparazzi" ) ] public float paparazzi_photo_distance = 1f;

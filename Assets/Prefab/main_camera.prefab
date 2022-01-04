@@ -165,5 +165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level_revealed_listener:
     gameEvent: {fileID: 11400000, guid: be5502ede7f194b4cad32082aa9196eb, type: 2}
+  player_lane_swap_listener:
+    gameEvent: {fileID: 11400000, guid: e7fc057854197427baa5e9de0e62d3ac, type: 2}
   level_start_event: {fileID: 11400000, guid: efef06bf257ee27438d6c2aab4936226, type: 2}
   player_reference: {fileID: 11400000, guid: 44b2e3ec682b24496b96125c8854d105, type: 2}
