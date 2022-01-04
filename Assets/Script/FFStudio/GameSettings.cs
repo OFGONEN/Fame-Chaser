@@ -39,51 +39,51 @@ namespace FFStudio
         [ Foldout( "UI Particle" ) ] public Sprite ui_particle_fame_sprite;
         [ Foldout( "UI Particle" ) ] public Sprite ui_particle_dolar_sprite;
 
-        [ BoxGroup( "SwapTriggerLane" ) ] public float swap_point_out_randomness = 1f;
-        [ BoxGroup( "SwapTriggerLane" ) ] public float swap_point_out_duration = 0.75f;
-        [ BoxGroup( "SwapTriggerLane" ) ] public float swap_point_in_duration = 0.75f;
+        [ Foldout( "SwapTriggerLane" ) ] public float swap_point_out_randomness = 1f;
+        [ Foldout( "SwapTriggerLane" ) ] public float swap_point_out_duration = 0.75f;
+        [ Foldout( "SwapTriggerLane" ) ] public float swap_point_in_duration = 0.75f;
 
         // Player
-        [ BoxGroup( "Player" ) ] public float player_movement_speed_lateral = 1f; 
-        [ BoxGroup( "Player" ) ] public float player_movement_speed_forward = 1f; 
-        [ BoxGroup( "Player" ) ] public float player_movement_clamp_lateral = 5f; 
-        [ BoxGroup( "Player" ) ] public float player_duration_cloth_off = 0.75f; 
+        [ Foldout( "Player" ) ] public float player_movement_speed_lateral = 1f; 
+        [ Foldout( "Player" ) ] public float player_movement_speed_forward = 1f; 
+        [ Foldout( "Player" ) ] public float player_movement_clamp_lateral = 5f; 
+        [ Foldout( "Player" ) ] public float player_duration_cloth_off = 0.75f; 
 
         // Sugar Daddy
-        [ BoxGroup( "Daddy" ) ] public float daddy_movement_speed   = 5f;
-        [ BoxGroup( "Daddy" ) ] public float daddy_couple_duration  = 0.75f;
-        [ BoxGroup( "Daddy" ) ] public float daddy_ragdoll_duration = 1f;
-        [ BoxGroup( "Daddy" ) ] public float daddy_ragdoll_force    = 50f;
-        [ BoxGroup( "Daddy" ) ] public Vector2 daddy_ragdoll_force_vertical;
-        [ BoxGroup( "Daddy" ) ] public int daddy_money_bill         = 10;
-        [ BoxGroup( "Daddy" ) ] public float daddy_money_delay      = 0.125f;
-        [ BoxGroup( "Daddy" ) ] public float daddy_money_transfer   = 0.2f;
-        [ BoxGroup( "Daddy" ) ] public float daddy_money_height     = 0.2f;
-        [ BoxGroup( "Daddy" ) ] public Vector2Int daddy_money_amount;
+        [ Foldout( "Daddy" ) ] public float daddy_movement_speed   = 5f;
+        [ Foldout( "Daddy" ) ] public float daddy_couple_duration  = 0.75f;
+        [ Foldout( "Daddy" ) ] public float daddy_ragdoll_duration = 1f;
+        [ Foldout( "Daddy" ) ] public float daddy_ragdoll_force    = 50f;
+        [ Foldout( "Daddy" ) ] public Vector2 daddy_ragdoll_force_vertical;
+        [ Foldout( "Daddy" ) ] public int daddy_money_bill         = 10;
+        [ Foldout( "Daddy" ) ] public float daddy_money_delay      = 0.125f;
+        [ Foldout( "Daddy" ) ] public float daddy_money_transfer   = 0.2f;
+        [ Foldout( "Daddy" ) ] public float daddy_money_height     = 0.2f;
+        [ Foldout( "Daddy" ) ] public Vector2Int daddy_money_amount;
 
-        [ BoxGroup( "Input" ) ] public float input_horizontal_deadzone = 0.01f; // 828 * 0.01 = 8 pixel
-        [ BoxGroup( "Input" ) ] public AnimationCurve curve_upward;
-        [ BoxGroup( "Input" ) ] public AnimationCurve curve_downward;
+        [ Foldout( "Input" ) ] public float input_horizontal_deadzone = 0.01f; // 828 * 0.01 = 8 pixel
+        [ Foldout( "Input" ) ] public AnimationCurve curve_upward;
+        [ Foldout( "Input" ) ] public AnimationCurve curve_downward;
 
-        [ BoxGroup( "Camera" ) ] public float camera_follow_speed;
-        [ BoxGroup( "Camera" ) ] public float camera_follow_depth;
-        [ BoxGroup( "Camera" ) ] public float camera_follow_height;
-        [ BoxGroup( "Camera" ) ] public float camera_follow_rotation;
-        [ BoxGroup( "Camera" ) ] public float camera_follow_duration;
+        [ Foldout( "Camera" ) ] public float camera_follow_speed;
+        [ Foldout( "Camera" ) ] public float camera_follow_depth;
+        [ Foldout( "Camera" ) ] public float camera_follow_height;
+        [ Foldout( "Camera" ) ] public float camera_follow_rotation;
+        [ Foldout( "Camera" ) ] public float camera_follow_duration;
 
-        [ BoxGroup( "Paparazzi" ) ] public float paparazzi_rotate_duration = 0.15f;
-        [ BoxGroup( "Paparazzi" ) ] public float paparazzi_photo_distance = 1f;
+        [ Foldout( "Paparazzi" ) ] public float paparazzi_rotate_duration = 0.15f;
+        [ Foldout( "Paparazzi" ) ] public float paparazzi_photo_distance = 1f;
 
-        [ BoxGroup( "Currency" ) ] public int[] currency_level_dolar;
-        [ BoxGroup( "Currency" ) ] public int[] currency_level_fame;
+        [ Foldout( "Currency" ) ] public int[] currency_level_dolar;
+        [ Foldout( "Currency" ) ] public int[] currency_level_fame;
 
-        [ BoxGroup( "Cloth" ) ] public Color[] cloth_outline_color;
-        [ BoxGroup( "Cloth" ) ] public float[] cloth_outline_widht;
+        [ Foldout( "Cloth" ) ] public Color[] cloth_outline_color;
+        [ Foldout( "Cloth" ) ] public float[] cloth_outline_widht;
 
-        [ BoxGroup( "Particle" ) ] public float particle_cloth_distance;
-        [ BoxGroup( "Particle" ) ] public float particle_cloth_radius;
+        [ Foldout( "Particle" ) ] public float particle_cloth_distance;
+        [ Foldout( "Particle" ) ] public float particle_cloth_radius;
         
-        [ BoxGroup( "Texture" ) ] public float texture_arrow_scrollSpeed = 1.0f;
+        [ Foldout( "Texture" ) ] public float texture_arrow_scrollSpeed = 1.0f;
 #endregion
 
 #region Implementation
