@@ -77,7 +77,6 @@ public class Daddy : MonoBehaviour
 
     private void Start()
     {
-        main_camera = ( camera_reference.SharedValue as Transform ).GetComponent< Camera >();
 		ui_money = ui_money_reference.SharedValue as Transform;
 	}
 
@@ -93,6 +92,8 @@ public class Daddy : MonoBehaviour
 		transform_spawn = daddy_spawn_position.SharedValue as Transform;
 		transform_start = daddy_start_position.SharedValue as Transform;
 		transform_end   = daddy_end_position.SharedValue as Transform;
+
+        main_camera = ( camera_reference.SharedValue as Transform ).GetComponent< Camera >();
 
 		animator.SetBool( "match", false );
 
