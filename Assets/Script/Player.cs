@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
 	[ BoxGroup( "Shared Variables" ), SerializeField ] private SharedIntNotifier player_fame_notifier;
 
 	[ BoxGroup( "Fired Events" ), SerializeField ] private GameEvent level_complete_event; 
+	[ BoxGroup( "Fired Events" ), SerializeField ] private GameEvent level_failed_event; 
 	[ BoxGroup( "Fired Events" ), SerializeField ] private UIParticle_Event ui_particle_event; 
 	[ BoxGroup( "Fired Events" ), SerializeField ] private ParticleSpawnEvent cloth_event; 
 	[ BoxGroup( "Fired Events" ), SerializeField ] private TriggerLaneEvent lane_swap_event; 
@@ -237,7 +238,11 @@ public class Player : MonoBehaviour
 		sequence.Append( transform.DORotate( Quaternion.LookRotation( direction ).eulerAngles, GameSettings.Instance.player_duration_rotation ) );
 		sequence.AppendCallback( RepositionFrame );
 		sequence.Append( frame.DOLocalMove( frame_position, GameSettings.Instance.camera_follow_duration ) );
-		sequence.OnComplete( SpawnFameParticle );
+
+		if( fame_count <= 0 )
+			sequence.OnComplete( level_failed_event.Raise );
+		else
+			sequence.OnComplete( SpawnFameParticle );
 	}
 
 	private void RepositionFrame()

@@ -323,6 +323,7 @@ MonoBehaviour:
   player_money_notifier: {fileID: 11400000, guid: 87b3f4f1399c4f54b85a475aa94d396d, type: 2}
   player_fame_notifier: {fileID: 11400000, guid: 230b5d768e4344c4f8dd28413551e62f, type: 2}
   level_complete_event: {fileID: 11400000, guid: 28d976b368abc004a924d98b1751a17d, type: 2}
+  level_failed_event: {fileID: 11400000, guid: ec850936269bc2e47b26cfebd8bdad97, type: 2}
   ui_particle_event: {fileID: 11400000, guid: 7e2edc6fea519ed49bd13893d8734ceb, type: 2}
   cloth_event: {fileID: 11400000, guid: fe240f220ab36cc44923227184f9c2a7, type: 2}
   lane_swap_event: {fileID: 11400000, guid: e7fc057854197427baa5e9de0e62d3ac, type: 2}
