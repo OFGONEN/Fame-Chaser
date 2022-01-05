@@ -26,11 +26,12 @@ public class Door : Interactable
     protected override void OnTrigger( Collider collider )
     {
 		var player = collider.GetComponentInChildren<TriggerListener>().AttachedComponent as Player;
-		player.TakeClothesOff( cloth_remove_array );
+		var takeOff = player.TakeClothesOff( cloth_remove_array );
 
 		triggerListener.Unsubscribe( OnTrigger );
 
-		cloth_remove_particle.Raise( "door", collider.bounds.center, player.transform );
+		if( takeOff )
+			cloth_remove_particle.Raise( "door", collider.bounds.center, player.transform );
 	}
 #endregion
 

@@ -188,17 +188,24 @@ public class Player : MonoBehaviour
 		cloth_event.Raise( "cloth_" + random, position , transform );
 	}
 
-	public void TakeClothesOff( ClothEnum[] clothesToRemove )
+	public bool TakeClothesOff( ClothEnum[] clothesToRemove )
 	{
 		animator.SetTrigger( "cloth_all" );
+
+		bool takeOff = false;
 
 		for( var i = 0; i < clothesToRemove.Length; i++ )
 		{
 			var cloth_index = clothesToRemove[ i ].cloth_index;
 
 			if( cloth_data_array[ cloth_index  ].cloth_type != null )
+			{
 				TakeClothOff( cloth_index );
+				takeOff = true;
+			}
 		}
+
+		return takeOff;
 	}
 
 	public bool MatchDaddy( Daddy daddy, ref Transform coupleTransform )
