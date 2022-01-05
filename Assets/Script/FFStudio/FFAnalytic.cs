@@ -13,6 +13,8 @@ namespace FFStudio
 		[Header( "Event Listeners" )]
 		public EventListenerDelegateResponse elephantEventListener;
 		public EventListenerDelegateResponse elephantRemoteConfigListener;
+
+		public SharedString build_string;
 #endregion
 
 #region UnityAPI
@@ -37,6 +39,11 @@ namespace FFStudio
 		private void Start()
 		{
 			LoadRemoteConfigs();
+
+			var param = Params.New();
+			param.customData = build_string.sharedValue;
+
+			Elephant.Event( "build_string", 0, param );
 		}
 
 #endregion

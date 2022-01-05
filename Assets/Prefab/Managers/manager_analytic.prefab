@@ -47,3 +47,4 @@ MonoBehaviour:
     gameEvent: {fileID: 11400000, guid: 33ccf5f609258ea46b63b78483df10f5, type: 2}
   elephantRemoteConfigListener:
     gameEvent: {fileID: 11400000, guid: fce0517684d57439aad15342a420da2f, type: 2}
+  build_string: {fileID: 11400000, guid: 720da4be9a07ef14f8f97cca01a3b72b, type: 2}
