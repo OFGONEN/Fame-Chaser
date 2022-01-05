@@ -16,9 +16,9 @@ MonoBehaviour:
   clientTokens:
   - 
   appIds:
-  - 0
+  - 930380457843125
   appLabels:
-  - App Name
+  - Fame Chaser
   cookie: 1
   logging: 1
   status: 1
