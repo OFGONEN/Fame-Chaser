@@ -181,6 +181,14 @@ PrefabInstance:
       propertyPath: m_text
       value: ONLYFANS
       objectReference: {fileID: 0}
+    - target: {fileID: 2759381309272080580, guid: ab2e8b56c599d1e4db2ffbc4755e88f6, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: b60f6e7f44cc9f440a6a060bc406fbd6, type: 2}
+    - target: {fileID: 2759381309272080580, guid: ab2e8b56c599d1e4db2ffbc4755e88f6, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: eb063b64596b9624e8eb951059244053, type: 2}
     - target: {fileID: 5324059720481656667, guid: ab2e8b56c599d1e4db2ffbc4755e88f6, type: 3}
       propertyPath: m_Name
       value: canvas
