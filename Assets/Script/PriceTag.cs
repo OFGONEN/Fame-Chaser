@@ -29,32 +29,35 @@ public class PriceTag : MonoBehaviour
 #endregion
 
 #region API
-    public void SetText( int dolar, int start )
+    public void SetText( int dolar, int real_dolar, int start )
     {
 		// <font="fontAssetName">
+		text_builder.Append( "<color=#FF3737>-" + real_dolar + "</color>" );
 		text_builder.Append( "<font=\"" );
 		text_builder.Append( font_name_dolar );
 		text_builder.Append( "\">" );
+		text_builder.Append( '$' );
 
-		for( var i = 0; i < dolar; i++ )
-        {
-			text_builder.Append( '$' );
-		}
+		// for( var i = 0; i < dolar; i++ )
+        // {
+		// 	text_builder.Append( '$' );
+		// }
 
-		text_builder.Append( "</font>" );
 
-		text_builder.Append( '/' );
+		// text_builder.Append( "</font>" );
 
-		text_builder.Append( "<font=\"" );
-		text_builder.Append( font_name_star );
-		text_builder.Append( "\">" );
+		// text_builder.Append( "<color=\"green\"> +</color>" );
 
-		for( var i = 0; i < start; i++ )
-        {
-			text_builder.Append( '\\' );
-		}
+		// text_builder.Append( "<font=\"" );
+		// text_builder.Append( font_name_star );
+		// text_builder.Append( "\">" );
 
-		text_builder.Append( "</font>" );
+		// for( var i = 0; i < start; i++ )
+        // {
+		// 	text_builder.Append( '\\' );
+		// }
+
+		// text_builder.Append( "</font>" );
 
 		text_renderer.text = text_builder.ToString();
 	}
@@ -68,7 +71,7 @@ public class PriceTag : MonoBehaviour
     [ Button() ]
     public void Test()
     {
-		SetText( 1, 1 );
+		SetText( 1, 1, 1 );
 	}
 #endif
 #endregion

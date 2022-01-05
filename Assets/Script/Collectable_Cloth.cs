@@ -19,6 +19,7 @@ public class Collectable_Cloth : Interactable
     private TriggerListener cloth_trigger;
     private PriceTag cloth_price_tag;
     private Outline cloth_outline;
+    private int cloth_random_cost;
 #endregion
 
 #region Properties
@@ -32,7 +33,10 @@ public class Collectable_Cloth : Interactable
 		cloth_price_tag = GetComponentInChildren< PriceTag >();
 		cloth_outline   = GetComponentInChildren< Outline >();
 
-		cloth_price_tag.SetText( cloth_cost, cloth_fame );
+        var currency = GameSettings.Instance.currency_level_dolar;
+		cloth_random_cost = Random.Range( currency[ cloth_cost - 1 ], currency[ cloth_cost ] );
+
+		cloth_price_tag.SetText( cloth_cost, cloth_random_cost, cloth_fame );
 
         if( cloth_outline != null )
         {
@@ -51,11 +55,8 @@ public class Collectable_Cloth : Interactable
     {
         var player = other.GetComponent< TriggerListener >().AttachedComponent as Player;
 
-        var currency = GameSettings.Instance.currency_level_dolar;
 
-		var random_currency = Random.Range( currency[ cloth_cost - 1 ], currency[ cloth_cost ] );
-
-		if( !player.SpendMoney( random_currency ) )
+		if( !player.SpendMoney( cloth_random_cost ) )
 			return;
 		
         player.DressCloth( new ClothData( cloth_renderer, cloth_type, cloth_cost, cloth_fame ), disable_skirt );
