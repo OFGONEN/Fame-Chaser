@@ -100,19 +100,19 @@ MonoBehaviour:
   swap_point_out_randomness: 0.5
   swap_point_out_duration: 0.75
   swap_point_in_duration: 0.75
-  player_movement_speed_lateral: 50
-  player_movement_speed_forward: 5
+  player_movement_speed_lateral: 90
+  player_movement_speed_forward: 2.8
   player_movement_clamp_lateral: 4.5
   player_duration_cloth_off: 0.75
   player_duration_rotation: 0.5
-  daddy_movement_speed: 5
-  daddy_couple_duration: 0.75
+  daddy_movement_speed: 3
+  daddy_couple_duration: 0.5
   daddy_ragdoll_duration: 3
   daddy_ragdoll_force: 200
   daddy_ragdoll_force_vertical: {x: 0, y: 1}
   daddy_money_bill: 10
-  daddy_money_delay: 0.1
-  daddy_money_transfer: 0.1
+  daddy_money_delay: 0.05
+  daddy_money_transfer: 0.05
   daddy_money_height: 0.1
   daddy_money_amount: {x: 25, y: 100}
   input_horizontal_deadzone: 0.001
@@ -183,7 +183,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   camera_follow_speed: 4
-  camera_follow_speed_depth: 5
+  camera_follow_speed_depth: 2.8
   camera_follow_depth: 2
   camera_follow_height: 2
   camera_follow_rotation: 15
