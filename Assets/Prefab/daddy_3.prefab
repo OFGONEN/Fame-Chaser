@@ -1680,10 +1680,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 2357b03b472b849fd8d49f100a3783ea, type: 2}
     - target: {fileID: 5274557037668234646, guid: 22aee22d3435849589f6cdf958133899, type: 3}
-      propertyPath: money_particle
-      value: 
-      objectReference: {fileID: 11400000, guid: fe240f220ab36cc44923227184f9c2a7, type: 2}
-    - target: {fileID: 5274557037668234646, guid: 22aee22d3435849589f6cdf958133899, type: 3}
       propertyPath: daddy_money_position
       value: 
       objectReference: {fileID: 9178465971483520776}

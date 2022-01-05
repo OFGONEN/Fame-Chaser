@@ -10,6 +10,8 @@ using NaughtyAttributes;
 public class Daddy : MonoBehaviour
 {
 #region Fields
+    [ BoxGroup( "Event Listener" ), SerializeField ] private EventListenerDelegateResponse level_load_new_listener;
+
     [ BoxGroup( "Shared Variables" ), SerializeField ] private DaddyPool daddy_pool;
     [ BoxGroup( "Shared Variables" ), SerializeField ] private DaddySet daddy_set;
     [ BoxGroup( "Shared Variables" ), SerializeField ] private Stackable_Money_Pool money_pool;
@@ -53,11 +55,15 @@ public class Daddy : MonoBehaviour
 	private void OnEnable()
 	{
 		triggerListener.Subscribe( OnTrigger );
+
+		level_load_new_listener.OnEnable();
 	}
 
 	private void OnDisable()
 	{
 		triggerListener.Unsubscribe( OnTrigger );
+
+		level_load_new_listener.OnDisable();
 
 		ragdoll_tween   = ragdoll_tween.KillProper();
 		couple_sequence = couple_sequence.KillProper();
@@ -67,6 +73,8 @@ public class Daddy : MonoBehaviour
 	{
 		updateMethod = ExtensionMethods.EmptyMethod;
 		couple_DetachedMethod = ExtensionMethods.EmptyMethod;
+
+		level_load_new_listener.response = RagdollOff;
 
 		animator            = GetComponentInChildren< Animator >();
 		ragdoll_rigidbodies = GetComponentsInChildren< Rigidbody >();
