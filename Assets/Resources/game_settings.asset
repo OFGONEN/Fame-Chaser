@@ -190,8 +190,8 @@ MonoBehaviour:
   camera_follow_height: 2
   camera_follow_rotation: 15
   camera_follow_duration: 0.75
-  camera_trigger_follow_depth: 3
-  camera_trigger_follow_rotation: 15
+  camera_trigger_follow_depth: 2.5
+  camera_trigger_follow_rotation: 22.5
   camera_trigger_follow_lateral: 2
   paparazzi_rotate_duration: 0.35
   paparazzi_photo_distance: 3
