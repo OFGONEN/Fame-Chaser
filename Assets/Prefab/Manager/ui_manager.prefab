@@ -183,8 +183,8 @@ MonoBehaviour:
 
     Tap to Continue'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 90500ef796199476c960ff7be4b11183, type: 2}
-  m_sharedMaterial: {fileID: -2427291923311921953, guid: 90500ef796199476c960ff7be4b11183, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b60f6e7f44cc9f440a6a060bc406fbd6, type: 2}
+  m_sharedMaterial: {fileID: 1759554746437037412, guid: b60f6e7f44cc9f440a6a060bc406fbd6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -336,8 +336,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Loading...
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 90500ef796199476c960ff7be4b11183, type: 2}
-  m_sharedMaterial: {fileID: -2427291923311921953, guid: 90500ef796199476c960ff7be4b11183, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b60f6e7f44cc9f440a6a060bc406fbd6, type: 2}
+  m_sharedMaterial: {fileID: 1759554746437037412, guid: b60f6e7f44cc9f440a6a060bc406fbd6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -648,14 +648,14 @@ MonoBehaviour:
       m_Calls: []
   m_text: Loading...
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 90500ef796199476c960ff7be4b11183, type: 2}
-  m_sharedMaterial: {fileID: -2427291923311921953, guid: 90500ef796199476c960ff7be4b11183, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b60f6e7f44cc9f440a6a060bc406fbd6, type: 2}
+  m_sharedMaterial: {fileID: 1759554746437037412, guid: b60f6e7f44cc9f440a6a060bc406fbd6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
+    rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -1054,8 +1054,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 999999
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 90500ef796199476c960ff7be4b11183, type: 2}
-  m_sharedMaterial: {fileID: -2427291923311921953, guid: 90500ef796199476c960ff7be4b11183, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b60f6e7f44cc9f440a6a060bc406fbd6, type: 2}
+  m_sharedMaterial: {fileID: 1759554746437037412, guid: b60f6e7f44cc9f440a6a060bc406fbd6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1319,8 +1319,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: APK_30/08/21_Build-1
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 90500ef796199476c960ff7be4b11183, type: 2}
-  m_sharedMaterial: {fileID: -2427291923311921953, guid: 90500ef796199476c960ff7be4b11183, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b60f6e7f44cc9f440a6a060bc406fbd6, type: 2}
+  m_sharedMaterial: {fileID: 1759554746437037412, guid: b60f6e7f44cc9f440a6a060bc406fbd6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
