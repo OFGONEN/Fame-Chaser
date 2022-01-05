@@ -32,6 +32,8 @@ public class Door : Interactable
 
 		if( takeOff )
 			cloth_remove_particle.Raise( "door", collider.bounds.center, player.transform );
+
+		gameObject.SetActive( false );
 	}
 #endregion
 
