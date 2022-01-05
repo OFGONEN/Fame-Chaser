@@ -33,11 +33,6 @@ public class Collectable_Cloth : Interactable
 		cloth_price_tag = GetComponentInChildren< PriceTag >();
 		cloth_outline   = GetComponentInChildren< Outline >();
 
-        var currency = GameSettings.Instance.currency_level_dolar;
-		cloth_random_cost = Random.Range( currency[ cloth_cost - 1 ], currency[ cloth_cost ] );
-
-		cloth_price_tag.SetText( cloth_cost, cloth_random_cost, cloth_fame );
-
         if( cloth_outline != null )
         {
 		    cloth_outline.OutlineColor = GameSettings.Instance.cloth_outline_color[ cloth_fame - 1 ];
@@ -45,6 +40,12 @@ public class Collectable_Cloth : Interactable
         }
 	}
 
+    private void Start()
+    {
+         var currency = GameSettings.Instance.currency_level_dolar;
+		cloth_random_cost = Random.Range( currency[ cloth_cost - 1 ], currency[ cloth_cost ] );
+		cloth_price_tag.SetText( cloth_cost, cloth_random_cost, cloth_fame );
+    }
 #endregion
 
 #region API
