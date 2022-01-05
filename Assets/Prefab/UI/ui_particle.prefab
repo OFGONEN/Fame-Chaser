@@ -93,4 +93,6 @@ MonoBehaviour:
   startPosition: {x: 0, y: 0, z: 0}
   startScale: {x: 0, y: 0, z: 0}
   imageRenderer: {fileID: 4488595647373370967}
+  level_load_new_listener:
+    gameEvent: {fileID: 11400000, guid: f21048912f45f4f4ba5088a96779eb2f, type: 2}
   ui_pool_particle: {fileID: 11400000, guid: 6d4f4128d8c5e1e4496dbe5dbc275ebb, type: 2}

@@ -10,6 +10,7 @@ using NaughtyAttributes;
 public class UIParticle : UIImage
 {
 #region Fields
+    public EventListenerDelegateResponse level_load_new_listener;
 	public UIParticle_Pool ui_pool_particle;
     // Private \\
     private Sequence particle_sequence;
@@ -21,6 +22,20 @@ public class UIParticle : UIImage
 #endregion
 
 #region Unity API
+	private void OnEnable()
+	{
+		level_load_new_listener.OnEnable();
+	}
+
+	private void OnDisable()
+	{
+		level_load_new_listener.OnDisable();
+	}
+
+	private void Awake()
+	{
+		level_load_new_listener.response = OnParticle_Complete;
+	}
 #endregion
 
 #region API
