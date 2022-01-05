@@ -96,7 +96,7 @@ MonoBehaviour:
   ui_particle_dolar_count: 10
   ui_particle_fame_sprite: {fileID: 21300000, guid: 4902e3cbcd7c5438ea7ed8ba458586c3, type: 3}
   ui_particle_dolar_sprite: {fileID: 21300000, guid: 720c530421ca9493cba6afca9784942d, type: 3}
-  ui_particle_delay: {x: 0.025, y: 0.1}
+  ui_particle_delay: {x: 0.0125, y: 0.025}
   swap_point_out_randomness: 0.5
   swap_point_out_duration: 0.75
   swap_point_in_duration: 0.75

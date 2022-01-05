@@ -3,6 +3,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 namespace FFStudio
 {
@@ -36,6 +37,8 @@ namespace FFStudio
 		
 		private void Awake()
 		{
+			DOTween.SetTweensCapacity( GameSettings.Instance.dotween_capacity_tween, GameSettings.Instance.dotween_capacity_tween );
+
 			loadNewLevelListener.response = LoadNewLevel;
 			resetLevelListener.response   = ResetLevel;
 		}
