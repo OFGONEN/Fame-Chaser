@@ -35,12 +35,12 @@ namespace Lean.Touch
 
 		protected virtual void OnEnable()
 		{
-			LeanTouch.OnFingerSwipe += HandleFingerSwipe;
+			LeanTouch.OnFingerUpdate += HandleFingerSwipe;
 		}
 
 		protected virtual void OnDisable()
 		{
-			LeanTouch.OnFingerSwipe -= HandleFingerSwipe;
+			LeanTouch.OnFingerUpdate -= HandleFingerSwipe;
 		}
 
 		private void HandleFingerSwipe(LeanFinger finger)
@@ -60,7 +60,12 @@ namespace Lean.Touch
 				return;
 			}
 
-			HandleFingerSwipe(finger, finger.StartScreenPosition, finger.ScreenPosition);
+			if( finger.SwipeScreenDelta.magnitude * LeanTouch.ScalingFactor > LeanTouch.Instance.SwipeThreshold )
+			{
+				HandleFingerSwipe( finger, finger.StartScreenPosition, finger.ScreenPosition );
+			}
+
+			// HandleFingerSwipe(finger, finger.StartScreenPosition, finger.ScreenPosition);
 		}
 	}
 }
