@@ -15,4 +15,4 @@ MonoBehaviour:
   sceneIndex: 5
   overrideAsActiveScene: 0
   daddy_spawn_rate: {x: 2, y: 4}
-  fame_target_count: 220
+  fame_target_count: 170

@@ -112,11 +112,11 @@ MonoBehaviour:
   daddy_ragdoll_duration: 2
   daddy_ragdoll_force: 200
   daddy_ragdoll_force_vertical: {x: 0, y: 1}
-  daddy_money_bill: 10
-  daddy_money_delay: 0.05
-  daddy_money_transfer: 0.15
+  daddy_money_bill: 50
+  daddy_money_delay: 0.06
+  daddy_money_transfer: 0.04
   daddy_money_height: 0.1
-  daddy_money_amount: {x: 25, y: 100}
+  daddy_money_amount: {x: 300, y: 600}
   input_horizontal_deadzone: 0.001
   curve_upward:
     serializedVersion: 2
@@ -195,8 +195,8 @@ MonoBehaviour:
   camera_trigger_follow_lateral: 2
   paparazzi_rotate_duration: 0.35
   paparazzi_photo_distance: 3
-  currency_level_dolar_gain: 19000000280000003c00000064000000
-  currency_level_dolar_cost: fa0000009001000058020000e8030000
+  currency_level_dolar_gain: 1e0000005a0000008c000000be000000
+  currency_level_dolar_cost: 960000002c010000900100008a020000
   currency_level_fame: 0a000000140000001e00000032000000
   priceTag_color_positive: {r: 0, g: 1, b: 0, a: 1}
   priceTag_color_negative: {r: 1, g: 0, b: 0, a: 1}
