@@ -83,7 +83,8 @@ namespace FFStudio
         [ Foldout( "Paparazzi" ) ] public float paparazzi_rotate_duration = 0.15f;
         [ Foldout( "Paparazzi" ) ] public float paparazzi_photo_distance = 1f;
 
-        [ Foldout( "Currency" ) ] public int[] currency_level_dolar;
+        [ Foldout( "Currency" ) ] public int[] currency_level_dolar_gain;
+        [ Foldout( "Currency" ) ] public int[] currency_level_dolar_cost;
         [ Foldout( "Currency" ) ] public int[] currency_level_fame;
 
         [ Foldout( "Cloth" ) ] public Color[] cloth_outline_color;

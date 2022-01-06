@@ -42,7 +42,7 @@ public class Collectable_Cloth : Interactable
 
     private void Start()
     {
-         var currency = GameSettings.Instance.currency_level_dolar;
+         var currency = GameSettings.Instance.currency_level_dolar_cost;
 		cloth_random_cost = Random.Range( currency[ cloth_cost - 1 ], currency[ cloth_cost ] );
 		cloth_price_tag.SetText( cloth_cost, cloth_random_cost, cloth_fame );
     }
