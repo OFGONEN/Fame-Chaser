@@ -153,7 +153,14 @@ public class Player : MonoBehaviour
 	public bool SpendMoney( int amount )
 	{
 		if( amount > money_count )
+		{
+			var position = cloth_renderers[ 1 ].transform.position + Vector3.back * GameSettings.Instance.particle_cloth_distance;
+			position += Random.insideUnitCircle.ConvertV3() * GameSettings.Instance.particle_cloth_radius;
+
+			cloth_event.Raise( "angry", position, transform );
+
 			return false;
+		}
 		else
 		{
 			money_count -= amount;
