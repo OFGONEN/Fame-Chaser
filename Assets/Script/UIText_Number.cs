@@ -59,7 +59,13 @@ public class UIText_Number : UIText
 		punch_sequence.Join( transform.DOPunchScale( Vector3.one * GameSettings.Instance.ui_Entity_PunchScale_Strenght, GameSettings.Instance.ui_Entity_PunchScale_Duration ) );
 		punch_sequence.AppendInterval( duration / 2f );
 		punch_sequence.Join( textRenderer.DOColor( change_color_neutral, duration / 2f ) );
-
+		punch_sequence.OnComplete( OnPunchSequenceComplete );
 	}
+
+	private void OnPunchSequenceComplete()
+	{
+		punch_sequence = null;
+	}
+
 #endregion
 }
