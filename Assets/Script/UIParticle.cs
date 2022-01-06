@@ -97,7 +97,7 @@ public class UIParticle : UIImage
 
 	private void OnParticle_Complete()
 	{
-		particle_sequence = particle_sequence.KillProper();
+		particle_sequence = null;
 		ui_pool_particle.ReturnEntity( this );
 	}
 

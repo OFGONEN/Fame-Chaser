@@ -205,7 +205,7 @@ public class Daddy : MonoBehaviour
 
 	private void ReturnToPool()
 	{
-		ragdoll_tween = ragdoll_tween.KillProper();
+		ragdoll_tween = null;
 
 		gameObject.SetActive( false );
 		daddy_pool.ReturnEntity( this );
@@ -213,7 +213,7 @@ public class Daddy : MonoBehaviour
 
 	private void OnCoupleComplete()
 	{
-		couple_sequence = couple_sequence.KillProper();
+		couple_sequence = null;
 		couple_sequence = DOTween.Sequence();
 
 		couple_DetachedMethod = OnCoupleDetached_Money;
@@ -246,7 +246,7 @@ public class Daddy : MonoBehaviour
 
 	private void TransferMoneyToPlayer()
 	{
-		couple_sequence = couple_sequence.KillProper();
+		couple_sequence = null;
 		couple_sequence = DOTween.Sequence();
 
 		var duration = GameSettings.Instance.daddy_money_transfer;
@@ -277,7 +277,7 @@ public class Daddy : MonoBehaviour
 			couple_sequence.AppendInterval( delay );
 		}
 
-		couple_sequence.OnComplete( player.OnDaddyMoneyDeplete );
+		couple_sequence.OnComplete( OnCoupleSequenceComplete );
 	}
 
 	private void OnCoupleDetached_Coupling()
@@ -336,6 +336,12 @@ public class Daddy : MonoBehaviour
 		money.money_count = moneyCount;
 
 		daddy_money_list.Add( money );
+	}
+
+	private void OnCoupleSequenceComplete()
+	{
+		couple_sequence = null;
+		player.OnDaddyMoneyDeplete();
 	}
 #endregion
 

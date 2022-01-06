@@ -95,7 +95,8 @@ public class CameraController : MonoBehaviour
 		else
 		{
 			rotationTween = rotationTween.KillProper();
-			rotationTween = transform.DORotate( Vector3.right * GameSettings.Instance.camera_follow_rotation, GameSettings.Instance.camera_follow_duration );
+			rotationTween = transform.DORotate( Vector3.right * GameSettings.Instance.camera_follow_rotation, GameSettings.Instance.camera_follow_duration )
+			.OnComplete( OnRotationComplete );
 			updateMethod = OnUpdate_FollowPlayer;
 
 		}
@@ -155,7 +156,13 @@ public class CameraController : MonoBehaviour
 
 		var target_rotation = new Vector3( GameSettings.Instance.camera_follow_rotation, -1f * GameSettings.Instance.camera_trigger_follow_rotation * cofactor, 0 );
 
-		rotationTween = transform.DORotate( target_rotation, GameSettings.Instance.camera_follow_duration );
+		rotationTween = transform.DORotate( target_rotation, GameSettings.Instance.camera_follow_duration )
+		.OnComplete( OnRotationComplete );
+	}
+
+	private void OnRotationComplete()
+	{
+		rotationTween = null;
 	}
 	#endregion
 

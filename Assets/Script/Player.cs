@@ -286,6 +286,7 @@ public class Player : MonoBehaviour
     private void SwapLane_Main()
     {
 		takeClothOff_Tween = takeClothOff_Tween.KillProper();
+
 		swapLane_Out();
 
 		swapLane_Out        = ExtensionMethods.EmptyMethod;
@@ -309,7 +310,7 @@ public class Player : MonoBehaviour
     private void OnSwapTriggerLane_In_Money_Complete()
     {
 		triggerListener.AttachedCollider.enabled = true;
-		triggerLane_Sequence = triggerLane_Sequence.KillProper();
+		triggerLane_Sequence = null;
 
 		swipe_right_listener.response = SwapLane_Main;
 	}
@@ -317,7 +318,7 @@ public class Player : MonoBehaviour
     private void OnSwapTriggerLane_In_Fame_Complete()
     {
 		triggerListener.AttachedCollider.enabled = true;
-		triggerLane_Sequence = triggerLane_Sequence.KillProper();
+		triggerLane_Sequence = null;
 
 		swipe_left_listener.response = SwapLane_Main;
 
@@ -329,7 +330,7 @@ public class Player : MonoBehaviour
     private void OnSwapTriggerLane_Out_Complete()
 	{
 		triggerListener.AttachedCollider.enabled = true;
-		triggerLane_Sequence = triggerLane_Sequence.KillProper();
+		triggerLane_Sequence = null;
 
 		updateMethod = OnUpdate_Movement_MainLane;
 	}
@@ -422,6 +423,8 @@ public class Player : MonoBehaviour
 
 	private void Delayed_TakeClothOff( int index )
 	{
+		takeClothOff_Tween = null;
+
 		if( index >= cloth_data_array.Length || !HasAnyCloth() )
 		{
 			SwapLane_Main();
