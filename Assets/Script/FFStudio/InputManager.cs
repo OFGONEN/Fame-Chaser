@@ -15,6 +15,7 @@ namespace FFStudio
 
 		[ Header( "Shared Variables" ) ]
 		public SharedReferenceNotifier mainCamera_ReferenceNotifier;
+		public SharedFloat input_horizontal;
 
 		// Privat fields
 		private int swipeThreshold;
@@ -56,6 +57,21 @@ namespace FFStudio
 			tapInputEvent.eventValue = count;
 
 			tapInputEvent.Raise();
+		}
+
+		public void LeanFingerUpdate( Vector2 delta )
+		{
+			var input = delta.x;
+
+			if( Mathf.Abs( input ) < GameSettings.Instance.input_horizontal_deadzone )
+				input = 0;
+
+			input_horizontal.sharedValue = input;
+		}
+
+		public void LeanFingerUp( LeanFinger finger )
+		{
+			input_horizontal.sharedValue = 0;
 		}
 #endregion
 

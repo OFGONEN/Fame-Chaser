@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f1d448e14d30874fad79b25a2073602, type: 3}
   m_Name: build_string
   m_EditorClassIdentifier: 
-  sharedValue: APK_30/08/21_Build-1
+  sharedValue: IOS_06/01/22_Build-2

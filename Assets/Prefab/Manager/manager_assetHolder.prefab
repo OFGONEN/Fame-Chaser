@@ -45,3 +45,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameSettings: {fileID: 11400000, guid: 109113abc7450a64db67bb41e0cc2dc0, type: 2}
   currentLevelData: {fileID: 11400000, guid: d35c98ef4c868d94f85bf38a98066033, type: 2}
+  enums:
+  - {fileID: 11400000, guid: a0ddd046b5348c348b3be64c61665b6e, type: 2}
+  - {fileID: 11400000, guid: 7cc6d8cf026468749a38f01bbeacffec, type: 2}
+  - {fileID: 11400000, guid: 34ee81094602a5f4c8e9156b7ad77ed0, type: 2}
+  - {fileID: 11400000, guid: 2b950ec42b8d12941adefed686854a65, type: 2}
+  pool_daddy_1: {fileID: 11400000, guid: b75964b9c4717f648892443badc13753, type: 2}
+  pool_daddy_2: {fileID: 11400000, guid: 49f4a252e335a4c049de295cc03016c8, type: 2}
+  pool_daddy_3: {fileID: 11400000, guid: 2357b03b472b849fd8d49f100a3783ea, type: 2}
+  pool_money: {fileID: 11400000, guid: 7914a3d9db1cd9342bfb40b75f7d36aa, type: 2}

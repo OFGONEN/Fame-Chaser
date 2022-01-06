@@ -13,3 +13,6 @@ MonoBehaviour:
   m_Name: level_data_1
   m_EditorClassIdentifier: 
   sceneIndex: 1
+  overrideAsActiveScene: 0
+  daddy_spawn_rate: {x: 2, y: 4}
+  fame_target_count: 320

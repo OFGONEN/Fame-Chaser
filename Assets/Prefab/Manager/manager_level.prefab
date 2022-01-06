@@ -49,6 +49,14 @@ MonoBehaviour:
     gameEvent: {fileID: 11400000, guid: be5502ede7f194b4cad32082aa9196eb, type: 2}
   levelStartedListener:
     gameEvent: {fileID: 11400000, guid: efef06bf257ee27438d6c2aab4936226, type: 2}
+  listener_finish_line:
+    gameEvent: {fileID: 11400000, guid: dc03b0c65e7585c42a58477d3454e848, type: 2}
   levelFailedEvent: {fileID: 11400000, guid: ec850936269bc2e47b26cfebd8bdad97, type: 2}
   levelCompleted: {fileID: 11400000, guid: 28d976b368abc004a924d98b1751a17d, type: 2}
   levelProgress: {fileID: 11400000, guid: 43438d720c16f2e4aa5a19d520e1e15f, type: 2}
+  daddy_pool_array:
+  - {fileID: 11400000, guid: b75964b9c4717f648892443badc13753, type: 2}
+  - {fileID: 11400000, guid: 49f4a252e335a4c049de295cc03016c8, type: 2}
+  - {fileID: 11400000, guid: 2357b03b472b849fd8d49f100a3783ea, type: 2}
+  player_money_notifier: {fileID: 11400000, guid: 87b3f4f1399c4f54b85a475aa94d396d, type: 2}
+  player_fame_notifier: {fileID: 11400000, guid: 230b5d768e4344c4f8dd28413551e62f, type: 2}

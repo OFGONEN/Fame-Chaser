@@ -15,5 +15,7 @@ MonoBehaviour:
   canRaiseOtherEvents: 0
   eventsThatWillAlsoBeRaised: []
   eventValue: {x: 0, y: 0}
-  angleThreshold: 0
+  angleThreshold: 60
+  swiped_left_event: {fileID: 11400000, guid: db1e1ed152a774a2eba11b97201a4ce3, type: 2}
+  swiped_right_event: {fileID: 11400000, guid: 88b646dffce334c1a888550773539e18, type: 2}
   inputValue: {x: 0, y: 0}

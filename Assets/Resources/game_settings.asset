@@ -12,12 +12,195 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a385bd3b4416492409284c9a366cb52a, type: 3}
   m_Name: game_settings
   m_EditorClassIdentifier: 
-  useRemoveConfig_GameSettings: 0
-  useRemoveConfig_Components: 0
-  maxLevelCount: 1
+  dotween_capacity_tween: 500
+  dotween_capacity_sequence: 50
+  useRemoteConfig_GameSettings: 0
+  useRemoteConfig_Components: 0
+  maxLevelCount: 6
   ui_Entity_Move_TweenDuration: 0.5
   ui_Entity_Fade_TweenDuration: 0.5
   ui_Entity_Scale_TweenDuration: 0.5
   ui_Entity_FloatingMove_TweenDuration: 0.5
+  ui_Entity_PunchScale_Strenght: 1.7
+  ui_Entity_PunchScale_Duration: 0.25
   ui_Entity_JoyStick_Gap: 50
   swipeThreshold: 2
+  ui_screen_width: 828
+  ui_particle_spawn_radius: 164
+  ui_particle_ease_horizontal_positive:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.5
+      value: 1.2
+      inSlope: 0.3487115
+      outSlope: 0.3487115
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  ui_particle_ease_horizontal_negative:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.2
+      value: -0.2
+      inSlope: 1.2852188
+      outSlope: 1.2852188
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  ui_particle_fame_count: 5
+  ui_particle_fame_count_final: 2.5
+  ui_particle_dolar_count: 10
+  ui_particle_fame_sprite: {fileID: 21300000, guid: 4902e3cbcd7c5438ea7ed8ba458586c3, type: 3}
+  ui_particle_dolar_sprite: {fileID: 21300000, guid: 720c530421ca9493cba6afca9784942d, type: 3}
+  ui_particle_delay: {x: 0.0125, y: 0.025}
+  swap_point_out_randomness: 0.5
+  swap_point_out_duration: 0.75
+  swap_point_in_duration: 0.75
+  player_movement_speed_lateral: 90
+  player_movement_speed_forward: 2.8
+  player_movement_clamp_lateral: 4.5
+  player_duration_cloth_off: 0.75
+  player_duration_rotation: 0.5
+  daddy_movement_speed: 3
+  daddy_couple_duration: 0.5
+  daddy_ragdoll_duration: 2
+  daddy_ragdoll_force: 200
+  daddy_ragdoll_force_vertical: {x: 0, y: 1}
+  daddy_money_bill: 10
+  daddy_money_delay: 0.05
+  daddy_money_transfer: 0.15
+  daddy_money_height: 0.1
+  daddy_money_amount: {x: 25, y: 100}
+  input_horizontal_deadzone: 0.001
+  curve_upward:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.5
+      value: 3
+      inSlope: 1.4151304
+      outSlope: 1.4151304
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  curve_downward:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.5
+      value: -3
+      inSlope: 1.1010258
+      outSlope: 1.1010258
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  camera_follow_speed: 4
+  camera_follow_speed_depth: 2.8
+  camera_follow_depth: 2
+  camera_follow_height: 2.5
+  camera_follow_rotation: 20
+  camera_follow_duration: 0.75
+  camera_trigger_follow_depth: 2.5
+  camera_trigger_follow_rotation: 22.5
+  camera_trigger_follow_lateral: 2
+  paparazzi_rotate_duration: 0.35
+  paparazzi_photo_distance: 3
+  currency_level_dolar_gain: 19000000280000003c00000064000000
+  currency_level_dolar_cost: fa0000009001000058020000e8030000
+  currency_level_fame: 0a000000140000001e00000032000000
+  priceTag_color_positive: {r: 0, g: 1, b: 0, a: 1}
+  priceTag_color_negative: {r: 1, g: 0, b: 0, a: 1}
+  priceTag_outline_widht: 1.75
+  particle_cloth_distance: 0.15
+  particle_cloth_radius: 0.1
+  texture_arrow_scrollSpeed: 1.5

@@ -12,4 +12,29 @@ namespace FFStudio
 		public Vector3 rotation; // Euler angles.
 		public Vector3 scale; // Local scale.
 	}
+
+	[ Serializable ]
+	public struct ClothData
+	{
+		public SkinnedMeshRenderer cloth_renderer;
+		public ClothEnum cloth_type;
+		public int cloth_cost;
+		public int cloth_fame;
+
+		public ClothData( SkinnedMeshRenderer renderer, ClothEnum type, int cost, int fame )
+		{
+			cloth_renderer = renderer;
+			cloth_type     = type;
+			cloth_cost     = cost;
+			cloth_fame     = fame;
+		}
+
+		public void Clear()
+		{
+			cloth_renderer = null;
+			cloth_type     = null;
+			cloth_cost     = 0;
+			cloth_fame     = 0;
+		}
+	}
 }

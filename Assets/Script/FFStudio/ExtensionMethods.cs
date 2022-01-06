@@ -1,6 +1,7 @@
 /* Created by and for usage of FF Studios (2021). */
 
 using System.Collections.Generic;
+using System.Globalization;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
@@ -247,21 +248,23 @@ namespace FFStudio
 			}
 		}
 
-		public static void UpdateSkinnedMeshRenderer( this GameObject gameObject, SkinnedMeshRenderer currentRender, SkinnedMeshRenderer newRenderer )
+		public static void UpdateSkinnedMeshRenderer( this GameObject gameObject, SkinnedMeshRenderer currentRenderer, SkinnedMeshRenderer newRenderer )
 		{
-			currentRender.sharedMesh = newRenderer.sharedMesh;
+			currentRenderer.sharedMesh      = newRenderer.sharedMesh;
+			currentRenderer.sharedMaterials = newRenderer.sharedMaterials;
+			currentRenderer.localBounds     = newRenderer.localBounds;
 
-			baseModelBones.Clear();
+            baseModelBones.Clear();
 			targetModelBones.Clear();
 
 			gameObject.GetComponentsInChildren<Transform>( true, baseModelBones );
 
 			for( int boneOrder = 0; boneOrder < newRenderer.bones.Length; boneOrder++ )
 			{
-				targetModelBones.Add( targetModelBones.Find( c => c.name == newRenderer.bones[ boneOrder ].name ) );
+				targetModelBones.Add( baseModelBones.Find( c => c.name == newRenderer.bones[ boneOrder ].name ) );
 			}
 
-			currentRender.bones = targetModelBones.ToArray();
+			currentRenderer.bones = targetModelBones.ToArray();
 		}
 
 		public static void SetFieldValue( this object source, string fieldName, string value )
@@ -279,7 +282,7 @@ namespace FFStudio
                 }
                 else if( fieldType == typeof( float ) )
                 {
-				    fieldInfo.SetValue( source, float.Parse( value ) );
+				    fieldInfo.SetValue( source, float.Parse( value, CultureInfo.InvariantCulture ) );
                 }
                 else if( fieldType == typeof( string ) )
                 {
@@ -309,6 +312,16 @@ namespace FFStudio
 			return tween;
 		}
 
+		public static float GiveRandom( this Vector2 v2 )
+		{
+			return Random.Range( v2.x, v2.y );
+		}
+
+		public static int GiveRandom( this Vector2Int v2 )
+		{
+			return Random.Range( v2.x, v2.y );
+		}
+
 		public static Color SetAlpha( this Color color, float alpha )
 		{
 			Color newColor = color;
@@ -335,6 +348,16 @@ namespace FFStudio
 				rounded += step;
 
 			return rounded;
+		}
+
+		public static float Sign( this float number )
+		{
+			if( Mathf.Approximately( number, 0 ) )
+				return 0;
+			else if( number > 0 )
+				return 1;
+			else
+				return -1;
 		}
 	}
 }
