@@ -1,5 +1,7 @@
-﻿/* Created by and for usage of FF Studios (2021). */
+/* Created by and for usage of FF Studios (2021). */
 
+using System;
+using System.Text;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -318,6 +320,31 @@ namespace FFEditor
 			gameSettings.maxLevelCount = guids.Length;
 
 			EditorUtility.SetDirty( gameSettings );
+			AssetDatabase.SaveAssets();
+		}
+
+		[ MenuItem( "FFStudios/Bake Build String" ) ]
+		public static void BakeBuildString()
+		{
+			StringBuilder stringBuilder = new StringBuilder( 32 );
+			var buildStringAsset = AssetDatabase.LoadAssetAtPath( "Assets/Scriptable_Object/Shared/build_string.asset", typeof( SharedString ) );
+
+			stringBuilder.Append( "IOS_" );
+			string buildNumber = PlayerSettings.iOS.buildNumber;
+
+			var time = DateTime.Now.ToString( "dd/MM/yyyy" ).Replace( '-', '/' );
+			var date = time.Substring( 0, time.Length - 2 ).ToCharArray(); // To convert year from 2021 to just 21.
+			date[ date.Length - 2 ] = time[ time.Length - 2 ];
+			date[ date.Length - 1 ] = time[ time.Length - 1 ];
+
+			stringBuilder.Append( date );
+			stringBuilder.Append( "_Build-" );
+			stringBuilder.Append( buildNumber );
+
+			var sharedBuildString = buildStringAsset as SharedString;
+			sharedBuildString.sharedValue = stringBuilder.ToString();
+
+			EditorUtility.SetDirty( sharedBuildString );
 			AssetDatabase.SaveAssets();
 		}
 	}
