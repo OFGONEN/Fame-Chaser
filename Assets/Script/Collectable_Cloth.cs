@@ -18,7 +18,6 @@ public class Collectable_Cloth : Interactable
     // Private \\
     private TriggerListener cloth_trigger;
     private PriceTag cloth_price_tag;
-    private Outline cloth_outline;
     private int cloth_random_cost;
 #endregion
 
@@ -31,13 +30,6 @@ public class Collectable_Cloth : Interactable
 		base.Awake();
 
 		cloth_price_tag = GetComponentInChildren< PriceTag >();
-		cloth_outline   = GetComponentInChildren< Outline >();
-
-        if( cloth_outline != null )
-        {
-		    cloth_outline.OutlineColor = GameSettings.Instance.cloth_outline_color[ cloth_fame - 1 ];
-		    cloth_outline.OutlineWidth = GameSettings.Instance.cloth_outline_widht[ cloth_fame - 1 ];
-        }
 	}
 
     private void Start()

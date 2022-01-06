@@ -87,8 +87,9 @@ namespace FFStudio
         [ Foldout( "Currency" ) ] public int[] currency_level_dolar_cost;
         [ Foldout( "Currency" ) ] public int[] currency_level_fame;
 
-        [ Foldout( "Cloth" ) ] public Color[] cloth_outline_color;
-        [ Foldout( "Cloth" ) ] public float[] cloth_outline_widht;
+        [ Foldout( "Price Tag" ) ] public Color priceTag_color_positive;
+        [ Foldout( "Price Tag" ) ] public Color priceTag_color_negative;
+        [ Foldout( "Price Tag" ) ] public float priceTag_outline_widht;
 
         [ Foldout( "Particle" ) ] public float particle_cloth_distance;
         [ Foldout( "Particle" ) ] public float particle_cloth_radius;

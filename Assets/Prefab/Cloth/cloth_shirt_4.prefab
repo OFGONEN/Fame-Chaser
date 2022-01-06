@@ -1,23 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &7983847938956891880
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2586949005303036169}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 1
-  outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 2
-  precomputeOutline: 1
-  bakeKeys: []
-  bakeValues: []
 --- !u!1001 &3397923844901438552
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -432,11 +414,6 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 5866666021909216657, guid: 1780a2ded7b01a845afa8d438317a0f9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1780a2ded7b01a845afa8d438317a0f9, type: 3}
---- !u!1 &2586949005303036169 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1780a2ded7b01a845afa8d438317a0f9, type: 3}
-  m_PrefabInstance: {fileID: 3397923844901438552}
-  m_PrefabAsset: {fileID: 0}
 --- !u!137 &4746959887134319630 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: -1240935872568401834, guid: 1780a2ded7b01a845afa8d438317a0f9, type: 3}
