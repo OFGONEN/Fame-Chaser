@@ -195,7 +195,7 @@ MonoBehaviour:
   camera_trigger_follow_lateral: 2
   paparazzi_rotate_duration: 0.35
   paparazzi_photo_distance: 3
-  currency_level_dolar: 19000000280000003c00000064000000
+  currency_level_dolar: fa0000009001000058020000e8030000
   currency_level_fame: 0a000000140000001e00000032000000
   cloth_outline_color:
   - {r: 0.9963522, g: 1, b: 0.7122642, a: 1}
