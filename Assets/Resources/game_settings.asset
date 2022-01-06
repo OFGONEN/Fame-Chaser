@@ -198,14 +198,9 @@ MonoBehaviour:
   currency_level_dolar_gain: 19000000280000003c00000064000000
   currency_level_dolar_cost: fa0000009001000058020000e8030000
   currency_level_fame: 0a000000140000001e00000032000000
-  cloth_outline_color:
-  - {r: 0.9963522, g: 1, b: 0.7122642, a: 1}
-  - {r: 1, g: 0.90766644, b: 0.3820755, a: 1}
-  - {r: 1, g: 0.854902, b: 0, a: 1}
-  cloth_outline_widht:
-  - 0.75
-  - 1.5
-  - 2.5
+  priceTag_color_positive: {r: 0, g: 1, b: 0, a: 1}
+  priceTag_color_negative: {r: 1, g: 0, b: 0, a: 1}
+  priceTag_outline_widht: 1.75
   particle_cloth_distance: 0.15
   particle_cloth_radius: 0.1
   texture_arrow_scrollSpeed: 1.5
