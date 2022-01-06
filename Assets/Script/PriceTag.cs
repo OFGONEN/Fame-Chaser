@@ -53,7 +53,7 @@ public class PriceTag : MonoBehaviour
 		cost = real_dolar;
 
 		// <font="fontAssetName">
-		text_builder.Append( "<color=#FF3737>-" + real_dolar + "</color>" );
+		text_builder.Append( "<color=#FF3737>" + real_dolar + "</color>" );
 		text_builder.Append( "<font=\"" );
 		text_builder.Append( font_name_dolar );
 		text_builder.Append( "\">" );
