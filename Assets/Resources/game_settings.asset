@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a385bd3b4416492409284c9a366cb52a, type: 3}
   m_Name: game_settings
   m_EditorClassIdentifier: 
-  dotween_capacity_tween: 500
-  dotween_capacity_sequence: 50
+  dotween_capacity_tween: 25
+  dotween_capacity_sequence: 125
   useRemoteConfig_GameSettings: 0
   useRemoteConfig_Components: 0
   maxLevelCount: 6
@@ -112,11 +112,11 @@ MonoBehaviour:
   daddy_ragdoll_duration: 2
   daddy_ragdoll_force: 200
   daddy_ragdoll_force_vertical: {x: 0, y: 1}
-  daddy_money_bill: 50
-  daddy_money_delay: 0.06
-  daddy_money_transfer: 0.04
-  daddy_money_height: 0.1
-  daddy_money_amount: {x: 300, y: 600}
+  daddy_money_bill: 25
+  daddy_money_delay: 0.02
+  daddy_money_transfer: 0.01
+  daddy_money_height: 0.065
+  daddy_money_amount: {x: 100, y: 700}
   input_horizontal_deadzone: 0.001
   curve_upward:
     serializedVersion: 2
