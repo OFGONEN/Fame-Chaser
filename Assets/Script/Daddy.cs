@@ -103,7 +103,7 @@ public class Daddy : MonoBehaviour
 
         main_camera = ( camera_reference.SharedValue as Transform ).GetComponent< Camera >();
 
-		animator.SetBool( "match", false );
+		// animator.SetBool( "match", false );
 
 		daddy_money_count = money;
 
@@ -125,10 +125,19 @@ public class Daddy : MonoBehaviour
 		transform.forward  = ( transform_end.position.SetX( spawn_position.x ) - spawn_position ).normalized;
 
 		updateMethod = OnUpdate_Movement;
+
+		SpawnMoneyOnDaddyInstant();
 	}
 
 	public void RagdollOff()
 	{
+		for( var i = 0; i < daddy_money_list.Count; i++ )
+		{
+			daddy_money_list[ i ].Deposit();
+		}
+
+		daddy_money_list.Clear();
+
 		updateMethod = ExtensionMethods.EmptyMethod;
 
 		triggerListener.AttachedCollider.enabled = false;
@@ -188,6 +197,9 @@ public class Daddy : MonoBehaviour
 				( transform.position - collider.transform.position ).normalized.SetY( GameSettings.Instance.daddy_ragdoll_force_vertical.GiveRandom()  )
 				 * GameSettings.Instance.daddy_ragdoll_force, 
 				 ForceMode.Impulse );
+
+
+
 			return;
 		}
 
@@ -195,7 +207,7 @@ public class Daddy : MonoBehaviour
 
 		transform.SetParent( player.transform );
 
-		animator.SetBool( "match", true );
+		// animator.SetBool( "match", true );
 
 		couple_sequence = DOTween.Sequence();
 		couple_sequence.Append( transform.DOLocalMove( couple_position.localPosition, GameSettings.Instance.daddy_couple_duration ) );
@@ -220,8 +232,9 @@ public class Daddy : MonoBehaviour
 
 		// animator.SetBool( "match", true );
 
-		SpawnMoneyOnDaddy(); // Edits couple_sequence
-		couple_sequence.OnComplete( TransferMoneyToPlayer );
+		// SpawnMoneyOnDaddy(); // Edits couple_sequence
+		// couple_sequence.OnComplete( TransferMoneyToPlayer );
+		TransferMoneyToPlayer();
 	}
 
 	private void SpawnMoneyOnDaddy()
@@ -242,6 +255,21 @@ public class Daddy : MonoBehaviour
 			couple_sequence.AppendCallback( () => SpawnMoney( money_count, money_remainder ) );
 			couple_sequence.AppendInterval( GameSettings.Instance.daddy_money_delay );
 		}
+	}
+
+	private void SpawnMoneyOnDaddyInstant()
+	{
+		var money_count = daddy_money_count / GameSettings.Instance.daddy_money_bill;
+
+		for( var i = 0; i < money_count; i++ )
+		{
+			SpawnMoney( i, GameSettings.Instance.daddy_money_bill );
+		}
+
+		var money_remainder = daddy_money_count % GameSettings.Instance.daddy_money_bill;
+
+		if( money_remainder > 0 )
+			SpawnMoney( money_count, money_remainder );
 	}
 
 	private void TransferMoneyToPlayer()
@@ -308,6 +336,8 @@ public class Daddy : MonoBehaviour
 		{
 			daddy_money_list[ i ].Deposit();
 		}
+
+		daddy_money_list.Clear();
 
 		// ui particle
 		var particle_start  = main_camera.WorldToScreenPoint( player_money_position.position );
