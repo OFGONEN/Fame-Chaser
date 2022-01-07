@@ -150,8 +150,8 @@ PlayerSettings:
     Standalone: com.FFStudios.FameChaser
     iPhone: com.FFStudios.FameChaser
   buildNumber:
-    Standalone: 0
-    iPhone: 3
+    Standalone: 4
+    iPhone: 4
     tvOS: 0
   overrideDefaultApplicationIdentifier: 1
   AndroidBundleVersionCode: 1
