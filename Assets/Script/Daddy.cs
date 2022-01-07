@@ -136,6 +136,8 @@ public class Daddy : MonoBehaviour
 			daddy_money_list[ i ].Deposit();
 		}
 
+		daddy_money_list.Clear();
+
 		updateMethod = ExtensionMethods.EmptyMethod;
 
 		triggerListener.AttachedCollider.enabled = false;

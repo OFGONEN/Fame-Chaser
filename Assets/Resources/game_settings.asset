@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a385bd3b4416492409284c9a366cb52a, type: 3}
   m_Name: game_settings
   m_EditorClassIdentifier: 
-  dotween_capacity_tween: 25
+  dotween_capacity_tween: 500
   dotween_capacity_sequence: 125
   useRemoteConfig_GameSettings: 0
   useRemoteConfig_Components: 0
